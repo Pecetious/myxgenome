@@ -7,4 +7,7 @@ export * from "./background-card";
 export * from "./course-card";
 export * from "./feature-card";
 export * from "./footer";
-export * from "./fixed-plugin";
+export * from "./input";
+export * from "./microphone";
+export * from "./selfie";
+export * from "./microphone-confirm-modal";

@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import { Layout, FixedPlugin } from "@/components";
+import { Layout, Navbar, Footer } from "@/components";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -10,9 +10,9 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "NextJS Tailwind Course Details Page",
+  title: "MYXGENOME",
   description:
-    "Introducing Tailwind Course Details Page, a comprehensive and user-friendly course details template designed using Tailwind CSS and Material Tailwind.",
+    " myXgenome genetik kökenlerinizi keşfetmenizi sağlayan DNA test deneyimi ile dakikalar içerisinde kökenlerinizi öğrenin",
 };
 
 export default function RootLayout({
@@ -22,18 +22,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <script
-          defer
-          data-site="YOUR_DOMAIN_HERE"
-          src="https://api.nepcha.com/js/nepcha-analytics.js"
-        ></script>
-        <link rel="shortcut icon" href="/favicon.png" type="image/png" />
-      </head>
+      <head></head>
       <body className={roboto.className}>
         <Layout>
+          <Navbar />
           {children}
-          <FixedPlugin />
+          <Footer />
         </Layout>
         <link
           rel="stylesheet"

@@ -3,31 +3,27 @@
 import React from "react";
 import Image from "next/image";
 import { Typography } from "@material-tailwind/react";
-import {
-  AcademicCapIcon,
-  CheckBadgeIcon,
-  InboxIcon,
-} from "@heroicons/react/24/solid";
 
 import FeatureCard from "@/components/feature-card";
 
 const FEATURES = [
   {
-    icon: InboxIcon,
-    title: "Hands-On Projects",
+    icon: "/icons/optical-microscope.png",
+    title: "Genetik Analiz",
     description:
-      "Apply your knowledge to real-world projects, building a robust portfolio.",
+      "Görüntü ve ses verisinden yola çıkarak genetik mutasyonları belirler.",
   },
   {
-    icon: AcademicCapIcon,
-    title: "Career Opportunities",
+    icon: "/icons/dna-helix.png",
+    title: "Demografik Tespit",
     description:
-      "React developers are in high demand and this course is designed for you!",
+      "Irk, yaş ve cinsiyet gibi faktörleri genetik yapıya dayalı olarak analiz eder.",
   },
   {
-    icon: CheckBadgeIcon,
-    title: "Flexible Learning",
-    description: "Access course materials whenever it suits your schedule.",
+    icon: "/icons/analytics.png",
+    title: "Kapsamlı Raporlama",
+    description:
+      "Veriler detaylı bir şekilde işlenerek kullanıcıya anlamlı ve bilimsel bir rapor sunar.",
   },
 ];
 
@@ -39,22 +35,32 @@ export function OnlineCourse() {
           <Image
             width={768}
             height={500}
-            src="/image/online-course.png"
-            className="h-full max-h-[500px] w-full object-cover scale-110"
+            src="/image/online-course.jpg"
+            className="h-full max-h-[500px] w-full object-cover scale-110 rounded-md"
             alt="online course"
           />
         </div>
         <div className="col-span-2 lg:pl-24">
-          <Typography variant="h2" color="blue-gray" className="mb-4">
-            Online Course
+          <Typography
+            variant="h2"
+            color="blue-gray"
+            className="mb-4"
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+          >
+            myXgenome
           </Typography>
           <Typography
             variant="lead"
             className="mb-5 max-w-lg px-4 text-left text-lg !text-gray-500 lg:px-0  "
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
           >
-            In this comprehensive React Course, you&apos;ll delve into the world
-            of React, from its fundamentals to advanced techniques. Our expert
-            instructors will guide you through every step.
+            myXgenome, biyoteknoloji ve yapay zekayı bir araya getirerek genetik
+            analizde yeni bir dönemin kapılarını aralıyor. Geleceğin tıbbına
+            bugünden adım atın!
           </Typography>
 
           <div className="col-span-2 grid grid-cols-1 gap-10 sm:grid-cols-3 ">

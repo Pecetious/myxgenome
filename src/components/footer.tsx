@@ -2,16 +2,13 @@ import { Typography, Button, Input } from "@material-tailwind/react";
 
 const LINKS = [
   {
-    title: "Company",
-    items: ["About Us", "Careers", "Premium Tools", "Blog"],
+    title: "myXgenome",
+    items: ["Hakkımızda", "İletişim"],
   },
+
   {
-    title: "Pages",
-    items: ["Login", "Register", "Add List", "Contact"],
-  },
-  {
-    title: "Legal",
-    items: ["Terms", "Privacy", "Team", "About Us"],
+    title: "Yasal",
+    items: ["Gizlilik Sözleşmesi"],
   },
 ];
 
@@ -25,7 +22,14 @@ export function Footer() {
           <div className="flex col-span-2 items-center gap-10 mb-10 lg:mb-0 md:gap-36">
             {LINKS.map(({ title, items }) => (
               <ul key={title}>
-                <Typography variant="h6" color="blue-gray" className="mb-4">
+                <Typography
+                  variant="h6"
+                  color="blue-gray"
+                  className="mb-4"
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                >
                   {title}
                 </Typography>
                 {items.map((link) => (
@@ -34,6 +38,9 @@ export function Footer() {
                       as="a"
                       href="#"
                       className="py-1 font-normal !text-gray-700 transition-colors hover:!text-gray-900"
+                      placeholder={undefined}
+                      onPointerEnterCapture={undefined}
+                      onPointerLeaveCapture={undefined}
                     >
                       {link}
                     </Typography>
@@ -42,7 +49,7 @@ export function Footer() {
               </ul>
             ))}
           </div>
-          <div className="">
+          {/* <div className="">
             <Typography variant="h6" className="mb-3 text-left">
               Subscribe
             </Typography>
@@ -55,7 +62,7 @@ export function Footer() {
             </Typography>
             <div className="flex mb-3 flex-col lg:flex-row items-start gap-4">
               <div className="w-full">
-                {/* @ts-ignore */}
+                //{ @ts-ignore } 
                 <Input label="Email" color="gray" />
                 <Typography className="font-medium mt-3 !text-sm !text-gray-500 text-left">
                   I agree the{" "}
@@ -71,21 +78,16 @@ export function Footer() {
                 button
               </Button>
             </div>
-          </div>
+          </div> */}
         </div>
         <Typography
           color="blue-gray"
           className="md:text-center mt-16 font-normal !text-gray-700"
+          placeholder={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
         >
-          &copy; {CURRENT_YEAR} Made with{" "}
-          <a href="https://www.material-tailwind.com" target="_blank">
-            Material Tailwind
-          </a>{" "}
-          by{" "}
-          <a href="https://www.creative-tim.com" target="_blank">
-            Creative Tim
-          </a>
-          .
+          &copy; {CURRENT_YEAR} MYXGENOME, Tüm Hakları Saklıdır.
         </Typography>
       </div>
     </footer>
