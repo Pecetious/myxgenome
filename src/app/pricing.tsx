@@ -2,13 +2,14 @@
 import React from "react";
 import { Card, CardBody, Button, Typography } from "@material-tailwind/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
-
+import { useRouter } from "next/navigation";
 const PRICING_OPTIONS = [
   "Köken Analizi",
   "Mutasyona Uğramış Muhtemel Gen Çizelgeniz",
 ];
 
 export function Pricing() {
+  const router = useRouter();
   return (
     <div className="grid min-h-screen place-items-center">
       <section className="container mx-auto px-10">
@@ -100,7 +101,7 @@ export function Pricing() {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  99,90₺
+                  120,90₺
                 </Typography>
                 <Button
                   color="gray"
@@ -108,6 +109,7 @@ export function Pricing() {
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
+                  onClick={() => router.push("/payment")}
                 >
                   satın al
                 </Button>

@@ -42,6 +42,7 @@ export function Navbar() {
     localStorage.removeItem("session");
     document.cookie = `token=; path=; max-age=0`;
     router.replace("/");
+    localStorage.removeItem("test-warning");
   };
   const checkSession = () => {
     const storedSession = localStorage.getItem("session");
@@ -103,6 +104,8 @@ export function Navbar() {
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
+          onClick={() => router.push("/")}
+          className="hover:cursor-pointer tracking-widest"
         >
           MYXGENOME
         </Typography>
@@ -116,7 +119,7 @@ export function Navbar() {
           <NavItem>İletişim</NavItem>
         </ul>
         <div className="hidden gap-2 lg:flex">
-          <IconButton
+          {/*  <IconButton
             variant="text"
             color={isScrolling ? "gray" : "white"}
             size="sm"
@@ -145,7 +148,7 @@ export function Navbar() {
             onPointerLeaveCapture={undefined}
           >
             <i className="fa-brands fa-instagram text-base" />
-          </IconButton>
+          </IconButton> */}
           <div className="space-x-3">
             {session ? (
               <>
@@ -215,42 +218,42 @@ export function Navbar() {
       <Collapse open={open}>
         <div className="container mx-auto mt-4 rounded-lg bg-white px-6 py-5">
           <ul className="flex flex-col gap-4 text-blue-gray-900">
-            <NavItem>Ana Sayfa</NavItem>
+            <NavItem href="/">Ana Sayfa</NavItem>
             <NavItem>Hakkımızda</NavItem>
             <NavItem>İletişim</NavItem>
           </ul>
-          <div className="mt-4 flex gap-2">
-            <IconButton
-              variant="text"
-              color="gray"
-              size="sm"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
-              <i className="fa-brands fa-twitter text-base" />
-            </IconButton>
-            <IconButton
-              variant="text"
-              color="gray"
-              size="sm"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
-              <i className="fa-brands fa-facebook text-base" />
-            </IconButton>
-            <IconButton
-              variant="text"
-              color="gray"
-              size="sm"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
-              <i className="fa-brands fa-instagram text-base" />
-            </IconButton>
-          </div>
+          {/* <div className="mt-4 flex gap-2">
+              <IconButton
+                variant="text"
+                color="gray"
+                size="sm"
+                placeholder={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+              >
+                <i className="fa-brands fa-twitter text-base" />
+              </IconButton>
+              <IconButton
+                variant="text"
+                color="gray"
+                size="sm"
+                placeholder={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+              >
+                <i className="fa-brands fa-facebook text-base" />
+              </IconButton>
+              <IconButton
+                variant="text"
+                color="gray"
+                size="sm"
+                placeholder={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+              >
+                <i className="fa-brands fa-instagram text-base" />
+              </IconButton>
+            </div> */}
           <div className="space-x-3">
             {session ? (
               <>

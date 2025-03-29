@@ -2,13 +2,17 @@
 
 import { Input, Typography, Button } from "@material-tailwind/react";
 import { Formik } from "formik";
-import { loginValidations } from "../../../constants/validations";
 import axios from "axios";
+import { loginValidations } from "@/constants/validations";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 type login = {
   email: string;
   password: string;
 };
 const Login = () => {
+  const router = useRouter();
+  const [error, setError] = useState(null);
   const handleLogin = async (values: login) => {
     try {
       const { data } = await axios.post("/api/login", {
@@ -25,14 +29,15 @@ const Login = () => {
       localStorage.setItem("session", JSON.stringify(session));
       document.cookie = `token=${data.token}; path=/; max-age=3600`;
       window.open("/", "_self");
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
+      setError(err.response.data.message);
     }
   };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-tr from-blue-500 via-indigo-500 to-indigo-900 py-12 px-4 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8">
-        <div className="bg-white p-8 rounded-lg shadow-lg">
+        <div className="bg-white p-8 rounded-lg shadow-xl shadow-white border-2 border-indigo-600">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-6">
             Giriş Yap
           </h2>
@@ -130,11 +135,32 @@ const Login = () => {
 
                 {/* Giriş Yap Butonu */}
                 <div>
+                  {error && (
+                    <Typography
+                      variant="h6"
+                      color="red"
+                      className="text-center mb-4"
+                      placeholder={undefined}
+                      onPointerEnterCapture={undefined}
+                      onPointerLeaveCapture={undefined}
+                    >
+                      {error}
+                    </Typography>
+                  )}
+                  <p className="text-center my-2 ">
+                    Hesabınız yok mu?{" "}
+                    <span
+                      className="hover:underline hover:cursor-pointer text-blue-500"
+                      onClick={() => router.push("/signup")}
+                    >
+                      Kayıt Olun
+                    </span>
+                  </p>
                   <Button
-                    color="light-blue"
+                    type="submit"
+                    color="indigo"
                     fullWidth
-                    className="py-3 text-lg font-semibold capitalize"
-                    onClick={() => handleSubmit()}
+                    className="py-3 text-lg font-semibold bg-gradient-to-r from-indigo-500 via-purple-600 to-pink-500 hover:from-indigo-600 hover:via-purple-700 hover:to-pink-600 transition-all"
                     placeholder={undefined}
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}

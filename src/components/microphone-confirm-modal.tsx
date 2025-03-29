@@ -12,12 +12,14 @@ interface Props {
   closeModal: () => void;
   clickedYes: () => void;
   recordingUrl: string;
+  currentRecording: number;
 }
 const MicrophoneConfirmModal: FC<Props> = ({
   open,
   closeModal,
   clickedYes,
   recordingUrl,
+  currentRecording,
 }) => {
   return (
     <Dialog
@@ -35,12 +37,26 @@ const MicrophoneConfirmModal: FC<Props> = ({
         onPointerLeaveCapture={undefined}
       >
         <Typography
-          variant="h1"
+          variant="h4"
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
+          color="black"
+          className="font-semibold my-2 p-2"
         >
-          &apos;U&apos; sesini net bir şekilde duyabiliyor musunuz?
+          {currentRecording === 0
+            ? "Öksürük sesini duyuyor musunuz? (1.adım)"
+            : currentRecording === 1
+            ? "Öksürük sesini duyuyor musunuz? (2.adım)"
+            : currentRecording === 2
+            ? "Öksürük sesini duyuyor musunuz? (3.adım)"
+            : currentRecording === 3
+            ? "'A' sesini duyabiliyor musunuz?"
+            : currentRecording === 4
+            ? "'U' sesini duyabiliyor musunuz?"
+            : currentRecording === 5
+            ? "'İ' sesini duyabiliyor musunuz ?"
+            : ""}
         </Typography>
         <audio controls src={recordingUrl} className="mb-4 w-full" />
       </DialogBody>
@@ -58,7 +74,7 @@ const MicrophoneConfirmModal: FC<Props> = ({
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          <span>Cancel</span>
+          <span>Tekrar Dene</span>
         </Button>
         <Button
           variant="gradient"
@@ -71,7 +87,7 @@ const MicrophoneConfirmModal: FC<Props> = ({
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          <span>Confirm</span>
+          <span>Evet</span>
         </Button>
       </DialogFooter>
     </Dialog>

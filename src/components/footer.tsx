@@ -1,94 +1,137 @@
-import { Typography, Button, Input } from "@material-tailwind/react";
-
-const LINKS = [
-  {
-    title: "myXgenome",
-    items: ["Hakkımızda", "İletişim"],
-  },
-
-  {
-    title: "Yasal",
-    items: ["Gizlilik Sözleşmesi"],
-  },
-];
+import { Typography } from "@material-tailwind/react";
+import { useRouter } from "next/navigation"; // Import the useRouter hook
 
 const CURRENT_YEAR = new Date().getFullYear();
 
 export function Footer() {
+  const router = useRouter(); // Initialize the router
+
+  const handlePrivacyClick = () => {
+    router.push("/privacy-policy"); // Navigate to /privacy-policy when the link is clicked
+  };
+
   return (
-    <footer className="px-8 pt-24 pb-8">
-      <div className="container max-w-6xl flex flex-col mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-3 !w-full ">
-          <div className="flex col-span-2 items-center gap-10 mb-10 lg:mb-0 md:gap-36">
-            {LINKS.map(({ title, items }) => (
-              <ul key={title}>
+    <footer className="bg-white text-black px-8 pt-16 pb-8">
+      <div className="container mx-auto max-w-6xl">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* myXgenome Section */}
+          <div>
+            <Typography
+              variant="h6"
+              className="mb-4 text-gray-900 font-semibold"
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
+              myXgenome
+            </Typography>
+            <ul className="space-y-2">
+              <li>
                 <Typography
-                  variant="h6"
-                  color="blue-gray"
-                  className="mb-4"
+                  className="text-gray-700 hover:text-gray-600 transition-colors"
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  {title}
+                  Hakkımızda
                 </Typography>
-                {items.map((link) => (
-                  <li key={link}>
-                    <Typography
-                      as="a"
-                      href="#"
-                      className="py-1 font-normal !text-gray-700 transition-colors hover:!text-gray-900"
-                      placeholder={undefined}
-                      onPointerEnterCapture={undefined}
-                      onPointerLeaveCapture={undefined}
-                    >
-                      {link}
-                    </Typography>
-                  </li>
-                ))}
-              </ul>
-            ))}
+              </li>
+              <li>
+                <Typography
+                  className="text-gray-700 hover:text-gray-600 transition-colors"
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                >
+                  İletişim
+                </Typography>
+              </li>
+            </ul>
           </div>
-          {/* <div className="">
-            <Typography variant="h6" className="mb-3 text-left">
-              Subscribe
+
+          {/* Yasal Section */}
+          <div>
+            <Typography
+              variant="h6"
+              className="mb-4 text-gray-900 font-semibold"
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
+              Yasal
             </Typography>
-            <Typography className="!text-gray-500 font-normal mb-4 text-base">
-              Get access to subscriber exclusive deals and be the first who gets
-              informed about fresh sales.
-            </Typography>
-            <Typography variant="small" className="font-medium mb-2 text-left">
-              Your Email
-            </Typography>
-            <div className="flex mb-3 flex-col lg:flex-row items-start gap-4">
-              <div className="w-full">
-                //{ @ts-ignore } 
-                <Input label="Email" color="gray" />
-                <Typography className="font-medium mt-3 !text-sm !text-gray-500 text-left">
-                  I agree the{" "}
-                  <a
-                    href="#"
-                    className="font-bold underline hover:text-gray-900 transition-colors"
-                  >
-                    Terms and Conditions{" "}
-                  </a>
+            <ul className="space-y-2">
+              <li>
+                <Typography
+                  className="text-gray-700 hover:text-gray-600 hover:cursor-pointer transition-colors"
+                  onClick={handlePrivacyClick} // Add onClick handler for the privacy link
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                >
+                  Gizlilik Sözleşmesi
                 </Typography>
-              </div>
-              <Button color="gray" className="w-full lg:w-fit" size="md">
-                button
-              </Button>
-            </div>
-          </div> */}
+              </li>
+            </ul>
+          </div>
+
+          {/* İletişim Section */}
+          <div>
+            <Typography
+              variant="h6"
+              className="mb-4 text-gray-900 font-semibold"
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
+              İletişim
+            </Typography>
+            <ul className="space-y-2">
+              <li>
+                <Typography
+                  className="text-gray-700 hover:text-gray-600 transition-colors"
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                >
+                  New Senses Uzay Teknoloji ve Sağlık Araştırmaları A.Ş.
+                </Typography>
+              </li>
+              <li>
+                <Typography
+                  className="text-gray-700 hover:text-gray-600 transition-colors"
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                >
+                  Adres: Sanayi Mah. Teknopark Bulvarı No:1/2C İç Kapı No: 2014
+                  Pendik-İstanbul
+                </Typography>
+              </li>
+              <li>
+                <Typography
+                  className="text-gray-700 hover:text-gray-600 transition-colors"
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                >
+                  Detaylı Bilgi için: info@myxgenome.com
+                </Typography>
+              </li>
+            </ul>
+          </div>
         </div>
-        <Typography
-          color="blue-gray"
-          className="md:text-center mt-16 font-normal !text-gray-700"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
-          &copy; {CURRENT_YEAR} MYXGENOME, Tüm Hakları Saklıdır.
-        </Typography>
+
+        <div className="mt-12 text-center border-t border-gray-300 pt-4">
+          <Typography
+            className="text-gray-600"
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+          >
+            &copy; {CURRENT_YEAR} MYXGENOME, Tüm Hakları Saklıdır.
+          </Typography>
+        </div>
       </div>
     </footer>
   );

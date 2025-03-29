@@ -22,7 +22,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head></head>
+      <head>
+        <script
+          defer
+          data-site="myxgenome.com"
+          src="https://api.nepcha.com/js/nepcha-analytics.js"
+        ></script>
+      </head>
       <body className={roboto.className}>
         <Layout>
           <Navbar />
