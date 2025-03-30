@@ -32,6 +32,7 @@ export function Footer() {
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
+                  onClick={() => router.push("/about-us")}
                 >
                   Hakkımızda
                 </Typography>
@@ -89,28 +90,29 @@ export function Footer() {
             <ul className="space-y-2">
               <li>
                 <Typography
-                  className="text-gray-700 hover:text-gray-600 transition-colors"
+                  className="text-gray-700 hover:text-gray-600 transition-colors text-sm"
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  New Senses Uzay Teknoloji ve Sağlık Araştırmaları A.Ş.
+                  New Senses Uzay Teknoloji <br className="sm:hidden" />
+                  ve Sağlık Araştırmaları A.Ş.
                 </Typography>
               </li>
               <li>
                 <Typography
-                  className="text-gray-700 hover:text-gray-600 transition-colors"
+                  className="text-gray-700 hover:text-gray-600 transition-colors text-sm"
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  Adres: Sanayi Mah. Teknopark Bulvarı No:1/2C İç Kapı No: 2014
-                  Pendik-İstanbul
+                  Adres: Sanayi Mah. Teknopark Bulvarı <br /> No:1/2C İç Kapı
+                  No: 2014 Pendik-İstanbul
                 </Typography>
               </li>
               <li>
                 <Typography
-                  className="text-gray-700 hover:text-gray-600 transition-colors"
+                  className="text-gray-700 hover:text-gray-600 transition-colors text-sm"
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}

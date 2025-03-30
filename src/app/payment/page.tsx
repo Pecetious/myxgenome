@@ -103,7 +103,7 @@ const Payment = () => {
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
                   >
-                    120.90 ₺
+                    120.00 ₺
                   </Typography>
                 </div>
               </CardHeader>

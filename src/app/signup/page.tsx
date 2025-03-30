@@ -64,7 +64,7 @@ const Signup = () => {
               touched,
             }) => (
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="flex flex-row gap-2 w-full">
+                <div className="flex flex-col md:flex-row gap-2 w-full">
                   <div className="w-full">
                     <Input
                       label="Ad"

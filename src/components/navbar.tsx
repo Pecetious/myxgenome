@@ -115,7 +115,7 @@ export function Navbar() {
           }`}
         >
           <NavItem href="/">Ana Sayfa</NavItem>
-          <NavItem>Hakkımızda</NavItem>
+          <NavItem href="/about-us">Hakkımızda</NavItem>
           <NavItem>İletişim</NavItem>
         </ul>
         <div className="hidden gap-2 lg:flex">
@@ -219,7 +219,7 @@ export function Navbar() {
         <div className="container mx-auto mt-4 rounded-lg bg-white px-6 py-5">
           <ul className="flex flex-col gap-4 text-blue-gray-900">
             <NavItem href="/">Ana Sayfa</NavItem>
-            <NavItem>Hakkımızda</NavItem>
+            <NavItem href="/about-us">Hakkımızda</NavItem>
             <NavItem>İletişim</NavItem>
           </ul>
           {/* <div className="mt-4 flex gap-2">

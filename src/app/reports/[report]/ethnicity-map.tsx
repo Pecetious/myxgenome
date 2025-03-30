@@ -6,7 +6,7 @@ import { Mercator } from "@visx/geo";
 // Etnik gruplar ve onların karşılık geldiği ülkeler
 const ethnicRegions = {
   White: [
-    "Germany",
+    /*  "Germany",
     "France",
     "United Kingdom",
     "Netherlands",
@@ -34,10 +34,10 @@ const ethnicRegions = {
     "United States",
     "Canada",
     "Australia",
-    "New Zealand",
+    "New Zealand", */
   ],
   Black: [
-    "Nigeria",
+    /*  "Nigeria",
     "Ghana",
     "Senegal",
     "Ivory Coast",
@@ -58,10 +58,10 @@ const ethnicRegions = {
     "Brazil",
     "United States",
     "Colombia",
-    "Cuba",
+    "Cuba", */
   ],
   Latino_Hispanic: [
-    "Argentina",
+    /* "Argentina",
     "Chile",
     "Brazil",
     "Peru",
@@ -76,7 +76,7 @@ const ethnicRegions = {
     "Panama",
     "Cuba",
     "Dominican Republic",
-    "Puerto Rico",
+    "Puerto Rico", */
   ],
   East_Asian: [
     "China",
@@ -135,8 +135,8 @@ const ethnicityColors = {
   Latino_Hispanic: "rgba(255, 223, 0, 0.7)", // Sarı
   East_Asian: "rgba(0, 128, 0, 0.7)", // Yeşil
   Southeast_Asian: "rgba(0, 255, 255, 0.7)", // Açık Mavi
-  Indian: "rgba(0, 0, 255, 0.7)", // Mavi
-  Middle_Eastern: "rgba(128, 0, 128, 0.7)", // Mor
+  Indian: "rgba(255, 0, 0, 0.7)", // Mavi
+  Middle_Eastern: "rgba(255, 165, 0, 0.7)", // Mor
 };
 
 const EthnicityMap = ({

@@ -9,6 +9,7 @@ import {
   Accordion,
   AccordionBody,
   AccordionHeader,
+  Button,
   Card,
   Chip,
   List,
@@ -64,6 +65,18 @@ const Sidebar: FC<Props> = ({ list, credits }) => {
             <Chip value={credits} variant="ghost" color="blue-gray" />
           </ListItemSuffix>
         </ListItem>
+        <Button
+          onClick={() => router.push("/payment")}
+          color="blue-gray"
+          size="sm"
+          variant="outlined"
+          className="text-lg capitalize tracking-widest"
+          placeholder={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        >
+          Test Kredisi Satın Al
+        </Button>
         <Accordion
           open={open === 1}
           icon={

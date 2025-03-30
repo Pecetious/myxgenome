@@ -101,7 +101,7 @@ export function Pricing() {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  120,90₺
+                  120,00₺
                 </Typography>
                 <Button
                   color="gray"

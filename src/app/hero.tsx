@@ -1,8 +1,10 @@
 "use client";
 
 import { Button, Typography, Card } from "@material-tailwind/react";
+import { useRouter } from "next/navigation";
 
 function Hero() {
+  const router = useRouter();
   return (
     <div className="relative min-h-screen w-full bg-[url('/image/banner.jpg')] bg-cover bg-no-repeat">
       <div className="absolute inset-0 h-full w-full bg-gray-900/60" />
@@ -38,6 +40,7 @@ function Hero() {
               placeholder={undefined}
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
+              onClick={() => router.push("/payment")}
             >
               Hemen Dene
             </Button>

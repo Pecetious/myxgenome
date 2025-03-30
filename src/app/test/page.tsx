@@ -89,15 +89,20 @@ const Test = () => {
           },
         }
       );
+      console.log(data);
     } catch (err) {
-      setError("Bir hata oluştu, lütfen tekrar deneyin.");
+      setError(err);
+      console.error(err);
       setTimeout(() => {
         getResults();
         setProcessing(false);
       }, 120000);
-      await getTestCredits();
     } finally {
       setLoading(false);
+      await getTestCredits();
+      setRecordings([]);
+      setSelfieFile(null);
+      setCurrentRecording(0);
     }
   };
 
