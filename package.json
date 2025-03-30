@@ -17,6 +17,7 @@
     "@visx/geo": "^3.12.0",
     "axios": "^1.8.4",
     "formik": "^2.4.6",
+    "http-proxy-middleware": "^3.0.3",
     "motion": "^12.6.0",
     "next": "^15.2.4",
     "react": "18",

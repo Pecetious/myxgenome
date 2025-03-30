@@ -9,15 +9,17 @@ import {
 import { FC } from "react";
 interface Props {
   open: boolean;
-  closeModal: () => void;
+  clickedNo: () => void;
   clickedYes: () => void;
+  closeModal: () => void;
   recordingUrl: string;
   currentRecording: number;
 }
 const MicrophoneConfirmModal: FC<Props> = ({
   open,
-  closeModal,
+  clickedNo,
   clickedYes,
+  closeModal,
   recordingUrl,
   currentRecording,
 }) => {
@@ -68,7 +70,7 @@ const MicrophoneConfirmModal: FC<Props> = ({
         <Button
           variant="text"
           color="red"
-          onClick={closeModal}
+          onClick={clickedNo}
           className="mr-1"
           placeholder={undefined}
           onPointerEnterCapture={undefined}

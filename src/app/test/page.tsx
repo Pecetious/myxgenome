@@ -30,6 +30,7 @@ const Test = () => {
   const [resultsList, setResultsList] = useState<any>(null);
   const [testCredits, setTestCredits] = useState<number>(0);
   const [warningModalOpen, setWarningModalOpen] = useState(true);
+
   const getSession = (): any | null => {
     try {
       // localStorage'dan 'session' verisini alın
@@ -49,6 +50,7 @@ const Test = () => {
       return null;
     }
   };
+
   const getTestCredits = async () => {
     const session = getSession();
     try {
@@ -62,6 +64,7 @@ const Test = () => {
       console.error("Test kredileri alınırken hata oluştu:", error);
     }
   };
+
   const handleSubmit = async () => {
     const session = getSession();
     if (!selfieFile || !blobUrl) {
@@ -100,8 +103,9 @@ const Test = () => {
     } finally {
       setLoading(false);
       await getTestCredits();
+      await getResults();
       setRecordings([]);
-      setSelfieFile(null);
+      // setSelfieFile(null);
       setCurrentRecording(0);
     }
   };
@@ -112,8 +116,6 @@ const Test = () => {
       updatedRecordings[currentRecording] = newRecording;
       return updatedRecordings;
     });
-
-    console.log(newRecording);
     const url = URL.createObjectURL(newRecording);
     setBlobUrl(url);
     setMicrophoneConfirmModal(true);
@@ -122,7 +124,16 @@ const Test = () => {
   const handleFileSelected = (file: File) => {
     setSelfieFile(file);
   };
-
+  const handleClickedNo = () => {
+    console.log("Yeniden kayıt isteniyor.");
+    setRecordings((prevRecordings: any[]) => {
+      const updatedRecordings = [...prevRecordings];
+      updatedRecordings.pop();
+      return updatedRecordings;
+    });
+    console.log(recordings);
+    setMicrophoneConfirmModal(false);
+  };
   const handleClickedYes = () => {
     console.log("Mikrofon kaydı onaylandı");
     if (currentRecording > 5) {
@@ -267,6 +278,7 @@ const Test = () => {
       {microphoneConfirmModal && (
         <MicrophoneConfirmModal
           open={microphoneConfirmModal}
+          clickedNo={handleClickedNo}
           closeModal={() => setMicrophoneConfirmModal(false)}
           recordingUrl={blobUrl}
           currentRecording={currentRecording}
