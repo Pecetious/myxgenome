@@ -62,6 +62,7 @@ const Signup = () => {
               handleBlur,
               errors,
               touched,
+              setFieldValue,
             }) => (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="flex flex-col md:flex-row gap-2 w-full">
@@ -216,11 +217,13 @@ const Signup = () => {
                   <Checkbox
                     color="indigo"
                     checked={values.acceptedTerms}
-                    onChange={handleChange("acceptedTerms")}
+                    onChange={(e) =>
+                      setFieldValue("acceptedTerms", !values.acceptedTerms)
+                    }
                     label={
                       <Typography
                         color="blue-gray"
-                        className="flex font-medium"
+                        className="w-full font-medium text-xs inline md:text-[14px]"
                         placeholder={undefined}
                         onPointerEnterCapture={undefined}
                         onPointerLeaveCapture={undefined}
@@ -230,7 +233,7 @@ const Signup = () => {
                           href="/privacy-policy"
                           target="_blank"
                           color="blue"
-                          className="font-medium transition-colors hover:text-blue-700"
+                          className="text-xs md:text-[14px] font-medium inline transition-colors hover:text-blue-700"
                           placeholder={undefined}
                           onPointerEnterCapture={undefined}
                           onPointerLeaveCapture={undefined}

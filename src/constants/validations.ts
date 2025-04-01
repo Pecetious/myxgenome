@@ -20,8 +20,8 @@ export const signupValidations = yup.object().shape({
     .required("Şifrenizi giriniz.")
     .min(5, "Şifre en az 5 haneli olmalıdır."),
   acceptedTerms: yup
-    .string()
-    .oneOf(["onaylandı"], "Gizlilik sözleşmesini kabul etmelisiniz."),
+    .boolean()
+    .oneOf([true], "Gizlilik sözleşmesini kabul etmelisiniz."),
 });
 
 export const paymentInitValidations = yup.object().shape({

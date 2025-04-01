@@ -11,9 +11,8 @@ function Hero() {
       <div className="grid min-h-screen px-8">
         <div className="container relative z-10 my-auto mx-auto grid place-items-center text-center">
           <Typography
-            variant="h2"
             color="white"
-            className="md:max-w-full lg:max-w-3xl"
+            className="text-4xl md:text-5xl md:max-w-full lg:max-w-3xl"
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
