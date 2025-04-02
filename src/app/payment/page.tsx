@@ -11,7 +11,7 @@ import {
 } from "@material-tailwind/react";
 import axios from "axios";
 import { Formik } from "formik";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 const getSession = (): any | null => {
   try {
     // localStorage'dan 'session' verisini alın
@@ -33,6 +33,10 @@ const getSession = (): any | null => {
 };
 const Payment = () => {
   const router = useRouter();
+  const params = useSearchParams();
+  const packageTitle = params.get("title")
+  const packagePrice = params.get("price")
+  const packageType = params.get("package")
   const handlePaymentInit = async (values: any) => {
     const session = getSession();
     try {
@@ -48,6 +52,7 @@ const Payment = () => {
           ip: ipify.ip,
           city: values.city,
           country: values.country,
+          type: packageType
         },
         {
           headers: {
@@ -95,7 +100,7 @@ const Payment = () => {
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
                   >
-                    myXgenome DNA Analizi
+                    {packageTitle}
                   </Typography>
                   <Typography
                     className="text-3xl md:text-4xl text-white text-center font-bold"
@@ -103,7 +108,7 @@ const Payment = () => {
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
                   >
-                    120.00 ₺
+                    {packagePrice} 
                   </Typography>
                 </div>
               </CardHeader>

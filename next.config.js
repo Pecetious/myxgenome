@@ -8,6 +8,10 @@ const nextConfig = {
       },
     ],
   },
+  i18n: {
+    locales: ["tr","en"],
+    defaultLocale:"tr"
+  },
   distDir: "build",
   /* async rewrites() {
     return [
