@@ -1,0 +1,469 @@
+{
+  "navbar": {
+    "navItems": [
+      { "href": "/en/", "title": "Home" },
+      { "href": "/en/about-us", "title": "About Us" },
+      { "href": "#", "title": "Contact" }
+    ],
+    "buttonTitles": ["Log In", "Sign Up", "Log Out", "Test"]
+  },
+  "footer": {
+    "mainLinks": ["About Us", "Contact"],
+    "legalTitle": "Legal",
+    "legalLinks": ["Privacy Policy"],
+    "contactTitle": "Contact",
+    "contactLinks": [
+      "New Senses Space Technology <br className='sm:hidden' /> and Health Research Inc.",
+      "Address: Sanayi Mah. Teknopark Boulevard <br /> No:1/2C Inner Door No: 2014 Pendik-Istanbul",
+      "For more information: info@myxgenome.com"
+    ],
+    "copyright": "MYXGENOME, All Rights Reserved."
+  },
+  "homePage": {
+    "hero": {
+      "title": "Discover your genetic roots with myXgenome, a DNA testing experience that allows you to learn your ancestry in just minutes.",
+      "subtitle": "MyXgenome, the first online lab built to improve the lives of users worldwide, reports your roots using just your voice and a photo.",
+      "buttonTitle": "Try Now"
+    },
+    "onlineCourse": {
+      "features": [
+        {
+          "icon": "/icons/optical-microscope.png",
+          "title": "Genetic Analysis",
+          "description": "Identifies genetic mutations based on image and sound data."
+        },
+        {
+          "icon": "/icons/dna-helix.png",
+          "title": "Demographic Detection",
+          "description": "Analyzes factors such as race, age, and gender based on genetic structure."
+        },
+        {
+          "icon": "/icons/analytics.png",
+          "title": "Comprehensive Reporting",
+          "description": "Processes data in detail and provides the user with a meaningful and scientific report."
+        }
+      ],
+      "description": "myXgenome combines biotechnology and artificial intelligence to open the doors to a new era in genetic analysis. Step into the medicine of the future today!"
+    },
+    "whyChooseUs": {
+      "title": "Discover Your Origins!",
+      "description": "myXgenome offers the powerful experience of learning where you come from with a DNA test that makes you unique. It uncovers your origins through voice frequencies and facial analysis.",
+      "options1": [
+        {
+          "src": "/icons/microphone.png",
+          "title": "Genetic Analysis with Voice Frequency",
+          "description": "Without the need for blood samples, we create your genetic map by analyzing the frequencies of your voice."
+        },
+        {
+          "src": "/icons/analytics.png",
+          "title": "Fast, Accurate, and Contactless Technology",
+          "description": "We offer a much faster and user-friendly innovative biotechnology experience compared to traditional tests."
+        },
+        {
+          "src": "/icons/lightning-bolt.png",
+          "title": "Genetic Analysis with Voice Frequency",
+          "description": "We offer a much faster and user-friendly innovative biotechnology experience compared to traditional tests."
+        }
+      ],
+      "options2": [
+        {
+          "src": "/icons/comfort.png",
+          "title": "Completely Contactless and Comfortable",
+          "description": "Access your genetic information with just voice analysis, without the need for blood or saliva samples."
+        },
+        {
+          "src": "/icons/ai.png",
+          "title": "Advanced AI Support",
+          "description": "We evaluate your genetic analysis with high accuracy using the latest artificial intelligence algorithms."
+        },
+        {
+          "src": "/icons/meal.png",
+          "title": "Personalized Lifestyle Guidance",
+          "description": "We help you make more informed decisions by providing fitness, nutrition, and health recommendations based on your genetic map."
+        }
+      ]
+    },
+    "pricing": {
+      "title": "Best Price Guarantee",
+      "packages": [
+        {
+          "title": "Basic Genetic Health Package",
+          "price": "120.00 ₺",
+          "description": "A basic package for those who want to start genetic health analysis. You will receive beginner-level information about your personal genetic structure. It provides an overview of potential risks in your genetics, the state of your immune system, and your genetic history.",
+          "options": [
+            {
+              "title": "Ancestry Analysis",
+              "description": "Analyzes the user’s age range, mRNA vaccine side effects (if any), psychoanalysis results (mental state analysis), number of mutated genes and the risk of diseases related to these mutations."
+            },
+            {
+              "title": "Mutated Gene Chart",
+              "description": "A list of mutations in the user’s genetic structure that could lead to health risks."
+            },
+            {
+              "title": "Ethnicity and Genetic Ancestry Analysis",
+              "description": "Analyzes the user's ethnic background and racial history, categorizing them into color (White, Black, Latino/Hispanic) and race (East Asian, Southeast Asian, Indian, Middle Eastern)."
+            },
+            {
+              "title": "Immune System Profile",
+              "description": "Provides detailed information about the user’s immune system and shows which diseases they are prone to based on their immune system."
+            }
+          ],
+          "routeParams": {
+            "packageType": "basic package"
+          }
+        },
+        {
+          "title": "Advanced Genetic and Health Package",
+          "price": "250.00 ₺",
+          "description": "A comprehensive package for those who want to explore their genetic structure in more detail. Expands both genetic and health analysis. Helps you evaluate your health holistically with genetic disease risks, personalized health recommendations, and psychological support services.",
+          "options": [
+            {
+              "title": "Basic Package",
+              "description": "Offers the content of the basic genetic health package."
+            },
+            {
+              "title": "25 Disease Analysis",
+              "description": "Analyzes 25 different diseases that the user may be at risk for based on their genetic predispositions. Focuses on seasonal diseases and genetic tendencies."
+            },
+            {
+              "title": "Personalized Health Recommendations",
+              "description": "Offers recommendations based on the user’s lifestyle, genetic structure, and health history (nutrition, exercise, stress management). Provides a comprehensive genetic analysis report."
+            },
+            {
+              "title": "Psychological Support and Online Psychotherapy",
+              "description": "Offers personalized psychological support and online therapy sessions."
+            },
+            {
+              "title": "24/7 Consulting Support",
+              "description": "Provides consulting services at any time, allowing users to contact an expert at any moment."
+            }
+          ],
+          "routeParams": {
+            "packageType": "advanced package"
+          }
+        },
+        {
+          "title": "Premium Genetic Health and Life Package",
+          "price": "400.00 ₺",
+          "description": "The most comprehensive genetic analysis and health service package. Offers advanced features ranging from ancestry analysis to in-depth immune system analysis. Additionally, personalized genetic counseling and home healthcare services provide detailed information about your health.",
+          "options": [
+            {
+              "title": "Advanced Package",
+              "description": "Offers the content of the advanced genetic health and life package."
+            },
+            {
+              "title": "Detailed Ancestral Genetic Ancestry Analysis",
+              "description": "In-depth analysis of the user's ancestry. A more detailed examination of family history and genetic origins."
+            },
+            {
+              "title": "In-Depth Immune System Analysis",
+              "description": "Conducts more detailed tests and risk analysis related to the immune system."
+            },
+            {
+              "title": "Home Health Support",
+              "description": "Home healthcare services are provided to users in specific areas of Istanbul and Skopje, Macedonia."
+            },
+            {
+              "title": "Individual Genetic Counseling",
+              "description": "Provides personalized genetic counseling services, offering health recommendations based on the user's genetic structure."
+            }
+          ],
+          "routeParams": {
+            "packageType": "premium package"
+          }
+        },
+        {
+          "title": "Family Health and Genetic Package",
+          "price": "350.00 ₺",
+          "description": "Allows you to analyze the genetic health of your family members and plan health strategies together. Offers suggestions on family health, genetic risks, and family background. Identifies genetic transitions and potential health risks within the family.",
+          "options": [
+            {
+              "title": "Basic Package",
+              "description": "Offers the content of the basic genetic health package."
+            },
+            {
+              "title": "Genetic Ancestry Analysis (Family)",
+              "description": "Analyzes the genetic history and ancestry of the user and their family. Takes into account the genetic characteristics of family members."
+            },
+            {
+              "title": "Personalized Health Recommendations (Family)",
+              "description": "Provides personalized health recommendations for family members."
+            },
+            {
+              "title": "Psychological Support (Family Relationships)",
+              "description": "Provides support and recommendations for family relationships and psychological health."
+            },
+            {
+              "title": "25 Disease Analysis (Family Health Risks)",
+              "description": "Evaluates the genetic disease transitions and potential risks among family members."
+            }
+          ],
+          "routeParams": {
+            "packageType": "family package"
+          }
+        },
+        {
+          "title": "VIP Premium Health and Genetic Package",
+          "price": "600.00 ₺",
+          "description": "A VIP package that takes your health and genetic analysis to the next level. Provides comprehensive services like individual genetic counseling, personalized health recommendations, and home health support. Offers the highest level of genetic information and health services.",
+          "options": [
+            {
+              "title": "Premium Package",
+              "description": "Offers the content of the premium genetic health package."
+            },
+            {
+              "title": "Individual Genetic Counseling",
+              "description": "Provides personalized genetic counseling services."
+            },
+            {
+              "title": "Home Health Support",
+              "description": "Home healthcare services are provided to users in specific areas of Istanbul and Skopje, Macedonia."
+            },
+            {
+              "title": "Customized Health Counseling",
+              "description": "Provides customized health counseling services. Creates a personalized health plan based on genetic structure and health history."
+            }
+          ],
+          "routeParams": {
+            "packageType": "vip package"
+          }
+        }
+      ],
+      "packageQuestion": "What is included in the test?",
+      "buttonTitle": "Purchase"
+    }
+  },
+  "loginPage": {
+    "title": "Log In",
+    "form": {
+      "emailLabel": "Email",
+      "passwordLabel": "Password",
+      "yupErrors": {
+        "email": {
+          "required": "Enter your email.",
+          "email": "Email you entered is not valid."
+        },
+        "password": {
+          "required": "Enter your password"
+        }
+      },
+      "linkToSignup": {
+        "p": "Don't have an account?",
+        "span": "Sign Up"
+      },
+      "buttonTitle": "Log In"
+    }
+  },
+  "signupPage": {
+    "title": "Sign Up",
+    "form": {
+      "nameLabel": "First Name",
+      "surnameLabel": "Last Name",
+      "emailLabel": "Email",
+      "passwordLabel": "Password",
+      "yupErrors": {
+        "name": {
+          "required": "Please enter your first name."
+        },
+        "surname": {
+          "required": "Please enter your last name."
+        },
+        "email": {
+          "required": "Please enter your email.",
+          "email": "Invalid email address."
+        },
+        "password": {
+          "required": "Please enter your password.",
+          "min": "Password must be at least 5 characters long."
+        },
+        "acceptedTerms": {
+          "oneOf": "You must accept the privacy policy."
+        }
+      },
+      "privacyPolicy": {
+        "text": "I accept the <a href='/privacy-policy' target='_blank' class='text-blue-500 hover:text-blue-700'>Terms and Conditions</a>"
+      },
+      "linkToLogin": {
+        "p": "Already have an account?",
+        "span": "Log In"
+      },
+      "buttonTitle": "Sign Up"
+    }
+  },
+  "aboutUsPage": {
+    "title": "About Us",
+    "sections": [
+      {
+        "title": "New Senses Space Technology and Health Research Inc.",
+        "text": "At the beginning of this new era, the developments in economic and social life have initiated a process in which a new, powerful, and creative human model will evolve. With its artificial intelligence-focused work, our company took its first step towards commercialization in 2015 with an idea that earned the second-place award in TÜBİTAK 2238 University Entrepreneurship Program. To date, it has been awarded 5 national and 2 international awards and continues its operations across 3 continents."
+      },
+      {
+        "title": "Technological Level",
+        "text": "Our company has developed a telemedicine application with artificial intelligence capable of diagnosing 4 types of lung cancer, laryngeal cancer, COPD, and Covid-19. Based on clinical studies initiated with approval from the Istanbul Provincial Health Directorate and ITU, analyses have been conducted on over 45,000 positive and more than 50,000 negative cases."
+      },
+      {
+        "title": "Featured Products",
+        "text": "With our developed 'AI-Supported Diagnostic Kit,' it is possible to diagnose Lung Cancer (4 types), Laryngeal Cancer, Covid-19, and COPD. Additionally, Medicine 5.0 provides online doctor appointments and immune-boosting exercise options."
+      },
+      {
+        "title": "Our Vision",
+        "text": "Work is ongoing to enable the use of our artificial intelligence software for Alzheimer's diagnosis. In addition, the kiosks we developed for the widespread use of clinical tests are being used in important locations such as Murat Dilmener, Elit Istanbul Private Medical Center, and the Presidential Complex."
+      }
+    ]
+  },
+  "privacyPolicyPage": {
+    "title": "MYXGENOME TECHNOLOGY AND HEALTH MANAGEMENT INC.",
+    "sections": [
+      {
+        "title": "A) General Information",
+        "text": "As MYXGENOME TECHNOLOGY AND HEALTH MANAGEMENT INC., we pay great attention to the protection of your personal data while using the services we offer through the myxgenome.com website. By visiting this website and using the services we provide, you accept this Privacy Policy, which informs you about how your personal data is collected, used, and protected."
+      },
+      {
+        "title": "B) Purposes of Processing Your Personal Data",
+        "text": "Our company processes your personal data in accordance with the Law No. 6698 on the Protection of Personal Data, the Law No. 6563 on the Regulation of Electronic Commerce, and the Law No. 6502 on the Protection of Consumers. Your personal data may be collected and processed for the following purposes: <ul class='list-disc list-inside'><li>To improve the quality of the services we provide,</li><li>To be used in sales, marketing, and customer relationship management activities,</li><li>To fulfill necessary reporting and notification obligations with suppliers and third parties,</li><li>To inform about marketing activities and new products.</li></ul>"
+      },
+      {
+        "title": "C) Detailed Information About Your Personal Data",
+        "text": "The personal information you provide when you register for the services we offer through our website or contact us (such as name, surname, address, phone number, email address, etc.) will be stored in our databases. This information may be used for campaigns, special promotions, and customer relationship management activities. Additionally, the membership information you create through our website will be used only for contacting you and providing better services. <br /> Cookies are used to improve the user experience and recognize you during page transitions. Cookies only store temporary data, which is deleted once you leave the page."
+      },
+      {
+        "title": "D) Method of Collecting Personal Data",
+        "text": "Your personal data may be collected through written, verbal, or electronic means. This data can only be shared with third parties due to legal obligations and justifications and will not be used for purposes other than those specified in this contract."
+      },
+      {
+        "title": "E) Accurate and Up-to-Date Storage of Your Personal Data",
+        "text": "You acknowledge that it is your responsibility to ensure that the personal information you provide to our company is accurate and up to date. Any responsibility arising from providing incorrect information is solely on the user."
+      },
+      {
+        "title": "F) Retention Period of Your Personal Data",
+        "text": "According to the Law No. 6563 on the Regulation of Electronic Commerce, records related to the withdrawal of consent will be kept for 1 year from the date of withdrawal, and the content of commercial electronic messages and other records related to the delivery will be kept for 3 years to be presented to the Ministry if necessary. After this period, your personal data will be deleted, destroyed, or anonymized by us, or upon your request. In addition, traffic data processed in accordance with Law No. 5651 on the Regulation of Publications on the Internet and the Fight Against Crimes Committed Through These Publications will be kept for 2 years and anonymized after the period expires."
+      },
+      {
+        "title": "G) Deletion, Destruction, or Anonymization of Your Personal Data",
+        "text": "The personal data you have processed for the purposes stated in this Privacy Notice will be deleted, destroyed, or anonymized by us when the purpose for processing under the Law on the Protection of Personal Data (KVKK) is eliminated or after the time periods specified by the laws have passed."
+      },
+      {
+        "title": "H) Measures for the Protection of Personal Data",
+        "text": "The protection of personal data is an important issue for our company. We take the necessary measures to protect personal data from unauthorized access, loss, improper use, disclosure, modification, or destruction. We commit to maintaining the confidentiality of your personal data, taking all necessary technical and administrative measures to ensure confidentiality, and showing the necessary care for its protection."
+      },
+      {
+        "title": "I) Other Rights Listed in Article 11 of the KVKK",
+        "text": "You have the following rights regarding your personal data: <ul class='list-[lower-latin] list-inside my-2'><li class='my-1'>To learn whether your data is processed or not,</li><li class='my-1'>If processed, to request information about the data,</li><li class='my-1'>To learn whether your data is being used for its intended purpose,</li><li class='my-1'>To learn the third parties to whom your data is transferred within the country or abroad,</li><li class='my-1'>To request correction if your data is incomplete or inaccurate,</li><li class='my-1'>To request the deletion or destruction of your data according to the KVKK,</li><li class='my-1'>To request that third parties be informed about the actions performed on your data,</li><li class='my-1'>To object if a situation occurs against you due to automatic system analysis,</li><li class='my-1'>To request compensation for damages if you suffer from illegal processing of your data.</li></ul>"
+      },
+      {
+        "title": "Privacy Policy",
+        "text": "<p class='text-black my-2'>The confidentiality of the personal information you provide when registering on our website is very important to us. Your email address and other personal information will only be used for the specified purposes and will not be shared with third parties. However, unless authorized by law, this information will only be used for internal purposes within the company. <br/><span class='font-bold'>Company:</span> MYXGENOME TECHNOLOGY AND HEALTH MANAGEMENT INC. <br/><span class='font-bold'>Address: </span>Sanayi Mah. Teknopark Bulvarı No:1/2C İç Kapı No: 2014 Pendik-İstanbul</p>"
+      }
+    ]
+  },
+  "paymentPage": {
+    "form": {
+      "labels": {
+        "gsmNumber": "Phone Number",
+        "identityNumber": "ID Number",
+        "address": "Address",
+        "city": "City",
+        "country": "Country"
+      },
+      "yupErrors": {
+        "gsmNumber": {
+          "matches": "Please enter a valid phone number.",
+          "required": "Phone number is required."
+        },
+        "identityNumber": {
+          "matches": "Please enter a valid ID number.",
+          "required": "ID number is required."
+        },
+        "address": {
+          "required": "Address is required."
+        },
+        "city": {
+          "required": "City is required."
+        },
+        "country": "Country is required."
+      },
+      "buttonTitle": "Make Payment"
+    }
+  },
+  "callbackPage": {
+    "card": {
+      "text": {
+        "success": "Your purchase has been successfully completed. You are being redirected to the test page.",
+        "fail": "Your purchase has failed. You are being redirected to the home page."
+      },
+      "reroute": " Seconds left for the automatic redirection..."
+    },
+    "title": {
+      "success": "Purchase Successfull",
+      "fail": "Purchase Failed"
+    }
+  },
+  "testPage": {
+    "sidebar": {
+      "creditText": "Remaining Test Credits",
+      "testCreditButton": "Buy Test Credits",
+      "resultsTitle": "Results",
+      "routeLang": "en"
+    },
+    "testCard": {
+      "emptyFieldError": "Please make sure all fields are filled out.",
+      "selfie": {
+        "text": "Please upload a selfie where your face is clearly visible.",
+        "buttonTitle": "Select a Selfie"
+      },
+      "microphone": {
+        "beforeYouBegin": "Before You Begin",
+        "beforeYouBeginList": [
+          "Move to a quiet environment.",
+          "Take a deep breath."
+        ],
+        "coughTest": {
+          "title": "Cough Test",
+          "p1": "In this step, you will be asked to take 3 consecutive cough recordings.",
+          "p2": "Please cough clearly and distinctly in each recording. Stay close to the microphone and make sure there is no background noise."
+        },
+        "soundTest": {
+          "sound": "Sound",
+          "p1": "Please produce the sound of ",
+          "p2": " clearly and continuously. Stay close to the microphone and make sure there is no background noise."
+        }
+      },
+      "processing": {
+        "text": "Your process is ongoing, it may take a few minutes. You will see the result in the list when the process is complete.",
+        "insufficientTestCredits": "Insufficient test credits",
+        "loading": "Loading...",
+        "init": "Submit"
+      }
+    },
+    "warningModal": {
+      "dialogHeader": "Warning and Legal Notice",
+      "dialogBody": [
+        {
+          "title": "For Informational Purposes:",
+          "text": "The MyXGenome report is not a medical diagnosis or treatment tool."
+        },
+        {
+          "title": "Does Not Replace Medical Advice:",
+          "text": "For detailed information about your genetic analysis results or to make decisions related to your health condition, please consult a doctor, genetic counselor, or healthcare professional."
+        },
+        {
+          "title": "Genetic Predisposition Does Not Mean Certainty:",
+          "text": "These analyses show possible genetic predispositions for certain diseases or conditions, but they do not provide definitive results."
+        },
+        {
+          "title": "Data Security:",
+          "text": "Your personal genetic data is protected under confidentiality and will not be shared with third parties."
+        },
+        {
+          "title": "User Responsibility:",
+          "text": "It is recommended to consult a professional before using the information in this report to make personal health decisions."
+        }
+      ],
+      "dialogBodyEnd": "MyXGenome provides you with important insights about your genetic information, but it is crucial to evaluate your health-related final decisions with professional healthcare providers.",
+      "dialogFooter": {
+        "agree": "I Agree",
+        "disagree": "I Disagree"
+      }
+    }
+  }
+}

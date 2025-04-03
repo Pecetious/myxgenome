@@ -3,9 +3,10 @@ import { FC, useState } from "react";
 
 interface Props {
   onFileSelected: (selectedFile: any) => void;
+  title: string
 }
 
-const Selfie: FC<Props> = ({ onFileSelected }) => {
+const Selfie: FC<Props> = ({ onFileSelected,title }) => {
   const [file, setFile] = useState<File | null>(null);
   const [filePreview, setFilePreview] = useState<string | null>(null);
 
@@ -23,7 +24,7 @@ const Selfie: FC<Props> = ({ onFileSelected }) => {
       <label className="flex flex-col items-center bg-white rounded-lg cursor-pointer w-full text-center">
         <span className="flex gap-2 items-center text-gray-800 bg-blue-gray-100 p-3 rounded-full hover:bg-blue-gray-200 transition-all ease-in-out">
           <CameraIcon strokeWidth={2} className="size-5" />
-          Fotoğraf Seç
+          {title}
         </span>
         <input
           type="file"

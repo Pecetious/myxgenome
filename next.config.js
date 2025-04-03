@@ -8,19 +8,16 @@ const nextConfig = {
       },
     ],
   },
-  i18n: {
-    locales: ["tr","en"],
-    defaultLocale:"tr"
-  },
+ 
   distDir: "build",
-  /* async rewrites() {
+  async rewrites() {
     return [
       {
         source: "/api/:path*",
         destination: "http://37.148.210.172:5006/:path*",
       },
     ];
-  }, */
+  },
 };
 
 module.exports = nextConfig;

@@ -31,7 +31,7 @@ function NavItem({ children, href }: NavItemProps) {
   );
 }
 
-export function Navbar() {
+export function Navbar({ locale }: { locale: any }) {
   const [open, setOpen] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
   const [session, setSession] = useState<any>(null);
@@ -114,9 +114,11 @@ export function Navbar() {
             isScrolling ? "text-gray-900" : "text-white"
           }`}
         >
-          <NavItem href="/">Ana Sayfa</NavItem>
-          <NavItem href="/about-us">Hakkımızda</NavItem>
-          <NavItem>İletişim</NavItem>
+          {locale.navItems.map((item: any, index: number) => (
+            <NavItem key={index} href={item.href}>
+              {item.title}
+            </NavItem>
+          ))}
         </ul>
         <div className="hidden gap-2 lg:flex">
           {/*  <IconButton
@@ -160,7 +162,7 @@ export function Navbar() {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  Test Yap
+                 {locale.buttonTitles[3]}
                 </Button>
                 <Button
                   color={isScrolling ? "gray" : "white"}
@@ -170,7 +172,7 @@ export function Navbar() {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  Çıkış Yap
+                 {locale.buttonTitles[2]}
                 </Button>
               </>
             ) : (
@@ -183,7 +185,7 @@ export function Navbar() {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  Giriş Yap
+                  {locale.buttonTitles[0]}
                 </Button>
                 <Button
                   color={isScrolling ? "gray" : "white"}
@@ -193,7 +195,7 @@ export function Navbar() {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  Kayıt Ol
+                  {locale.buttonTitles[1]}
                 </Button>
               </>
             )}
@@ -218,9 +220,11 @@ export function Navbar() {
       <Collapse open={open}>
         <div className="container mx-auto mt-4 rounded-lg bg-white px-6 py-5">
           <ul className="flex flex-col gap-4 text-blue-gray-900">
-            <NavItem href="/">Ana Sayfa</NavItem>
-            <NavItem href="/about-us">Hakkımızda</NavItem>
-            <NavItem>İletişim</NavItem>
+          {locale.navItems.map((item: any, index: number) => (
+            <NavItem key={index} href={item.href}>
+              {item.title}
+            </NavItem>
+          ))}
           </ul>
           {/* <div className="mt-4 flex gap-2">
               <IconButton
@@ -255,33 +259,27 @@ export function Navbar() {
               </IconButton>
             </div> */}
           <div className="space-x-3">
-            {session ? (
+          {session ? (
               <>
                 <Button
                   color={isScrolling ? "gray" : "white"}
                   size="sm"
-                  onClick={() => {
-                    router.replace("/test");
-                    setOpen(false);
-                  }}
+                  onClick={() => router.replace("/test")}
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  Test Yap
+                 {locale.buttonTitles[3]}
                 </Button>
                 <Button
                   color={isScrolling ? "gray" : "white"}
                   size="sm"
-                  onClick={() => {
-                    handleLogout();
-                    setOpen(false);
-                  }}
+                  onClick={handleLogout}
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  Çıkış Yap
+                 {locale.buttonTitles[2]}
                 </Button>
               </>
             ) : (
@@ -289,28 +287,22 @@ export function Navbar() {
                 <Button
                   color={isScrolling ? "gray" : "white"}
                   size="sm"
-                  onClick={() => {
-                    router.replace("/login");
-                    setOpen(false);
-                  }}
+                  onClick={() => router.replace("/login")}
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  Giriş Yap
+                  {locale.buttonTitles[0]}
                 </Button>
                 <Button
                   color={isScrolling ? "gray" : "white"}
                   size="sm"
-                  onClick={() => {
-                    router.replace("/signup");
-                    setOpen(false);
-                  }}
+                  onClick={() => router.replace("/signup")}
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  Kayıt Ol
+                  {locale.buttonTitles[1]}
                 </Button>
               </>
             )}

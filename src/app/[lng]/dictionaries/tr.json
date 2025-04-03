@@ -1,0 +1,451 @@
+{
+  "navbar": {
+    "navItems": [
+      { "href": "/tr/", "title": "Ana Sayfa" },
+      { "href": "/tr/about-us", "title": "Hakkımızda" },
+      { "href": "#", "title": "İletişim" }
+    ],
+    "buttonTitles": ["Giriş Yap", "Kayıt Ol", "Çıkış Yap", "Test Yap"]
+  },
+  "footer": {
+    "mainLinks": ["Hakkımızda", "İletişim"],
+    "legalTitle": "Yasal",
+    "legalLinks": ["Gizlilik Politikası"],
+    "contactTitle": "İletişim",
+    "contactLinks": [
+      " New Senses Uzay Teknoloji <br className=&apos;sm:hidden&apos; /> ve Sağlık Araştırmaları A.Ş.",
+      "Adres: Sanayi Mah. Teknopark Bulvarı <br /> No:1/2C İç Kapı No: 2014 Pendik-İstanbul",
+      "Detaylı Bilgi için: info@myxgenome.com"
+    ],
+    "copyright": "MYXGENOME, Tüm Hakları Saklıdır."
+  },
+  "homePage": {
+    "hero": {
+      "title": "myXgenome genetik kökenlerinizi keşfetmenizi sağlayan DNA testi deneyimi ile dakikalar içerisinde kökenlerinizi öğrenin",
+      "subtitle": "Dünya genelindeki kullanıcıların yaşamlarını geliştirmek için kurulmuş online ilk laboratuvar MyXgenome, kökenlerinizi sadece sesinizi ve bir fotoğrafınız ile raporlar.",
+      "buttonTitle": "Hemen Dene"
+    },
+    "onlineCourse": {
+      "features": [
+        {
+          "icon": "/icons/optical-microscope.png",
+          "title": "Genetik Analiz",
+          "description": "Görüntü ve ses verisinden yola çıkarak genetik mutasyonları belirler."
+        },
+        {
+          "icon": "/icons/dna-helix.png",
+          "title": "Demografik Tespit",
+          "description": "Irk, yaş ve cinsiyet gibi faktörleri genetik yapıya dayalı olarak analiz eder."
+        },
+        {
+          "icon": "/icons/analytics.png",
+          "title": "Kapsamlı Raporlama",
+          "description": "Veriler detaylı bir şekilde işlenerek kullanıcıya anlamlı ve bilimsel bir rapor sunar."
+        }
+      ],
+      "description": " myXgenome, biyoteknoloji ve yapay zekayı bir araya getirerek genetik analizde yeni bir dönemin kapılarını aralıyor. Geleceğin tıbbına bugünden adım atın!"
+    },
+    "whyChooseUs": {
+      "title": "Kökenlerinizi Keşfedin!",
+      "description": "myXgenome, sizi benzersiz kılan DNA testi ile nereden geldiğinizi öğrenmenin güçlü deneyimini sunar. Fonasyon sesleri ve yüz analizi ile kökenlerinizi açığa çıkarır.",
+      "options1": [
+        {
+          "src": "/icons/microphone.png",
+          "title": "Ses Frekansı ile Genetik Analiz",
+          "description": "Kan örneğine ihtiyaç duymadan, yalnızca sesinizin frekanslarını analiz ederek genetik haritanızı çıkarıyoruz."
+        },
+        {
+          "src": "/icons/analytics.png",
+          "title": "Hızlı, Hassas ve Temassız Teknoloji",
+          "description": "Geleneksel testlere kıyasla çok daha hızlı ve kullanıcı dostu, yenilikçi bir biyoteknoloji deneyimi sunuyoruz."
+        },
+        {
+          "src": "/icons/lightning-bolt.png",
+          "title": "Ses Frekansı ile Genetik Analiz",
+          "description": "Geleneksel testlere kıyasla çok daha hızlı ve kullanıcı dostu, yenilikçi bir biyoteknoloji deneyimi sunuyoruz."
+        }
+      ],
+      "options2": [
+        {
+          "src": "/icons/comfort.png",
+          "title": "Tamamen Temassız ve Konforlu",
+          "description": "Kan veya tükürük örneği gerektirmeden, sadece ses analizi ile genetik bilgilerinize ulaşın."
+        },
+        {
+          "src": "/icons/ai.png",
+          "title": "Gelişmiş Yapay Zeka Desteği",
+          "description": "En son yapay zeka algoritmaları ile genetik analizlerinizi yüksek doğrulukla değerlendiriyoruz."
+        },
+        {
+          "src": "/icons/meal.png",
+          "title": "Yaşam Tarzınıza Özel Rehberlik",
+          "description": "Genetik haritanıza göre spor, beslenme ve sağlık önerileri alarak daha bilinçli kararlar almanıza yardımcı oluyoruz."
+        }
+      ]
+    },
+    "pricing": {
+      "title": "En İyi Fiyat Garantisi",
+      "packages": [
+        {
+          "title": "Temel Genetik Sağlık Paketi",
+          "price": "120,00 ₺",
+          "description": "Genetik sağlık analizine başlamak isteyenler için temel bir paket. Kişisel genetik yapınızla ilgili başlangıç seviyesinde bilgiler alırsınız. Genetik yapınızdaki potansiyel riskler, bağışıklık sisteminizin durumu ve genetik geçmişiniz hakkında genel bir bakış açısı sağlar.",
+          "options": [
+            {
+              "title": "Köken Analizi",
+              "description": " Kullanıcının yaş aralığı, mRNA aşısının yan etkileri (varsa), psikoanaliz sonuçları (ruhsal durum analizi), mutasyona uğramış gen sayısı ve bu mutasyona bağlı olabilecek hastalıklar riski."
+            },
+            {
+              "title": "Mutasyona Uğramış Gen Çizelgeniz",
+              "description": "Kullanıcının genetik yapısında var olan ve hastalık riskine yol açabilecek mutasyonların listesi."
+            },
+            {
+              "title": "Soy ve Genetik Köken Analizi",
+              "description": "Kullanıcının etnik kökeni ve ırksal geçmişini analiz eder, bunları renk (White, Black, Latino/Hispanic) ve ırk (East Asian, Southeast Asian, Indian, Middle Eastern) kategorilerine ayırır."
+            },
+            {
+              "title": "Bağışıklık Sistemi Profili",
+              "description": "Kullanıcının bağışıklık sistemi hakkında detaylı bilgi sağlar ve bu sisteme bağlı olarak hangi hastalıklara yatkın olduğunu gösterir."
+            }
+          ],
+          "routeParams": {
+            "packageType": "basic package"
+          }
+        },
+        {
+          "title": "Gelişmiş Genetik ve Sağlık Paketi",
+          "price": "250,00 ₺",
+          "description": "Genetik yapınızı daha derinlemesine incelemek isteyenler için kapsamlı bir paket. Hem genetik hem de sağlık analizlerinizi genişletir. Özellikle genetik hastalık riski, kişiye özel sağlık önerileri ve psikolojik destek hizmetleri ile sağlığınızı bütüncül bir şekilde değerlendirmenize yardımcı olur.",
+          "options": [
+            {
+              "title": "Temel Paket",
+              "description": "Temel genetik sağlık paketi içeriğini sunar."
+            },
+            {
+              "title": "25 Hastalık Analizi",
+              "description": "Kullanıcının genetik yatkınlıklarına bağlı olarak risk taşıyabileceği 25 farklı hastalığı analiz eder. Özellikle mevsimsel hastalıklar ve genetik eğilimler üzerine odaklanır."
+            },
+            {
+              "title": "Kişiye Özel Sağlık Önerileri",
+              "description": "Kullanıcının yaşam tarzına, genetik yapısına ve sağlık geçmişine göre öneriler sunar (beslenme, egzersiz, stres yönetimi).Kapsamlı genetik analiz raporu sunar."
+            },
+            {
+              "title": "Psikolojik Destek ve Online Psikoterapi",
+              "description": "Kişiye özel psikolojik destek ve online terapi seansları sunar."
+            },
+            {
+              "title": "7/24 Danışmanlık Desteği",
+              "description": "Kullanıcıya istediği zaman danışmanlık hizmeti sağlar, bir uzmanla her an iletişime geçme imkanı sağlar."
+            }
+          ],
+          "routeParams": {
+            "packageType": "advanced package"
+          }
+        },
+        {
+          "title": "Premium Genetik Sağlık ve Yaşam Paketi",
+          "price": "400,00 ₺",
+          "description": "En kapsamlı genetik analiz ve sağlık hizmeti paketi. Soy köken analizinden bağışıklık sistemi derinlemesine analizine kadar birçok gelişmiş özellik sunar. Ayrıca, kişisel genetik danışmanlık ve evde sağlık hizmetleriyle sağlığınız konusunda derinlemesine bilgi alabilirsiniz.",
+          "options": [
+            {
+              "title": "Gelişmiş Paket",
+              "description": "Gelişmiş genetik sağlık ve yaşam paketi içeriğini sunar."
+            },
+            {
+              "title": "Soy Genetik Köken Analizi Detaylı",
+              "description": "Kullanıcının soyunun detaylı bir şekilde analiz edilmesi. Aile geçmişi, genetik kökenler hakkında daha derinlemesine bir inceleme yapılır."
+            },
+            {
+              "title": "Bağışıklık Sistemi Derinlemesine Analiz",
+              "description": "Bağışıklık sistemi ile ilgili daha detaylı testler ve risk analizleri yapılır."
+            },
+            {
+              "title": "Evde Sağlık Desteği",
+              "description": "İstanbul ve Makedonya/Üsküp'ün belirli bölgelerinde, kullanıcılara evde sağlık hizmetleri sunulur."
+            },
+            {
+              "title": "Bireysel Genetik Danışmanlık",
+              "description": "Kullanıcıya özel genetik danışmanlık hizmeti verilir, genetik yapısına göre kişisel sağlık önerileri sunulur."
+            }
+          ],
+          "routeParams": {
+            "packageType": "premium package"
+          }
+        },
+        {
+          "title": "Aile Sağlık ve Genetik Paket",
+          "price": "350,00 ₺",
+          "description": "Aile bireylerinizin genetik sağlığını analiz ederek, birlikte sağlık planlaması yapmanızı sağlar. Aile geçmişiniz, genetik riskler ve aile sağlığına yönelik öneriler sunulur. Aile içindeki genetik geçişler ve olası sağlık risklerini belirler.",
+          "options": [
+            {
+              "title": "Temel Paket",
+              "description": "Temel genetik sağlık paketi içeriğini sunar."
+            },
+            {
+              "title": "Soy Genetik Köken Analizi (Aile)",
+              "description": " Kullanıcı ve ailesinin genetik geçmişi, soy analizleri yapılır. Aile bireylerinin genetik özellikleri de göz önünde bulundurulur."
+            },
+            {
+              "title": "Kişiye Özel Sağlık Önerileri (Aile)",
+              "description": "Aile bireyleri için kişisel sağlık önerileri oluşturulur."
+            },
+            {
+              "title": "Psikolojik Destek (Aile İlişkileri)",
+              "description": "Aile içindeki ilişkiler ve psikolojik sağlık için destek ve öneriler sunulur."
+            },
+            {
+              "title": "25 Hastalık Analizi (Aile Sağlığına Yönelik Riskler)",
+              "description": "Aile üyeleri arasında genetik hastalık geçişi ve olası riskler değerlendirilir."
+            }
+          ],
+          "routeParams": {
+            "packageType": "family package"
+          }
+        },
+        {
+          "title": "VIP Premium Sağlık ve Genetik Paketi",
+          "price": "600,00 ₺",
+          "description": "Sağlık ve genetik analizinizi bir üst seviyeye taşıyan VIP paket. Bireysel genetik danışmanlık, özelleştirilmiş sağlık önerileri ve evde sağlık desteği gibi kapsamlı hizmetlerle sağlığınızı yönetmenizi sağlar. En yüksek düzeyde genetik bilgi ve sağlık hizmetini alabilirsiniz.",
+          "options": [
+            {
+              "title": "Premium Paket",
+              "description": "Premium genetik sağlık paketi içeriğini sunar."
+            },
+            {
+              "title": "Bireysel Genetik Danışmanlık",
+              "description": "Kullanıcıya özel genetik danışmanlık hizmeti sunulur."
+            },
+            {
+              "title": "Evde Sağlık Desteği",
+              "description": "İstanbul ve Makedonya/Üsküp'ün belirli bölgelerinde, kullanıcılara evde sağlık hizmetleri sunulur."
+            },
+            {
+              "title": "Özelleştirilmiş Sağlık Danışmanlık",
+              "description": "Kullanıcıya özel sağlık danışmanlık hizmetleri sunulur. Genetik yapısına ve sağlık geçmişine göre özelleştirilmiş sağlık planı oluşturulur."
+            }
+          ],
+          "routeParams": {
+            "packageType": "vip package"
+          }
+        }
+      ],
+      "packageQuestion": "Teste neler dahil?",
+      "buttonTitle": "Satın Al"
+    }
+  },
+  "loginPage": {
+    "title": "Giriş Yap",
+    "form": {
+      "emailLabel": "E-posta",
+      "passwordLabel": "Şifre",
+      "yupErrors": {
+        "email": {
+          "required": "E-postanızı giriniz.",
+          "email": "Geçersiz e-posta girdiniz."
+        },
+        "password": {
+          "required": "Şifrenizi giriniz."
+        }
+      },
+      "linkToSignup": {
+        "p": "Hesabınız yok mu?",
+        "span": "Kayıt Olun"
+      },
+      "buttonTitle": "Giriş Yap"
+    }
+  },
+  "signupPage": {
+    "title": "Kayıt Ol",
+    "form": {
+      "nameLabel": "Ad",
+      "surnameLabel": "Soyad",
+      "emailLabel": "E-posta",
+      "passwordLabel": "Şifre",
+      "yupErrors": {
+        "name": {
+          "required": "Adınızı giriniz."
+        },
+        "surname": {
+          "required": "Soyadınızı giriniz."
+        },
+        "email": {
+          "required": "E-postanızı giriniz.",
+          "email": "Geçersiz e-posta girdiniz."
+        },
+        "password": {
+          "required": "Şifrenizi giriniz.",
+          "min": "Şifre en az 5 haneli olmalıdır."
+        },
+        "acceptedTerms": {
+          "oneOf": "Gizlilik sözleşmesini kabul etmelisiniz."
+        }
+      },
+      "privacyPolicy": {
+        "text": " <a href='/privacy-policy' target='_blank' class='text-blue-500 hover:text-blue-700'>Hizmet ve Gizlilik Şartları'nı</a> onaylıyorum"
+      },
+      "linkToLogin": {
+        "p": "Hesabınız var mı?",
+        "span": "Giriş Yapın"
+      },
+      "buttonTitle": "Kayıt Ol"
+    }
+  },
+  "aboutUsPage": {
+    "title": "Hakkımızda",
+    "sections": [
+      {
+        "title": "New Senses Uzay Teknoloji ve Sağlık Araştırmaları A.Ş.",
+        "text": "Bu yeni çağın başlangıcında ekonomik ve sosyal yaşamda meydana gelen gelişmeler, yeni, güçlü ve yaratıcı insan modelinin evrileceği bir süreci başlatmıştır. Yapay zeka odaklı çalışmalarıyla şirketimiz, TÜBİTAK 2238 Üniversite Girişimcilik Programı'nda 2.'lik ödülü aldığı iş fikri ile 2015 yılında ticarileşme yolunda ilk adımını atmıştır. Bugüne kadar 5 ulusal ve 2 uluslararası ödüle layık görülmüş olup, 3 kıtada faaliyetlerine devam etmektedir."
+      },
+      {
+        "title": "Teknolojik Düzey",
+        "text": "Şirketimiz, 4 akciğer kanseri türü, larenks kanseri, KOAH ve Covid-19’u teşhis edebilen yapay zekaya sahip bir teletıp uygulaması geliştirmiştir. İstanbul İl Sağlık Müdürlüğü ve İTÜ onayıyla başlatılan klinik çalışmalar sonucu 45 bin pozitif ve 50 binin üzerinde negatif vaka üzerinden analiz yapılmıştır."
+      },
+      {
+        "title": "Öne Çıkan Ürünler",
+        "text": "Geliştirdiğimiz 'Yapay Zeka Destekli Tanı Kiti' sayesinde Akciğer Kanseri (4 tür), Larenks Kanseri, Covid-19 ve KOAH tanısı mümkündür. Aynı zamanda Medicine 5.0 ile online doktor randevusu ve bağışıklığı destekleyici egzersiz seçenekleri sunulmaktadır."
+      },
+      {
+        "title": "Vizyonumuz",
+        "text": "Yapay zeka yazılımımızın Alzheimer teşhisinde de kullanılabilmesi için çalışmalar devam etmektedir. Ayrıca klinik testlerin yaygınlaştırılması amacıyla geliştirdiğimiz kiosklar, Murat Dilmener, Özel Elit İstanbul Tıp Merkezi ve Cumhurbaşkanlığı Külliyesi gibi önemli noktalarda kullanılmaktadır."
+      }
+    ]
+  },
+  "privacyPolicyPage": {
+    "title": "MYXGENOME TEKNOLOJİ VE SAĞLIK YÖNETİMİ A.Ş.",
+    "sections": [
+      {
+        "title": "A) Genel Bilgilendirme",
+        "text": " MYXGENOME TEKNOLOJİ VE SAĞLIK YÖNETİMİ A.Ş. olarak, myxgenome.com web sitesi üzerinden sunduğumuz hizmetleri kullanırken, siz değerli kullanıcılarımızın kişisel verilerinin korunmasına büyük özen göstermekteyiz. Bu web sitesini ziyaret ettiğinizde, verdiğiniz bilgiler ve bu siteyi kullanarak sunduğumuz hizmetlerden faydalandığınızda, kişisel verilerinizin nasıl toplandığı, kullanıldığı ve korunduğu konusunda sizi bilgilendirecek olan işbu Gizlilik Politikasını kabul etmiş oluyorsunuz."
+      },
+      {
+        "title": "B) Kişisel Verilerinizin İşlenme Amaçları",
+        "text": "Şirketimiz, 6698 sayılı Kişisel Verilerin Korunması Kanunu, 6563 sayılı Elektronik Ticaretin Düzenlenmesi Hakkında Kanun ve 6502 sayılı Tüketicinin Korunması Hakkında Kanun'a uygun olarak kişisel verilerinizi işlemektedir. Kişisel verileriniz, aşağıdaki amaçlarla toplanabilir ve işlenebilir: <ul class='list-disc list-inside'><li>Sunmuş olduğumuz hizmetlerin kalitesini artırmak,</li><li>Satış, pazarlama ve müşteri ilişkileri yönetimi faaliyetlerinde kullanılmak,</li><li>Tedarikçiler ve üçüncü taraflarla gerekli raporlama ve bilgilendirme yükümlülüklerinin yerine getirilmesi,</li><li>Pazarlama faaliyetleri ve yeni ürünler hakkında bilgilendirme yapılması.</li></ul>"
+      },
+      {
+        "title": "C) Kişisel Verilere İlişkin Ayrıntılı Bilgilendirme",
+        "text": "Web sitemiz üzerinden sunduğumuz hizmetlere kayıt olurken veya bizlerle iletişime geçerken verdiğiniz kişisel bilgileriniz (ad-soyad, adres, telefon numarası, e-posta adresi vb.) veri tabanlarımızda saklanacaktır. Bu bilgiler, kampanyalar, özel promosyonlar ve müşteri ilişkileri yönetimi çalışmalarında kullanılabilir. Ayrıca, web sitemiz üzerinden oluşturduğunuz üyelik bilgileriniz yalnızca sizinle iletişim kurmak ve size daha iyi hizmet sunmak amacıyla kullanılacaktır. <br /> Çerezler, kullanıcı deneyimini iyileştirmek ve sayfalar arası geçişlerde sizi tanımak amacıyla kullanılmaktadır. Çerezler sadece geçici veriler tutar ve sayfayı terk ettiğinizde kaybolur."
+      },
+      {
+        "title": "D) Kişisel Veri Toplamanın Yöntemi",
+        "text": "Kişisel verileriniz, yazılı, sözlü veya elektronik ortamda toplanabilir. Bu veriler, sadece hukuki yükümlülükler ve gerekçelerle üçüncü şahıslarla paylaşılabilir ve işbu sözleşmede belirtilen amaçlar dışında kullanılmayacaktır."
+      },
+      {
+        "title": "E) Kişisel Verilerinizin Doğru ve Güncel Olarak Muhafaza Edilmesi",
+        "text": "Şirketimize ilettiğiniz kişisel bilgilerin doğru ve güncel olmasının sizin sorumluluğunuzda olduğunu kabul etmektesiniz. Yanlış bilgi verilmesi durumunda oluşabilecek sorumluluklar tamamen kullanıcıya aittir."
+      },
+      {
+        "title": "F) Kişisel Veri Saklama Süresi",
+        "text": "6563 Sayılı Elektronik Ticaretin Düzenlenmesi Hakkında Kanun uyarınca; onayın geri alındığına ilişkin kayıtlar bu tarihten itibaren 1 yıl, ticari elektronik iletinin içeriği ve gönderiye ilişkin diğer her türlü kayıt ise gerektiğinde Bakanlığa sunulmak üzere 3 yıl saklanacaktır. Süre geçtikten sonra kişisel verileriniz tarafımızca veya talebiniz üzerine silinir, yok edilir veya anonim hale getirilir. Ayrıca 5651 Sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi ve Bu Yayınlar Yoluyla İşlenen Suçlarla Mücadele Edilmesi Hakkında Kanun uyarınca işlediğimiz trafik verileri 2 yıl saklanır ve süre bittikten sonra anonim hale getirilir."
+      },
+      {
+        "title": "G) Kişisel Verilerinizin Silinmesi, Yok Edilmesi veya Anonimleştirilmesi",
+        "text": "İşbu Bilgilendirme metninde belirtilen amaçlarla işlenmiş olan kişisel verileriniz; KVKK’na göre işlenmesi gerektiren amaç ortadan kalktığında ve Kanunların belirlediği süreler geçince tarafımızca silinecek, yok edilecek veya anonimleştirilerek kullanılmaya devam edilecektir."
+      },
+      {
+        "title": "H) Kişisel Verilerin Korunmasına İlişkin Önlemler",
+        "text": "Kişisel verilerin korunması, şirketimiz için önemli bir konudur. Şirketimiz, kişisel verilere yetkisiz erişim veya bu bilgilerin kaybı, hatalı kullanımı, ifşa edilmesi, değiştirilmesi veya imha edilmesine karşı korumak için gerekli önlemleri almaktadır. Şirketimiz, kişisel verilerinizi gizli tutmayı, gizliliğin sağlanması ve güvenliği için gerekli teknik ve idari her türlü tedbiri almayı ve gerekli özeni göstermeyi taahhüt etmektedir."
+      },
+      {
+        "title": "I) KVKK 11’inci Maddede Sayılan Diğer Haklar",
+        "text": "Kişisel verilerinizle ilgili aşağıdaki haklara sahipsiniz: <ul class='list-[lower-latin] list-inside my-2'><li class='my-1'>Verilerinizin işlenip işlenmediğini öğrenme,</li><li class='my-1'>İşlenmişse, bu verilere ilişkin bilgi talep etme,</li><li class='my-1'>Verilerinizin amacına uygun kullanılıp kullanılmadığını öğrenme,</li><li class='my-1'>Verilerin yurt içinde veya dışında aktarıldığı üçüncü kişileri öğrenme,</li><li class='my-1'>Eksik veya yanlış işlenmişse düzeltilmesini isteme,</li><li class='my-1'>KVKK&apos;ya göre silinmesini veya yok edilmesini isteme,</li><li class='my-1'>Yapılan işlemlerin üçüncü kişilere bildirilmesini isteme,</li><li class='my-1'>Otomatik sistemlerle analiz edilmesi sonucu aleyhinize bir durum oluşmuşsa itiraz etme,</li><li class='my-1'>Kanuna aykırı işleme sonucu zarara uğramışsanız zararın giderilmesini talep etme.</li></ul>"
+      },
+      {
+        "title": "Gizlilik Politikası",
+        "text": "<p class='text-black my-2' placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Web sitemize üye olurken sağladığınız kişisel bilgilerinizin gizliliği bizim için çok önemlidir. E-posta adresiniz ve diğer kişisel bilgileriniz, yalnızca belirtilen amaçlarla kullanılacak olup, üçüncü şahıslarla paylaşılmayacaktır. Ancak, kanunlarla yetkili kılınan merciler dışında, bu bilgiler yalnızca şirket içi amaçlarla kullanılacaktır. <br/><span class='font-bold'>Firma:</span> MYXGENOME TEKNOLOJİ VE SAĞLIK YÖNETİMİ A.Ş. <br/><span class='font-bold'>Adres: </span>Sanayi Mah. Teknopark Bulvarı No:1/2C İç Kapı No: 2014 Pendik-İstanbul</p>"
+      }
+    ]
+  },
+  "paymentPage": {
+    "form": {
+      "labels": {
+        "gsmNumber": "Telefon Numarası",
+        "identityNumber": "TCKN",
+        "address": "Adres",
+        "city": "Şehir",
+        "country": "Ülke"
+      },
+      "yupErrors": {
+        "gsmNumber": {
+          "matches": "Geçerli bir tekefon numarası girin.",
+          "required": "Telefon numarası gereklidir."
+        },
+        "identityNumber": {
+          "matches": "Geçerli bir TCKN girin.",
+          "required": "TCKN gereklidir."
+        },
+        "address": {
+          "required": "Adres gereklidir."
+        },
+        "city": {
+          "required": "Şehir gereklidir."
+        },
+        "country": "Ülke gereklidir."
+      },
+      "buttonTitle": "Ödeme Yap"
+    }
+  },
+  "callbackPage": {
+    "card": {
+        "text": {
+            "success": "Satın alma işleminiz başarıyla gerçekleşti. Test sayfasına yönlendiriliyorsunuz.",
+            "fail": "Satın alma işleminiz başarısız oldu. Ana sayfaya yönlendiriliyorsunuz."
+        },
+        "reroute": " saniye içinde yönlendiriliyorsunuz..."
+    },
+    "title": {
+        "success": "İşlem Başarılı",
+        "fail": "İşlem Başarısız"
+    }
+  },
+  "testPage": {
+    "sidebar": {
+        "creditText": "Kalan Test Kredisi",
+        "testCreditButton": "Test Kredisi Satın Al",
+        "resultsTitle": "Sonuçlar",
+        "routeLang": "tr"
+    },
+    "testCard": {
+        "emptyFieldError": "Lütfen tüm alanları doldurduğunuzdan emin olun.",
+        "selfie": {
+            "text": " Yüzünüzün net bir şekilde göründüğü bir selfie'nizi ekleyin.",
+            "buttonTitle": "Fotoğraf Seç"
+        },
+        "microphone": {
+            "beforeYouBegin": "Teste Başlamadan önce",
+            "beforeYouBeginList": ["Sessiz bir ortama geçin.","Derin bir nefes alın."],
+            "coughTest": {
+                "title": "Öksürük Testi",
+                "p1": "Bu aşamada sizden arka arkaya 3 öksürük kaydı alınacaktır.",
+                "p2": "Lütfen her kayıtta net ve belirgin bir şekilde öksürünüz. İşlem sırasında mikrofona yakın olun ve arka planda gürültü olmamasına dikkat edin."
+            },
+            "soundTest": {
+                "sound": "Sesi",
+                "p1": "Lütfen kesintisiz ve net bir şekilde ",
+                "p2": "sesi çıkarınız. İşlem sırasında mikrofona yakın olun ve arka planda gürültü olmamasına dikkat edin."
+            }
+        },
+        "processing": {
+            "text": "İşleminiz devam ediyor, bu birkaç dakika sürebilir. İşlem bittiğinde sonucunuzu listede göreceksiniz.",
+            "insufficientTestCredits": "Yetersiz test kredisi",
+            "loading": "Yükleniyor...",
+            "init": "Gönder"
+        }
+    },
+    "warningModal": {
+        "dialogHeader": "Uyarı ve Yasal Bilgilendirme",
+        "dialogBody": [
+            {"title":"Bilgilendirme Amaçlıdır:" ,"text": "MyXGenome raporu tıbbi bir teşhis veya tedavi aracı değildir."},
+            {"title": "Tıbbi Danışmanlık Yerine Geçmez:","text": "Genetik analiz sonuçlarınız hakkında detaylı bilgi almak veya sağlık durumunuzla ilgili karar vermek için mutlaka bir doktor, genetik danışman veya sağlık uzmanına başvurunuz."},
+            {"title": "Genetik Yatkınlık Kesinlik Anlamına Gelmez:","text": "Bu analizler belirli hastalıklar veya durumlar için olası genetik eğilimlerinizi gösterir, ancak kesin sonuçlar vermez."},
+            {"title": "Veri Güvenliği:","text": "Kişisel genetik verileriniz gizlilik çerçevesinde korunur ve üçüncü şahıslarla paylaşılmaz."},
+            {"title": "Kullanıcı Sorumluluğu:","text": "Bu raporda yer alan bilgileri kişisel sağlık kararları almak için kullanmadan önce bir uzmana danışmanız önerilir."}
+        ],
+        "dialogBodyEnd": "MyXGenome, size genetik bilginiz hakkında önemli içgörüler sunar, ancak sağlıkla ilgili nihai kararlarınızı profesyonel sağlık uzmanlarıyla değerlendirmeniz önemlidir.",
+        "dialogFooter": {
+            "agree": "Onaylıyorum",
+            "disagree": "Onaylamıyorum"
+        }
+    }
+  }
+}

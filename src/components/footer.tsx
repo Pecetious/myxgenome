@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation"; // Import the useRouter hook
 
 const CURRENT_YEAR = new Date().getFullYear();
 
-export function Footer() {
+export function Footer({ locale }: { locale: any }) {
   const router = useRouter(); // Initialize the router
 
   const handlePrivacyClick = () => {
@@ -34,7 +34,7 @@ export function Footer() {
                   onPointerLeaveCapture={undefined}
                   onClick={() => router.push("/about-us")}
                 >
-                  Hakkımızda
+                  {locale.mainLinks[0]}
                 </Typography>
               </li>
               <li>
@@ -44,7 +44,7 @@ export function Footer() {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  İletişim
+                  {locale.mainLinks[1]}
                 </Typography>
               </li>
             </ul>
@@ -59,7 +59,7 @@ export function Footer() {
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
             >
-              Yasal
+              {locale.legalTitle}
             </Typography>
             <ul className="space-y-2">
               <li>
@@ -70,7 +70,7 @@ export function Footer() {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  Gizlilik Sözleşmesi
+                  {locale.legalLinks[0]}
                 </Typography>
               </li>
             </ul>
@@ -85,7 +85,7 @@ export function Footer() {
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
             >
-              İletişim
+              {locale.contactTitle}
             </Typography>
             <ul className="space-y-2">
               <li>
@@ -94,10 +94,20 @@ export function Footer() {
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
-                >
-                  New Senses Uzay Teknoloji <br className="sm:hidden" />
-                  ve Sağlık Araştırmaları A.Ş.
-                </Typography>
+                  dangerouslySetInnerHTML={{ __html: locale.contactLinks[0] }}
+                  children={undefined}
+                />
+              </li>
+              <li>
+                <Typography
+                  className="text-gray-700 hover:text-gray-600 transition-colors text-sm"
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                  children={undefined}
+                  dangerouslySetInnerHTML={{ __html: locale.contactLinks[1] }}
+
+                />
               </li>
               <li>
                 <Typography
@@ -106,18 +116,7 @@ export function Footer() {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  Adres: Sanayi Mah. Teknopark Bulvarı <br /> No:1/2C İç Kapı
-                  No: 2014 Pendik-İstanbul
-                </Typography>
-              </li>
-              <li>
-                <Typography
-                  className="text-gray-700 hover:text-gray-600 transition-colors text-sm"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  Detaylı Bilgi için: info@myxgenome.com
+                  {locale.contactLinks[2]}
                 </Typography>
               </li>
             </ul>
@@ -131,7 +130,7 @@ export function Footer() {
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
           >
-            &copy; {CURRENT_YEAR} MYXGENOME, Tüm Hakları Saklıdır.
+            &copy; {CURRENT_YEAR} {locale.copyright}
           </Typography>
         </div>
       </div>
