@@ -44,7 +44,7 @@ const ErrorModal = ({
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
       >
-        {errorMessage.includes("Aynı anda yalnızca bir test yapabilirsiniz.")
+        {errorMessage && errorMessage.includes("Aynı anda yalnızca bir test yapabilirsiniz.")
           ? locale.dialogBody.oneTestOnly
           : errorMessage.includes("Fotoğrafta herhangi bir yüz bulunamadı.")
           ? locale.dialogBody.noFaceFound
