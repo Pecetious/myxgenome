@@ -3,6 +3,7 @@
 import {
   ChevronDownIcon,
   DocumentTextIcon,
+  PhoneIcon,
 } from "@heroicons/react/24/solid";
 import {
   Accordion,
@@ -42,13 +43,41 @@ const getSession = (): any | null => {
     return null;
   }
 };
-const Sidebar = ({locale}: {locale: any}) => {
-  const [testCredits,setTestCredits] = useState(0)
-  const [resultsList,setResultsList] = useState<any>(null)
+const Sidebar = ({
+  locale,
+  openMedicalScan,
+  openRaceTest,
+}: {
+  locale: any;
+  openRaceTest: () => void;
+  openMedicalScan: () => void;
+}) => {
+  const [testCredits, setTestCredits] = useState<any>(null);
+  const [resultsList, setResultsList] = useState<any>(null);
+  const [session,setSession] = useState<any>(null)
   const router = useRouter();
   const [open, setOpen] = useState(1);
+
   const handleOpen = (value: number) => {
     setOpen(open === value ? 0 : value);
+  };
+  const handlePurchaseTestCredits = (type: string) => {
+    localStorage.setItem(
+      "session",
+      JSON.stringify({
+        ...session, // Eski session verilerini koru
+        selectedPackage: {
+          // Yeni selectedPackage verisini ekle
+          title:
+            locale.purchaseTestCreditsTitle[session.selectedPackage.testType],
+          type: session.subscriptionType,
+          testCredits: 1,
+          price: "50 ₺",
+          testType: type,
+        },
+      })
+    );
+    router.push(`/en/payment`);
   };
   const getResults = async () => {
     const session = getSession();
@@ -57,8 +86,8 @@ const Sidebar = ({locale}: {locale: any}) => {
         Authorization: `Bearer ${session.token}`,
       },
     });
-    setResultsList(data);
     console.log(data);
+    setResultsList(data);
   };
   const getTestCredits = async () => {
     const session = getSession();
@@ -68,18 +97,21 @@ const Sidebar = ({locale}: {locale: any}) => {
           Authorization: `Bearer ${session.token}`,
         },
       });
-      setTestCredits(data.testCredits); // API'den dönen değeri set et
+      setTestCredits(data.testCredits);
+      console.log(data); // API'den dönen değeri set et
     } catch (error) {
       console.error("Test kredileri alınırken hata oluştu:", error);
     }
-  }; 
-  useEffect(()=> {
-    getResults()
+  };
+  useEffect(() => {
+    setSession(getSession())
+    getResults();
     getTestCredits();
-  },[])
+    console.log(testCredits);
+  }, []);
   return (
     <Card
-      className=" w-full md:max-w-[20rem] shadow-xl shadow-blue-gray-900/5"
+      className=" w-full md:max-w-[25rem] shadow-xl shadow-blue-gray-900/5"
       placeholder={undefined}
       onPointerEnterCapture={undefined}
       onPointerLeaveCapture={undefined}
@@ -96,34 +128,120 @@ const Sidebar = ({locale}: {locale: any}) => {
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
+          <ListItemPrefix
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+          >
+            <Button
+              onClick={() => handlePurchaseTestCredits("race")}
+              color="blue-gray"
+              size="sm"
+              variant="outlined"
+              className=" capitalize tracking-widest"
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
+              {locale.testCreditButton}
+            </Button>
+          </ListItemPrefix>
           <Typography
             className="font-semibold "
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
           >
-            {locale.creditText}
+            {locale.creditText.race}
           </Typography>
           <ListItemSuffix
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
           >
-            <Chip value={testCredits} variant="ghost" color="blue-gray" />
+            <Chip value={testCredits?.race} variant="ghost" color="blue-gray" />
           </ListItemSuffix>
         </ListItem>
-        <Button
-          onClick={() => router.push("/payment")}
-          color="blue-gray"
-          size="sm"
-          variant="outlined"
-          className="text-lg capitalize tracking-widest"
+        {session && session.subscriptionType !== "basic" && (
+          <ListItem
+            className="hover:cursor-default hover:bg-white"
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+          >
+            <ListItemPrefix
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
+              <Button
+                onClick={() => handlePurchaseTestCredits("medical")}
+                color="blue-gray"
+                size="sm"
+                variant="outlined"
+                className=" capitalize tracking-widest"
+                placeholder={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+              >
+                {locale.testCreditButton}
+              </Button>
+            </ListItemPrefix>
+            <Typography
+              className="font-semibold"
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
+              {locale.creditText.medical}
+            </Typography>
+            <ListItemSuffix
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
+              <Chip
+                value={testCredits?.medical}
+                variant="ghost"
+                color="blue-gray"
+              />
+            </ListItemSuffix>
+          </ListItem>
+        )}
+        <hr className="font-bold text-black border border-blue-gray-100 my-2" />
+        <ListItem
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
+          onClick={openRaceTest}
         >
-          {locale.testCreditButton}
-        </Button>
+          <Typography
+            className="font-semibold "
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+          >
+            {locale.raceTestOpenTitle}
+          </Typography>
+        </ListItem>
+        {session && session.subscriptionType !== "basic" && (
+          <ListItem
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+            onClick={openMedicalScan}
+          >
+            <Typography
+              className="font-semibold "
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
+              {locale.medicalScanOpenTitle}
+            </Typography>
+          </ListItem>
+        )}
+        <hr className="font-bold text-black border border-blue-gray-100 my-2" />
         <Accordion
           open={open === 1}
           icon={
@@ -184,7 +302,8 @@ const Sidebar = ({locale}: {locale: any}) => {
             </AccordionHeader>
             <AccordionBody className="py-1">
               <List
-                className="p-0"
+                className="max-h-[300px] overflow-y-scroll p-0"
+                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                 placeholder={undefined}
                 onPointerEnterCapture={undefined}
                 onPointerLeaveCapture={undefined}
@@ -194,7 +313,9 @@ const Sidebar = ({locale}: {locale: any}) => {
                     <ListItem
                       key={i}
                       onClick={() =>
-                        router.push(`${locale.routeLang}/reports/${item.creation_date}`)
+                        router.push(
+                          `/${locale.routeLang}/reports/${item.creation_date}`
+                        )
                       }
                       placeholder={undefined}
                       onPointerEnterCapture={undefined}
@@ -207,12 +328,50 @@ const Sidebar = ({locale}: {locale: any}) => {
                       >
                         {item.creation_date}
                       </Typography>
+                      <ListItemSuffix
+                        placeholder={undefined}
+                        onPointerEnterCapture={undefined}
+                        onPointerLeaveCapture={undefined}
+                      >
+                        <Typography
+                          placeholder={undefined}
+                          onPointerEnterCapture={undefined}
+                          onPointerLeaveCapture={undefined}
+                        >
+                          {item.test_type.includes("race")
+                            ? locale.testType.race
+                            : locale.testType.medical}
+                        </Typography>
+                      </ListItemSuffix>
                     </ListItem>
                   ))}
               </List>
             </AccordionBody>
           </ListItem>
         </Accordion>
+        <hr className="font-bold text-black border border-blue-gray-100 my-2" />
+        <ListItem
+          placeholder={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+          onClick={() => window.open("https://wa.me/13022037049", "_blank")}
+        >
+          <ListItemPrefix
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+          >
+            <PhoneIcon strokeWidth={2} className="size-5" />
+          </ListItemPrefix>
+          <Typography
+            className="font-semibold"
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+          >
+            {locale.consult}
+          </Typography>
+        </ListItem>
       </List>
     </Card>
   );

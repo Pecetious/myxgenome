@@ -89,22 +89,23 @@ export function Footer({ locale }: { locale: any }) {
             </Typography>
             <ul className="space-y-2">
               <li>
+                {/* @ts-ignore */}
                 <Typography
                   className="text-gray-700 hover:text-gray-600 transition-colors text-sm"
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                   dangerouslySetInnerHTML={{ __html: locale.contactLinks[0] }}
-                  children={undefined}
+              
                 />
               </li>
               <li>
+               {/*  @ts-ignore*/}
                 <Typography
                   className="text-gray-700 hover:text-gray-600 transition-colors text-sm"
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
-                  children={undefined}
                   dangerouslySetInnerHTML={{ __html: locale.contactLinks[1] }}
 
                 />

@@ -1,11 +1,11 @@
-import SectionCard from "../privacy-policy/section-card";
+import SectionCard from "./section-card";
 import { getDictionary } from "../dictionaries";
 
-const PrivacyPolicy = async ({
+export default async function PrivacyPolicy({
   params,
 }: {
   params: Promise<{ lng: "en" | "tr" }>;
-}) => {
+}) {
   const { lng } = await params;
   const dict = await getDictionary(lng);
   return (
@@ -14,12 +14,10 @@ const PrivacyPolicy = async ({
         <h1 className="font-bold tracking-[1px] text-center">
           {dict.privacyPolicyPage.title}
         </h1>
-        {dict.privacyPolicyPage.sections.map((sct) => (
-          <SectionCard locale={sct} />
+        {dict.privacyPolicyPage.sections.map((sct, index) => (
+          <SectionCard locale={sct} key={index} />
         ))}
       </div>
     </div>
   );
-};
-
-export default PrivacyPolicy;
+}

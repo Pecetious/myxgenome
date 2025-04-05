@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, CardBody, Button, Typography } from "@material-tailwind/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
@@ -25,8 +25,18 @@ const getSession = (): any | null => {
 };
 
 export function Pricing({ locale }: { locale: any }) {
+  const [session, setSession] = useState<any>(null);
   const router = useRouter();
-  const session = getSession();
+  console.log(session);
+  const packageTypeOrder = ["basic", "advanced", "premium", "family", "vip"];
+  const isButtonDisabled = (pkg: string, user: string) => {
+    const userIndex = packageTypeOrder.indexOf(user);
+    const pkgIndex = packageTypeOrder.indexOf(pkg);
+    return pkgIndex <= userIndex;
+  };
+  useEffect(() => {
+    setSession(getSession());
+  }, []);
   return (
     <section className="w-full lg:max-w-screen-lg  min-h-screen p-3 md:mx-auto">
       <div className="grid place-items-center pb-20 text-center">
@@ -36,6 +46,7 @@ export function Pricing({ locale }: { locale: any }) {
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
+          id="pricing"
         >
           {locale.title}
         </Typography>
@@ -135,7 +146,7 @@ export function Pricing({ locale }: { locale: any }) {
                   className="my-3"
                   size="lg"
                   onClick={() => {
-                    router.push("/payment");
+                    router.push(`/${pkg.routeParams.lang}/payment`);
                     localStorage.setItem(
                       "session",
                       JSON.stringify({
@@ -152,8 +163,21 @@ export function Pricing({ locale }: { locale: any }) {
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
+                  disabled={
+                    session &&
+                    isButtonDisabled(
+                      pkg.routeParams.packageType.split(" ")[0],
+                      session.subscriptionType
+                    )
+                  }
                 >
-                  {locale.buttonTitle}
+                  {session &&
+                  isButtonDisabled(
+                    pkg.routeParams.packageType.split(" ")[0],
+                    session.subscriptionType
+                  )
+                    ? locale.buttonTitlePurchased
+                    : locale.buttonTitle}
                 </Button>
               </div>
             </CardBody>

@@ -1,57 +1,123 @@
 import { NextResponse } from "next/server";
-import Negotiator from "negotiator";  // Tarayıcı dilini almak için kullanıyoruz
 
-const protectedRoutes = ["/test", "/payment"];
-const publicRoutes = ["/login", "/signup", "/"];
+// Korunan ve açık rotalar
+const protectedRoutes = [
+  "/en/test", "/tr/test",
+  "/en/payment", "/tr/payment",
+  "/en/callback", "/tr/callback",
+  "/en/reports", "/tr/reports"
+];
 
-// Desteklenen diller
-const locales = ['en', 'tr']; 
-const defaultLocale = 'tr'; // Varsayılan dil
+const publicRoutes = ["/login", "/signup", "/"]; // Açık sayfalar
 
-export default function middleware(req: any) {
-  const path = req.nextUrl.pathname;
-  const isProtectedRoute = protectedRoutes.includes(path);
-  const isPublicRoute = publicRoutes.includes(path);
+const locales = ["en", "tr"];
+const defaultLocale = "tr"; // Varsayılan dil
 
-  // Tarayıcı dilini almak için Negotiator'ı kullanıyoruz
-  const negotiator = new Negotiator({ headers: req.headers });
-  const languages = negotiator.languages(); // Tarayıcıdaki diller
-  const userLocale = languages.find((lang: string) => locales.includes(lang)) || defaultLocale; // Tarayıcı dilini veya varsayılan dili seçiyoruz
-
-  // URL'deki dil parametresi kontrolü
-  const url = req.nextUrl.clone();
-
-  // Eğer URL'de dil parametresi yoksa, varsayılan olarak Türkçe'ye yönlendiriyoruz
-  if (url.pathname === '/') {
-    url.pathname = `/${userLocale}${url.pathname}`;  // Varsayılan dilde yönlendirme yapıyoruz
-    return NextResponse.redirect(url);
-  }
-
-  // Eğer URL'de dil parametresi yoksa ve kullanıcı dilini manuel olarak giriyorsa yönlendirme yapıyoruz
-  if (!url.pathname.startsWith(`/${userLocale}`) && !locales.some(locale => url.pathname.startsWith(`/${locale}`))) {
-    url.pathname = `/${userLocale}${url.pathname}`;  // Kullanıcının diline göre URL'yi güncelliyoruz
-    return NextResponse.redirect(url);
-  }
-
-  // Giriş kontrolü: Eğer protectedRoute ve token yoksa login'e yönlendir
-  const cookieHeader = req.headers.get("cookie") || "";
+// Cookie'den dil bilgisini al
+const getLocaleFromCookie = (cookieHeader: string) => {
   const cookies = Object.fromEntries(
     cookieHeader.split("; ").map((c: any) => c.split("="))
   );
-  const token = cookies["token"];
+  return cookies["access-locale"] || defaultLocale; // Cookie yoksa varsayılan dil
+};
 
-  if (isProtectedRoute && !token) {
-    return NextResponse.redirect(new URL("/login", req.nextUrl.origin));
+export default function middleware(req: any) {
+  const cookieHeader = req.headers.get("cookie") || "";
+  const userLocale = getLocaleFromCookie(cookieHeader);
+  const cookies = Object.fromEntries(
+    cookieHeader.split("; ").map((c: any) => c.split("="))
+  );
+  const path = req.nextUrl.pathname;
+  const url = req.nextUrl.clone();
+
+  console.log("Başlangıç - URL: ", path); // İlk URL'yi logluyoruz
+
+  // URL'de dil parametresi olup olmadığını kontrol ediyoruz
+  const urlHasLocale = locales.some((locale) =>
+    path.startsWith(`/${locale}/`)
+  );
+  console.log(`URL'de dil parametresi var mı? ${urlHasLocale ? "Evet" : "Hayır"}`);
+
+  // Eğer URL'de dil parametresi yoksa, dil parametresini ekliyoruz
+  if (!urlHasLocale) {
+    url.pathname = `/${userLocale}${url.pathname}`; // Dil parametresini ekliyoruz
+    console.log(`Dil parametresi ekleniyor: ${url.pathname}`);
+
+    // Dil zaten doğruysa yönlendirme yapılmasın (sonsuz döngüden kaçınmak için)
+    if (path === url.pathname) {
+      console.log("Dil zaten doğru, yönlendirme yapılmıyor.");
+      return NextResponse.next(); // Dil zaten doğru, devam et
+    }
+
+    console.log(`Dil parametresi eklenmiş yeni URL: ${url.pathname}`);
+
+    // Token ve Protected rota kontrolü
+    const isProtectedRoute = protectedRoutes.some((route) =>
+      url.pathname.startsWith(route)
+    );
+    console.log(`Korunan rota kontrolü: ${isProtectedRoute ? "Evet" : "Hayır"}`);
+
+    if (isProtectedRoute && !cookies["token"]) {
+      console.log("Token yok, login sayfasına yönlendiriliyor...");
+      return NextResponse.redirect(
+        new URL(`/${userLocale}/login`, req.nextUrl.origin)
+      );
+    }
+
+    // Eğer açık sayfada giriş yapmış kullanıcı varsa, ana sayfaya yönlendirilir
+    const isPublicRoute = publicRoutes.some((route) =>
+      url.pathname.startsWith(route)
+    );
+    if (isPublicRoute && cookies["token"]) {
+      console.log("Kullanıcı giriş yapmış, ana sayfaya yönlendiriliyor...");
+      return NextResponse.redirect(new URL(`/${userLocale}`, req.nextUrl.origin));
+    }
+
+    return NextResponse.redirect(url); // Yönlendirme yapılacak URL'yi döndür
   }
 
-  // Public sayfalara giriş yapmış kullanıcıyı yönlendirme
-  if (isPublicRoute && token) {
-    return NextResponse.redirect(new URL("/", req.nextUrl.origin));
+  console.log("Dil parametresi zaten mevcut, dinamik rota kontrolüne geçiliyor...");
+
+  // Dinamik rotalar için dil parametresi eklenmesi
+  const dynamicRoutes = ["/callback", "/reports"];
+  if (dynamicRoutes.some((route) => path.startsWith(route))) {
+    if (!path.startsWith(`/${userLocale}`)) {
+      console.log(`Dinamik rota dil eksik, yönlendiriliyor: ${url.pathname}`);
+      url.pathname = `/${userLocale}${url.pathname}`;
+      return NextResponse.redirect(url);
+    }
   }
 
+  // Korunan sayfalara erişimde token kontrolü yapıyoruz
+  const isProtectedRoute = protectedRoutes.some((route) =>
+    path.startsWith(route)
+  );
+  console.log(`Korunan rota kontrolü (token kontrolü): ${isProtectedRoute ? "Evet" : "Hayır"}`);
+
+  if (isProtectedRoute && !cookies["token"]) {
+    console.log("Token yok, login sayfasına yönlendiriliyor...");
+    return NextResponse.redirect(
+      new URL(`/${userLocale}/login`, req.nextUrl.origin)
+    );
+  }
+
+  // Eğer yönlendirme yapılmazsa, bir sonraki işlemi gerçekleştirin
+  console.log("Yönlendirme yapılmıyor, isteğe devam ediliyor.");
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/test", "/login", "/signup", "/payment", "/"], // `/` için de yönlendirme ekledik
+  matcher: [
+    "/en/test", // Korunan rota
+    "/tr/test", // Korunan rota
+    "/en/payment", // Korunan rota
+    "/tr/payment", // Korunan rota
+    "/en/callback/:path*", // Dinamik rota için callback ekledik
+    "/tr/callback/:path*", // Dinamik rota için callback ekledik
+    "/en/reports/:path*", // Dinamik rota için reports ekledik
+    "/tr/reports/:path*", // Dinamik rota için reports ekledik
+    "/login", // Public route
+    "/signup", // Public route
+    "/", // Ana sayfa
+  ],
 };

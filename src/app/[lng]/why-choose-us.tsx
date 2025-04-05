@@ -66,8 +66,8 @@ export function WhyChooseUs({ locale }: { locale: any }) {
         <div className="grid grid-cols-1 items-center md:grid-cols-2 gap-12 mb-24 relative">
           <Image src="/image/dna.png" width={400} height={400} alt="dna" />
           <div className="space-y-8">
-            {locale.options1.map((opt: any) => (
-              <div className="my-4 flex gap-4">
+            {locale.options1.map((opt: any,index: number) => (
+              <div className="my-4 flex gap-4" key={index}>
                 <Option title={opt.title} src={opt.src}>
                   {opt.description}
                 </Option>
@@ -77,8 +77,8 @@ export function WhyChooseUs({ locale }: { locale: any }) {
         </div>
         <div className="grid grid-cols-1 items-center md:grid-cols-2 gap-12 mb-24">
           <div className="space-y-8">
-            {locale.options2.map((opt: any) => (
-              <div className="my-4 flex gap-4">
+            {locale.options2.map((opt: any,index: number) => (
+              <div className="my-4 flex gap-4" key={index}>
                 <Option title={opt.title} src={opt.src}>
                   {opt.description}
                 </Option>

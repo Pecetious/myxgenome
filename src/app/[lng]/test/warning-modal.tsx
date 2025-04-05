@@ -10,12 +10,12 @@ import {
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const WarningModal = ({locale}: {locale: any}) => {
+const WarningModal = ({ locale }: { locale: any }) => {
   const router = useRouter();
   const [isOpen, setOpen] = useState(true);
-  const testWarning = localStorage.getItem("test-warning");
   useEffect(() => {
-    if (testWarning ==="accepted") {
+    const testWarning = localStorage.getItem("test-warning");
+    if (testWarning === "accepted") {
       setOpen(false);
     }
   }, []);
@@ -45,16 +45,13 @@ const WarningModal = ({locale}: {locale: any}) => {
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
       >
-        {locale.dialogBody.map((rule: any, index: number) =>(
-        <p key={index}>
-          📌 <strong>{rule.title}</strong> {rule.text}
-        </p>
+        {locale.dialogBody.map((rule: any, index: number) => (
+          <p key={index}>
+            📌 <strong>{rule.title}</strong> {rule.text}
+          </p>
+        ))}
 
-        ) )}
-       
-        <p>
-          💡 {locale.dialogBodyEnd}
-        </p>
+        <p>💡 {locale.dialogBodyEnd}</p>
       </DialogBody>
       <DialogFooter
         className="w-full flex md:flex-col gap-2"

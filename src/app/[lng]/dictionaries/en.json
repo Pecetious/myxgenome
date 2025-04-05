@@ -5,7 +5,8 @@
       { "href": "/en/about-us", "title": "About Us" },
       { "href": "#", "title": "Contact" }
     ],
-    "buttonTitles": ["Log In", "Sign Up", "Log Out", "Test"]
+    "buttonTitles": ["Log In", "Sign Up", "Log Out", "Test"],
+    "lang": "en"
   },
   "footer": {
     "mainLinks": ["About Us", "Contact"],
@@ -109,7 +110,8 @@
             }
           ],
           "routeParams": {
-            "packageType": "basic package"
+            "packageType": "basic package",
+            "lang": "en"
           }
         },
         {
@@ -139,7 +141,8 @@
             }
           ],
           "routeParams": {
-            "packageType": "advanced package"
+            "packageType": "advanced package",
+            "lang": "en"
           }
         },
         {
@@ -169,7 +172,8 @@
             }
           ],
           "routeParams": {
-            "packageType": "premium package"
+            "packageType": "premium package",
+            "lang": "en"
           }
         },
         {
@@ -199,7 +203,8 @@
             }
           ],
           "routeParams": {
-            "packageType": "family package"
+            "packageType": "family package",
+            "lang": "en"
           }
         },
         {
@@ -225,12 +230,14 @@
             }
           ],
           "routeParams": {
-            "packageType": "vip package"
+            "packageType": "vip package",
+            "lang": "en"
           }
         }
       ],
       "packageQuestion": "What is included in the test?",
-      "buttonTitle": "Purchase"
+      "buttonTitle": "Purchase",
+      "buttonTitlePurchased": "Included"
     }
   },
   "loginPage": {
@@ -382,7 +389,8 @@
         },
         "country": "Country is required."
       },
-      "buttonTitle": "Make Payment"
+      "buttonTitle": "Make Payment",
+      "error": "IYZICO is not accepting your payment"
     }
   },
   "callbackPage": {
@@ -400,10 +408,24 @@
   },
   "testPage": {
     "sidebar": {
-      "creditText": "Remaining Test Credits",
-      "testCreditButton": "Buy Test Credits",
+      "creditText": {
+        "race": "Ancestry and Genetic Origin Credits",
+        "medical": "Medical Scan Credits"
+      },
+      "testCreditButton": "Add",
       "resultsTitle": "Results",
-      "routeLang": "en"
+      "routeLang": "en",
+      "raceTestOpenTitle": "Ancestry and Genetic Origin Test",
+      "medicalScanOpenTitle": "Medical Scan",
+      "testType": {
+        "race": "Race",
+        "medical": "Medical"
+      },
+      "consult": "24/7 Consultation",
+      "purchaseTestCreditsTitle": {
+        "race": "Purchase Race Test Credits",
+        "medical": "Purchase Medical Scan Credits"
+      }
     },
     "testCard": {
       "emptyFieldError": "Please make sure all fields are filled out.",
@@ -426,13 +448,46 @@
           "sound": "Sound",
           "p1": "Please produce the sound of ",
           "p2": " clearly and continuously. Stay close to the microphone and make sure there is no background noise."
-        }
+        },
+        "externalMicText": "For more accurate results consider using an external microphone"
       },
       "processing": {
         "text": "Your process is ongoing, it may take a few minutes. You will see the result in the list when the process is complete.",
         "insufficientTestCredits": "Insufficient test credits",
         "loading": "Loading...",
         "init": "Submit"
+      },
+      "raceTestCardConfirmModal": {
+        "currentRecording": [
+          "Can you hear the cough sound? (Step 1)",
+          "Can you hear the cough sound? (Step 2)",
+          "Can you hear the cough sound? (Step 3)",
+          "Can you hear the 'A' sound?",
+          "Can you hear the 'U' sound?",
+          "Can you hear the 'İ' sound?"
+        ],
+        "confirm": "Yes",
+        "tryAgain": "Try Again"
+      },
+      "medicalScanCardConfirmModal": {
+        "currentRecording": [
+          "Can you hear the 'A' sound?",
+          "Can you hear the 'U' sound?",
+          "Can you hear the 'İ' sound?"
+        ],
+        "confirm": "Yes",
+        "tryAgain": "Try Again"
+      },
+      "errorModal": {
+        "dialogHeader": "ERROR",
+        "dialogBody": {
+          "oneTestOnly": "You can only perform one test at a time. Please try again in 3 minutes.",
+          "noFaceFound": "No face was detected in the photo. Please try again with a different photo.",
+          "moreThanOneFaceFound": "Multiple faces were detected in the photo. Please try again with a different photo."
+        },
+        "dialogFooter":{
+          "button": "Try Again"
+        }
       }
     },
     "warningModal": {
@@ -463,6 +518,58 @@
       "dialogFooter": {
         "agree": "I Agree",
         "disagree": "I Disagree"
+      }
+    }
+   
+  },
+  "reportPage": {
+    "card": {
+      "offcanvasTitles": [
+        "General Analysis",
+        "Genes",
+        "Ancestry and Genetic Origin Analysis",
+        "Immune System Profile"
+      ],
+      "offcanvas": {
+        "general": {
+          "title": "General Analysis",
+          "ageTite": "Your Estimated Age: ",
+          "mrnaTitle": "mRNA Status",
+          "mrna": {
+            "true": "Based on the mRNA vaccine analysis, you may have been affected by potential side effects.",
+            "false": "No side effects were observed based on the mRNA vaccine analysis."
+          },
+          "psychoAnalysisTitle": "Psychoanalysis",
+          "psychoAnalysis": {
+            "true": "Your stress level appears to be high.",
+            "false": "Your stress level is normal."
+          },
+          "genesTitle": "Number of Mutated Genes",
+          "positiveDiseasesTitle": "Number of Positive Diseases Found"
+        },
+        "genes": {
+          "title": "Genes",
+          "text": "The genes listed here are believed to be affected. The data provided does not have medical binding significance, but the list was derived based on the compatibility of your voice with 1.65 million voice samples we collected with our legal ethical consent.",
+          "high": "High",
+          "med": "Medium",
+          "low": "Low"
+        },
+        "heritage": {
+          "title": "Ancestry and Genetic Origin Analysis",
+          "colorTitle": "Color Categorization",
+          "typeTitle": "Race Categorization"
+        },
+        "immune": {
+          "title": "Immune System Profile",
+          "text": "The diseases listed in the Immune System Profile indicate only your susceptibility to these diseases. They do not carry any medical significance."
+        }
+      },
+      "medicalScanResult": {
+        "title": "Medical Scan Results",
+        "status": {
+          "positive": "Positive",
+          "negative": "Negative"
+        }
       }
     }
   }

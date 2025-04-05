@@ -2,6 +2,12 @@
 
 import { paymentInitValidations } from "@/constants/validations";
 import {
+  MinusCircleIcon,
+  MinusIcon,
+  PlusCircleIcon,
+  PlusIcon,
+} from "@heroicons/react/24/solid";
+import {
   Button,
   Card,
   CardBody,
@@ -11,36 +17,56 @@ import {
 } from "@material-tailwind/react";
 import axios from "axios";
 import { Formik } from "formik";
-const getSession = (): any | null => {
-  try {
-    // localStorage'dan 'session' verisini alın
-    const sessionData = localStorage.getItem("session");
+import { useEffect, useState } from "react";
 
-    // Eğer sessionData varsa ve geçerli bir JSON formatı ise
-    if (sessionData) {
-      const parsedSession = JSON.parse(sessionData);
-
-      // session objesinin içinde token'a ulaşmaya çalışıyoruz
-      return parsedSession || null; // Eğer token yoksa null döner
-    }
-    return null; // 'session' verisi yoksa null döner
-  } catch (error) {
-    // Eğer JSON.parse sırasında bir hata oluşursa, null döner
-    console.error("JSON parse error:", error);
-    return null;
-  }
-};
 const PaymentForm = ({ locale }: { locale: any }) => {
-  const session = getSession();
+  const [session, setSession] = useState<any>(null);
+  const getSession = (): any | null => {
+    try {
+      // localStorage'dan 'session' verisini alın
+      const sessionData = localStorage.getItem("session");
+
+      // Eğer sessionData varsa ve geçerli bir JSON formatı ise
+      if (sessionData) {
+        const parsedSession = JSON.parse(sessionData);
+
+        // session objesinin içinde token'a ulaşmaya çalışıyoruz
+        return parsedSession || null; // Eğer token yoksa null döner
+      }
+      return null; // 'session' verisi yoksa null döner
+    } catch (error) {
+      // Eğer JSON.parse sırasında bir hata oluşursa, null döner
+      console.error("JSON parse error:", error);
+      return null;
+    }
+  };
+  const [error, setError] = useState<any>(null);
+  const [testCreditsCounter, setTestCreditsCounter] = useState(
+    session&& session.selectedPackage.testCredits || 0
+  );
   const handlePaymentInit = async (values: any) => {
     const session = getSession();
+    if (testCreditsCounter === 0) return;
     try {
       const { data: ipify } = await axios.get(
         "https://api.ipify.org?format=json"
       );
-      const { data } = await axios.post(
-        "/api/payment-init",
-        {
+      let body;
+      if (session.selectedPackage.testCredits) {
+        body = {
+          gsmNumber: values.gsmNumber,
+          identityNumber: values.identityNumber,
+          address: values.address,
+          ip: ipify.ip,
+          city: values.city,
+          country: values.country,
+          type: session.subscriptionType,
+          testCredits: testCreditsCounter,
+          testType: session.selectedPackage.testType,
+        };
+        console.log(body);
+      } else {
+        body = {
           gsmNumber: values.gsmNumber,
           identityNumber: values.identityNumber,
           address: values.address,
@@ -48,19 +74,31 @@ const PaymentForm = ({ locale }: { locale: any }) => {
           city: values.city,
           country: values.country,
           type: session.selectedPackage.type,
+        };
+        console.log(body);
+      }
+      const { data } = await axios.post("/api/payment-init", body, {
+        headers: {
+          Authorization: `Bearer ${session.token}`,
         },
-        {
-          headers: {
-            Authorization: `Bearer ${session.token}`,
-          },
-        }
-      );
+      });
       console.log(data);
       window.open(data.html_code.paymentPageUrl, "_self");
-    } catch (error) {
-      console.error(error);
+    } catch (err: any) {
+      console.error(err);
+      setError(err.response.data.error);
     }
   };
+  const handleIncrement = () => {
+    setTestCreditsCounter(testCreditsCounter + 1);
+  };
+  const handleDecrement = () => {
+    if (testCreditsCounter === 0) return;
+    setTestCreditsCounter(testCreditsCounter - 1);
+  };
+  useEffect(() => {
+    setSession(getSession());
+  });
   return (
     <Formik
       initialValues={{
@@ -94,7 +132,7 @@ const PaymentForm = ({ locale }: { locale: any }) => {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  {session.selectedPackage && session.selectedPackage.title}
+                  {session && session.selectedPackage.title}
                 </Typography>
                 <Typography
                   className="text-3xl md:text-4xl text-white text-center font-bold"
@@ -102,7 +140,9 @@ const PaymentForm = ({ locale }: { locale: any }) => {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  {session.selectedPackage && session.selectedPackage.price}
+                  {session && session.selectedPackage.testCredits
+                    ? `${testCreditsCounter * 50} ₺`
+                    : session && session.selectedPackage && session.selectedPackage.price}
                 </Typography>
               </div>
             </CardHeader>
@@ -221,9 +261,43 @@ const PaymentForm = ({ locale }: { locale: any }) => {
                     <div className="text-red-500 text-sm">{errors.address}</div>
                   )}
                 </div>
+                {session && session.selectedPackage.testCredits && (
+                  <div className="flex w-2/3 mx-auto items-center justify-center gap-4">
+                    <MinusIcon
+                      strokeWidth={2}
+                      className="font-medium size-10 cursor-pointer rounded-full hover:bg-blue-gray-200 hover:text-white"
+                      onClick={handleDecrement}
+                    />
+
+                    <Typography
+                      color="blue-gray"
+                      variant="h4"
+                      placeholder={undefined}
+                      onPointerEnterCapture={undefined}
+                      onPointerLeaveCapture={undefined}
+                    >
+                      {testCreditsCounter}
+                    </Typography>
+                    <PlusIcon
+                      strokeWidth={2}
+                      className="font-medium size-10 cursor-pointer rounded-full hover:bg-blue-gray-200 hover:text-white"
+                      onClick={handleIncrement}
+                    />
+                  </div>
+                )}
               </div>
             </CardBody>
-
+            {error && (
+              <Typography
+                variant="h5"
+                className="text-center text-red-700"
+                placeholder={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+              >
+                {locale.error}
+              </Typography>
+            )}
             <div className="p-4">
               {/* Submit Button */}
               <Button

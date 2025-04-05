@@ -36,7 +36,7 @@ function Hero({locale}: {locale: any}) {
               placeholder={undefined}
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
-              onClick={() => router.push("/payment")}
+              onClick={() => router.push("/#pricing")}
             >
               {locale.buttonTitle}
             </Button>

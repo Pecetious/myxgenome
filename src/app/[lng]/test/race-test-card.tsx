@@ -1,11 +1,20 @@
-"use client"
+"use client";
 import Microphone from "@/components/microphone";
 import MicrophoneConfirmModal from "@/components/microphone-confirm-modal";
 import Selfie from "@/components/selfie";
-import { Button, Card, CardBody, CardFooter } from "@material-tailwind/react";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  Typography,
+} from "@material-tailwind/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import dynamic from "next/dynamic";
+const ErrorModal = dynamic(() => import("./error-modal"), {
+  ssr: false,
+});
 const getSession = (): any | null => {
   try {
     // localStorage'dan 'session' verisini alın
@@ -25,16 +34,24 @@ const getSession = (): any | null => {
     return null;
   }
 };
-const TestCard = ({locale}:{locale: any}) => {
+const TestCard = ({
+  locale,
+  visible = true,
+}: {
+  locale: any;
+  visible: boolean;
+}) => {
+  const [session, setSession] = useState<any>(null);
   const [error, setError] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [selfieFile, setSelfieFile] = useState<File | null>(null);
   const [blobUrl, setBlobUrl] = useState<string>("");
   const [microphoneConfirmModal, setMicrophoneConfirmModal] = useState(false);
+  const [isErrorOpen, setErrorOpen] = useState(false);
   const [recordings, setRecordings] = useState<any>([]);
   const [currentRecording, setCurrentRecording] = useState(0);
-  const [testCredits,setTestCredits] = useState(0)
+  const [testCredits, setTestCredits] = useState(0);
   const handleClickedYes = () => {
     console.log("Mikrofon kaydı onaylandı");
     if (currentRecording > 5) {
@@ -73,8 +90,9 @@ const TestCard = ({locale}:{locale: any}) => {
         }
       );
       console.log(data);
-    } catch (err) {
-      setError(err);
+    } catch (err: any) {
+      setError(err.response.data.error);
+      setErrorOpen(true);
       console.error(err);
       setTimeout(() => {
         /* trigger  getResults(); */
@@ -99,7 +117,7 @@ const TestCard = ({locale}:{locale: any}) => {
     console.log(recordings);
     setMicrophoneConfirmModal(false);
   };
- 
+
   const handleRecordingComplete = (newRecording: any) => {
     setRecordings((prevRecordings: any[]) => {
       const updatedRecordings = [...prevRecordings];
@@ -125,9 +143,10 @@ const TestCard = ({locale}:{locale: any}) => {
     } catch (error) {
       console.error("Test kredileri alınırken hata oluştu:", error);
     }
-  }; 
+  };
   useEffect(() => {
-   /*  const accepted = localStorage.getItem("test-warning");
+     setSession(getSession());
+    /*  const accepted = localStorage.getItem("test-warning");
     if (accepted) {
       setWarningModalOpen(false);
     } */
@@ -136,7 +155,9 @@ const TestCard = ({locale}:{locale: any}) => {
   return (
     <>
       <Card
-        className="w-full md:w-3/4 shadow-lg shadow-gray-200 "
+        className={`w-full md:w-3/4 shadow-lg shadow-gray-200 ${
+          visible ? "" : "hidden"
+        }`}
         placeholder={undefined}
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
@@ -150,17 +171,20 @@ const TestCard = ({locale}:{locale: any}) => {
           <div className="mb-4 w-full">
             {/* Selfie Component */}
             <div className="w-full h-full flex flex-col space-y-5 items-center justify-center p-2">
-              <p className="text-lg text-center">
-                {locale.selfie.test}
-              </p>
-              <Selfie onFileSelected={handleFileSelected} title={locale.selfie.buttonTitle} />
+              <p className="text-lg text-center">{locale.selfie.test}</p>
+              <Selfie
+                onFileSelected={handleFileSelected}
+                title={locale.selfie.buttonTitle}
+              />
             </div>
           </div>
           <div className="mb-4 w-full">
             {/* Microphone Component */}
             <div className="p-2 space-y-2 ">
               <div className="font-bold border-blue-gray-500 border w-fit p-2 mx-auto rounded-lg shadow-md animate-breathing">
-                <h3 className="font-bold text-center">{locale.microphone.beforeYouBegin}</h3>
+                <h3 className="font-bold text-center">
+                  {locale.microphone.beforeYouBegin}
+                </h3>
                 <ul className="list-decimal list-inside ">
                   <li>{locale.microphone.beforeYouBeginList[0]}</li>
                   <li>{locale.microphone.beforeYouBeginList[1]}</li>
@@ -168,13 +192,11 @@ const TestCard = ({locale}:{locale: any}) => {
               </div>
               {currentRecording < 3 ? (
                 <div className="p-2 text-center">
-                  <h3 className="font-bold text-center">{locale.microphone.coughTest.title}</h3>
-                  <p>
-                  {locale.microphone.coughTest.p1}
-                  </p>
-                  <p>
-                    {locale.microphone.coughTest.p2}
-                  </p>
+                  <h3 className="font-bold text-center">
+                    {locale.microphone.coughTest.title}
+                  </h3>
+                  <p>{locale.microphone.coughTest.p1}</p>
+                  <p>{locale.microphone.coughTest.p2}</p>
                 </div>
               ) : (
                 <>
@@ -187,7 +209,7 @@ const TestCard = ({locale}:{locale: any}) => {
                     {locale.microphone.soundTest.sound}
                   </h3>
                   <p className="text-center">
-                  {locale.microphone.soundTest.p1}
+                    {locale.microphone.soundTest.p1}
                     {currentRecording === 3
                       ? "AAA"
                       : currentRecording === 4
@@ -198,12 +220,25 @@ const TestCard = ({locale}:{locale: any}) => {
                 </>
               )}
             </div>
-            <div className="w-full h-[20vh] flex items-center justify-center">
+            <div className="w-full h-[20vh] flex flex-col items-center justify-center">
               {recordings.length < 6 && (
-                <Microphone
-                  onRecordComplete={handleRecordingComplete}
-                  openModal={() => setMicrophoneConfirmModal(true)}
-                />
+                <>
+                  <Microphone
+                    onRecordComplete={handleRecordingComplete}
+                    openModal={() => setMicrophoneConfirmModal(true)}
+                  />
+                  <Typography
+                    variant="paragraph"
+                    color="deep-orange"
+                    className="my-2 font-bold text-lg text-center text-pretty"
+                    style={{ color: "red" }}
+                    placeholder={undefined}
+                    onPointerEnterCapture={undefined}
+                    onPointerLeaveCapture={undefined}
+                  >
+                    {locale.microphone.externalMicText}
+                  </Typography>
+                </>
               )}
             </div>
           </div>
@@ -216,7 +251,7 @@ const TestCard = ({locale}:{locale: any}) => {
         >
           {processing && (
             <p className="text-yellow-500 text-center mb-2">
-             {locale.processing.text}
+              {locale.processing.text}
             </p>
           )}
           {selfieFile && recordings.length === 6 && (
@@ -247,10 +282,16 @@ const TestCard = ({locale}:{locale: any}) => {
           recordingUrl={blobUrl}
           currentRecording={currentRecording}
           clickedYes={handleClickedYes}
+          locale={locale.raceTestCardConfirmModal}
         />
       )}
+      <ErrorModal
+        locale={locale.errorModal}
+        visible={isErrorOpen}
+        errorMessage={error}
+      />
     </>
   );
 };
 
-export default TestCard
+export default TestCard;

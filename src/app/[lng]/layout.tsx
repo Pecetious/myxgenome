@@ -3,7 +3,12 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { Layout, Navbar, Footer } from "@/components";
 import { getDictionary } from "./dictionaries";
-
+export async function generateStaticParams() {
+  return [
+    { lng: "en" }, // İngilizce için
+    { lng: "tr" }, // Türkçe için
+  ];
+}
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["300", "400", "500", "700", "900"],

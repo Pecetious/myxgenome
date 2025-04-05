@@ -30,7 +30,7 @@ const CallbackCard = ({status,locale}: {status: string,locale: any}) => {
         if (timeLeft <= 0) {
           clearTimeout(timer);
           if (status === "success") {
-            router.replace("/test");
+            router.replace("/");
           } else {
             router.replace("/");
           }

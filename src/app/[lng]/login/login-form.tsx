@@ -22,12 +22,13 @@ const LoginForm = ({locale}: {locale: any}) => {
         email: values.email,
         password: values.password,
       });
-
+      console.log(data)
       const session = {
         expiresIn: Date.now() + 3600000,
         fullName: `${data.name} ${data.surname}`,
         email: values.email,
         token: data.token,
+        subscriptionType: data.subscription_type
       };
 
       localStorage.setItem("session", JSON.stringify(session));

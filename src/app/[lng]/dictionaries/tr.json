@@ -5,7 +5,8 @@
       { "href": "/tr/about-us", "title": "Hakkımızda" },
       { "href": "#", "title": "İletişim" }
     ],
-    "buttonTitles": ["Giriş Yap", "Kayıt Ol", "Çıkış Yap", "Test Yap"]
+    "buttonTitles": ["Giriş Yap", "Kayıt Ol", "Çıkış Yap", "Test Yap"],
+    "lang": "tr"
   },
   "footer": {
     "mainLinks": ["Hakkımızda", "İletişim"],
@@ -109,7 +110,8 @@
             }
           ],
           "routeParams": {
-            "packageType": "basic package"
+            "packageType": "basic package",
+            "lang": "tr"
           }
         },
         {
@@ -139,7 +141,8 @@
             }
           ],
           "routeParams": {
-            "packageType": "advanced package"
+            "packageType": "advanced package",
+            "lang": "tr"
           }
         },
         {
@@ -169,7 +172,8 @@
             }
           ],
           "routeParams": {
-            "packageType": "premium package"
+            "packageType": "premium package",
+            "lang": "tr"
           }
         },
         {
@@ -199,7 +203,8 @@
             }
           ],
           "routeParams": {
-            "packageType": "family package"
+            "packageType": "family package",
+            "lang": "tr"
           }
         },
         {
@@ -225,12 +230,14 @@
             }
           ],
           "routeParams": {
-            "packageType": "vip package"
+            "packageType": "vip package",
+            "lang": "tr"
           }
         }
       ],
       "packageQuestion": "Teste neler dahil?",
-      "buttonTitle": "Satın Al"
+      "buttonTitle": "Satın Al",
+      "buttonTitlePurchased": "Pakete Dahil"
     }
   },
   "loginPage": {
@@ -382,70 +389,187 @@
         },
         "country": "Ülke gereklidir."
       },
-      "buttonTitle": "Ödeme Yap"
+      "buttonTitle": "Ödeme Yap",
+      "error":  "IYZICO ödemenizi kabul etmemektedir."
     }
   },
   "callbackPage": {
     "card": {
-        "text": {
-            "success": "Satın alma işleminiz başarıyla gerçekleşti. Test sayfasına yönlendiriliyorsunuz.",
-            "fail": "Satın alma işleminiz başarısız oldu. Ana sayfaya yönlendiriliyorsunuz."
-        },
-        "reroute": " saniye içinde yönlendiriliyorsunuz..."
+      "text": {
+        "success": "Satın alma işleminiz başarıyla gerçekleşti. Test sayfasına yönlendiriliyorsunuz.",
+        "fail": "Satın alma işleminiz başarısız oldu. Ana sayfaya yönlendiriliyorsunuz."
+      },
+      "reroute": " saniye içinde yönlendiriliyorsunuz..."
     },
     "title": {
-        "success": "İşlem Başarılı",
-        "fail": "İşlem Başarısız"
+      "success": "İşlem Başarılı",
+      "fail": "İşlem Başarısız"
     }
   },
   "testPage": {
     "sidebar": {
-        "creditText": "Kalan Test Kredisi",
-        "testCreditButton": "Test Kredisi Satın Al",
-        "resultsTitle": "Sonuçlar",
-        "routeLang": "tr"
+      "creditText": {
+        "race": "Soy ve Genetik Köken Kredisi",
+        "medical": "Güncel Tıbbi Tarama Kredisi"
+      },
+      "testCreditButton": "Ekle",
+      "resultsTitle": "Sonuçlar",
+      "routeLang": "tr",
+      "raceTestOpenTitle": "Soy ve Genetik Köken Testi",
+      "medicalScanOpenTitle": "Güncel Tıbbi Tarama",
+      "testType": {
+        "race": "Irk",
+        "medical": "Tıbbi"
+      },
+      "consult": "7/24 Danışmanlık Desteği",
+      "purchaseTestCreditsTitle": {
+        "race": "Irk Testi Kredisi Satın Alma",
+        "medical": "Tıbbi Tarama Kredisi Satın Alma"
+      }
     },
     "testCard": {
-        "emptyFieldError": "Lütfen tüm alanları doldurduğunuzdan emin olun.",
-        "selfie": {
-            "text": " Yüzünüzün net bir şekilde göründüğü bir selfie'nizi ekleyin.",
-            "buttonTitle": "Fotoğraf Seç"
+      "emptyFieldError": "Lütfen tüm alanları doldurduğunuzdan emin olun.",
+      "selfie": {
+        "text": " Yüzünüzün net bir şekilde göründüğü bir selfie'nizi ekleyin.",
+        "buttonTitle": "Fotoğraf Seç"
+      },
+      "microphone": {
+        "beforeYouBegin": "Teste Başlamadan önce",
+        "beforeYouBeginList": [
+          "Sessiz bir ortama geçin.",
+          "Derin bir nefes alın."
+        ],
+        "coughTest": {
+          "title": "Öksürük Testi",
+          "p1": "Bu aşamada sizden arka arkaya 3 öksürük kaydı alınacaktır.",
+          "p2": "Lütfen her kayıtta net ve belirgin bir şekilde öksürünüz. İşlem sırasında mikrofona yakın olun ve arka planda gürültü olmamasına dikkat edin."
         },
-        "microphone": {
-            "beforeYouBegin": "Teste Başlamadan önce",
-            "beforeYouBeginList": ["Sessiz bir ortama geçin.","Derin bir nefes alın."],
-            "coughTest": {
-                "title": "Öksürük Testi",
-                "p1": "Bu aşamada sizden arka arkaya 3 öksürük kaydı alınacaktır.",
-                "p2": "Lütfen her kayıtta net ve belirgin bir şekilde öksürünüz. İşlem sırasında mikrofona yakın olun ve arka planda gürültü olmamasına dikkat edin."
-            },
-            "soundTest": {
-                "sound": "Sesi",
-                "p1": "Lütfen kesintisiz ve net bir şekilde ",
-                "p2": "sesi çıkarınız. İşlem sırasında mikrofona yakın olun ve arka planda gürültü olmamasına dikkat edin."
-            }
+        "soundTest": {
+          "sound": "Sesi",
+          "p1": "Lütfen kesintisiz ve net bir şekilde ",
+          "p2": "sesi çıkarınız. İşlem sırasında mikrofona yakın olun ve arka planda gürültü olmamasına dikkat edin."
         },
-        "processing": {
-            "text": "İşleminiz devam ediyor, bu birkaç dakika sürebilir. İşlem bittiğinde sonucunuzu listede göreceksiniz.",
-            "insufficientTestCredits": "Yetersiz test kredisi",
-            "loading": "Yükleniyor...",
-            "init": "Gönder"
+        "externalMicText": "Daha tutarlı test sonuçları için harici mikrofon bağlayınız."
+      },
+      "processing": {
+        "text": "İşleminiz devam ediyor, bu birkaç dakika sürebilir. İşlem bittiğinde sonucunuzu listede göreceksiniz.",
+        "insufficientTestCredits": "Yetersiz test kredisi",
+        "loading": "Yükleniyor...",
+        "init": "Gönder"
+      },
+      "raceTestCardConfirmModal": {
+        "currentRecording": [
+          "Öksürük sesini duyuyor musunuz ? (1.adım)",
+          "Öksürük sesini duyuyor musunuz ? (2.adım)",
+          "Öksürük sesini duyuyor musunuz ? (3.adım)",
+          "'A' sesini duyabiliyor musunuz ?",
+          "'U' sesini duyabiliyor musunuz ?",
+          "'İ' sesini duyabiliyor musunuz ?"
+        ],
+        "confirm": "Evet",
+        "tryAgain": "Tekrar Dene"
+      },
+      "medicalScanCardConfirmModal": {
+        "currentRecording": [
+          "'A' sesini duyabiliyor musunuz ?",
+          "'U' sesini duyabiliyor musunuz ?",
+          "'İ' sesini duyabiliyor musunuz ?"
+        ],
+        "confirm": "Evet",
+        "tryAgain": "Tekrar Dene"
+      },
+      "errorModal": {
+        "dialogHeader": "HATA",
+        "dialogBody": {
+          "oneTestOnly": "Aynı anda yalnızca bir test yapabilirsiniz. Lütfen 3 dakika sonra tekrar deneyiniz",
+          "noFaceFound": "Fotoğrafta herhangi bir yüz bulunamadı. Lütfen farklı bir fotoğraf ile tekrar deneyiniz",
+          "moreThanOneFaceFound": "Fotoğrafta birden fazla yüz tespit edildi. Lütfen farklı bir fotoğraf ile tekrar deneyiniz"
+        },
+        "dialogFooter": {
+          "button": "Tekrar Dene"
         }
+      }
     },
     "warningModal": {
-        "dialogHeader": "Uyarı ve Yasal Bilgilendirme",
-        "dialogBody": [
-            {"title":"Bilgilendirme Amaçlıdır:" ,"text": "MyXGenome raporu tıbbi bir teşhis veya tedavi aracı değildir."},
-            {"title": "Tıbbi Danışmanlık Yerine Geçmez:","text": "Genetik analiz sonuçlarınız hakkında detaylı bilgi almak veya sağlık durumunuzla ilgili karar vermek için mutlaka bir doktor, genetik danışman veya sağlık uzmanına başvurunuz."},
-            {"title": "Genetik Yatkınlık Kesinlik Anlamına Gelmez:","text": "Bu analizler belirli hastalıklar veya durumlar için olası genetik eğilimlerinizi gösterir, ancak kesin sonuçlar vermez."},
-            {"title": "Veri Güvenliği:","text": "Kişisel genetik verileriniz gizlilik çerçevesinde korunur ve üçüncü şahıslarla paylaşılmaz."},
-            {"title": "Kullanıcı Sorumluluğu:","text": "Bu raporda yer alan bilgileri kişisel sağlık kararları almak için kullanmadan önce bir uzmana danışmanız önerilir."}
-        ],
-        "dialogBodyEnd": "MyXGenome, size genetik bilginiz hakkında önemli içgörüler sunar, ancak sağlıkla ilgili nihai kararlarınızı profesyonel sağlık uzmanlarıyla değerlendirmeniz önemlidir.",
-        "dialogFooter": {
-            "agree": "Onaylıyorum",
-            "disagree": "Onaylamıyorum"
+      "dialogHeader": "Uyarı ve Yasal Bilgilendirme",
+      "dialogBody": [
+        {
+          "title": "Bilgilendirme Amaçlıdır:",
+          "text": "MyXGenome raporu tıbbi bir teşhis veya tedavi aracı değildir."
+        },
+        {
+          "title": "Tıbbi Danışmanlık Yerine Geçmez:",
+          "text": "Genetik analiz sonuçlarınız hakkında detaylı bilgi almak veya sağlık durumunuzla ilgili karar vermek için mutlaka bir doktor, genetik danışman veya sağlık uzmanına başvurunuz."
+        },
+        {
+          "title": "Genetik Yatkınlık Kesinlik Anlamına Gelmez:",
+          "text": "Bu analizler belirli hastalıklar veya durumlar için olası genetik eğilimlerinizi gösterir, ancak kesin sonuçlar vermez."
+        },
+        {
+          "title": "Veri Güvenliği:",
+          "text": "Kişisel genetik verileriniz gizlilik çerçevesinde korunur ve üçüncü şahıslarla paylaşılmaz."
+        },
+        {
+          "title": "Kullanıcı Sorumluluğu:",
+          "text": "Bu raporda yer alan bilgileri kişisel sağlık kararları almak için kullanmadan önce bir uzmana danışmanız önerilir."
         }
+      ],
+      "dialogBodyEnd": "MyXGenome, size genetik bilginiz hakkında önemli içgörüler sunar, ancak sağlıkla ilgili nihai kararlarınızı profesyonel sağlık uzmanlarıyla değerlendirmeniz önemlidir.",
+      "dialogFooter": {
+        "agree": "Onaylıyorum",
+        "disagree": "Onaylamıyorum"
+      }
+    }
+  },
+  "reportPage": {
+    "card": {
+      "offcanvasTitles": [
+        "Genel Analiz",
+        "Genler",
+        "Soy ve Genetik Köken Analizi",
+        "Bağışıklık Sistemi Profili"
+      ],
+      "offcanvas": {
+        "general": {
+          "title": "Genel Analiz",
+          "ageTite": "Tahmini Yaşınız: ",
+          "mrnaTitle": "MRNA Durumu",
+          "mrna": {
+            "true": "mRNA aşısı analizi sonucunda olası yan etkilerden etkilenmiş olabilirsiniz.",
+            "false": "mRNA aşısı analizi sonucunda bir yan etki gözlemlenmemiştir."
+          },
+          "psychoAnalysisTitle": "Psikoanaliz",
+          "psychoAnalysis": {
+            "true": "Stres seviyeniz yüksek görünüyor.",
+            "false": "Stres seviyeniz normal."
+          },
+          "genesTitle": "Mutasyona Uğramış Gen Sayısı",
+          "positiveDiseasesTitle": "Pozitif Çıkan Hastalıkların Sayısı"
+        },
+        "genes": {
+          "title": "Genler",
+          "text": "Bu liste de yer alan genlerinizin etkilendiği düşünülmektedir. İlgili verilerin tıbbi bir bağlayıcılığı olmayıp paylaşılan listeye, yasal etik iznimiz ile topladığımız 1.650.000 ses verisi ile sizin sesinizin uyum oranına bakılarak ulaşılmıştır.",
+          "high": "Yüksek",
+          "med": "Orta",
+          "low": "Düşük"
+        },
+        "heritage": {
+          "title": "Soy ve Genetik Köken Analizi",
+          "colorTitle": "Renk Kategorizasyonu",
+          "typeTitle": "Irk Kategorizasyonu"
+        },
+        "immune": {
+          "title": "Bağışıklık Sistemi Profili",
+          "text": "Bağışıklık Sistemi Profili’nde yer alan hastalıklar yalnızca bu hastalıklara yakalanma yatkınlığınızı gösterir. Her hangi bir tıbbi sonuç anlamı taşımaz."
+        }
+      },
+      "medicalScanResult": {
+        "title": "Güncel Tıbbi Tarama Sonuçları",
+        "status": {
+          "positive": "Pozitif",
+          "negative": "Negatif"
+        }
+      }
     }
   }
 }

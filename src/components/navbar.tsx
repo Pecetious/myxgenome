@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState } from "react";
 import {
   Navbar as MTNavbar,
@@ -12,6 +13,12 @@ interface NavItemProps {
   children: React.ReactNode;
   href?: string;
 }
+import dynamic from 'next/dynamic';
+
+const LanguageSwitcher = dynamic(() => import('@/components/switch-locale-button'), {
+  ssr: false,
+});
+
 function NavItem({ children, href }: NavItemProps) {
   return (
     <li>
@@ -151,18 +158,18 @@ export function Navbar({ locale }: { locale: any }) {
           >
             <i className="fa-brands fa-instagram text-base" />
           </IconButton> */}
-          <div className="space-x-3">
+          <div className="hidden gap-2 lg:flex">
             {session ? (
               <>
                 <Button
                   color={isScrolling ? "gray" : "white"}
                   size="sm"
-                  onClick={() => router.replace("/test")}
+                  onClick={() => router.replace(`/${locale.lang}/test`)}
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                 {locale.buttonTitles[3]}
+                  {locale.buttonTitles[3]}
                 </Button>
                 <Button
                   color={isScrolling ? "gray" : "white"}
@@ -172,7 +179,7 @@ export function Navbar({ locale }: { locale: any }) {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                 {locale.buttonTitles[2]}
+                  {locale.buttonTitles[2]}
                 </Button>
               </>
             ) : (
@@ -199,6 +206,14 @@ export function Navbar({ locale }: { locale: any }) {
                 </Button>
               </>
             )}
+            {/* Dil Seçici */}
+            <LanguageSwitcher
+              color={
+                isScrolling
+                  ? "bg-gray-900 text-white"
+                  : "text-gray-900 bg-white"
+              }
+            />
           </div>
         </div>
         <IconButton
@@ -220,11 +235,11 @@ export function Navbar({ locale }: { locale: any }) {
       <Collapse open={open}>
         <div className="container mx-auto mt-4 rounded-lg bg-white px-6 py-5">
           <ul className="flex flex-col gap-4 text-blue-gray-900">
-          {locale.navItems.map((item: any, index: number) => (
-            <NavItem key={index} href={item.href}>
-              {item.title}
-            </NavItem>
-          ))}
+            {locale.navItems.map((item: any, index: number) => (
+              <NavItem key={index} href={item.href}>
+                {item.title}
+              </NavItem>
+            ))}
           </ul>
           {/* <div className="mt-4 flex gap-2">
               <IconButton
@@ -259,7 +274,7 @@ export function Navbar({ locale }: { locale: any }) {
               </IconButton>
             </div> */}
           <div className="space-x-3">
-          {session ? (
+            {session ? (
               <>
                 <Button
                   color={isScrolling ? "gray" : "white"}
@@ -269,7 +284,7 @@ export function Navbar({ locale }: { locale: any }) {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                 {locale.buttonTitles[3]}
+                  {locale.buttonTitles[3]}
                 </Button>
                 <Button
                   color={isScrolling ? "gray" : "white"}
@@ -279,7 +294,7 @@ export function Navbar({ locale }: { locale: any }) {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                 {locale.buttonTitles[2]}
+                  {locale.buttonTitles[2]}
                 </Button>
               </>
             ) : (
@@ -306,6 +321,13 @@ export function Navbar({ locale }: { locale: any }) {
                 </Button>
               </>
             )}
+            <LanguageSwitcher
+              color={
+                isScrolling
+                  ? "bg-gray-900 text-white"
+                  : "text-gray-900 bg-white"
+              }
+            />
           </div>
         </div>
       </Collapse>
