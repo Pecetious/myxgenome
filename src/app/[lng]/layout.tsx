@@ -26,10 +26,10 @@ export default async function RootLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ lng: 'en' | 'tr' }>
+  params: Promise<{ lng: "en" | "tr" }>;
 }) {
-   const {lng} = await params;
-    const dict = await getDictionary(lng);
+  const { lng } = await params;
+  const dict = await getDictionary(lng);
   return (
     <html lang={lng}>
       <head>
@@ -43,7 +43,7 @@ export default async function RootLayout({
         <Layout>
           <Navbar locale={dict.navbar} />
           {children}
-          <Footer locale={dict.footer}/>
+          <Footer locale={dict.footer} />
         </Layout>
         <link
           rel="stylesheet"

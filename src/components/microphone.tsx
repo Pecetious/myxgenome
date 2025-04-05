@@ -42,7 +42,7 @@ const Microphone: React.FC<MicrophoneProps> = ({
   };
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center h-8 my-5">
       <button
         className="relative h-30 flex items-center mb-5"
         onClick={startRecording}

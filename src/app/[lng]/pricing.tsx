@@ -27,7 +27,6 @@ const getSession = (): any | null => {
 export function Pricing({ locale }: { locale: any }) {
   const [session, setSession] = useState<any>(null);
   const router = useRouter();
-  console.log(session);
   const packageTypeOrder = ["basic", "advanced", "premium", "family", "vip"];
   const isButtonDisabled = (pkg: string, user: string) => {
     const userIndex = packageTypeOrder.indexOf(user);

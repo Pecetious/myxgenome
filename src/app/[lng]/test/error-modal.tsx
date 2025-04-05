@@ -47,9 +47,7 @@ const ErrorModal = ({
         {errorMessage &&
           (errorMessage.includes("Aynı anda yalnızca bir test yapabilirsiniz.")
             ? locale.dialogBody.oneTestOnly
-            : errorMessage.includes("Fotoğrafta herhangi bir yüz bulunamadı.")
-            ? locale.dialogBody.noFaceFound
-            : locale.dialogBody.moreThanOneFaceFound)}
+            : "")}
       </DialogBody>
       <DialogFooter
         placeholder={undefined}

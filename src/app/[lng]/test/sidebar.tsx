@@ -47,14 +47,18 @@ const Sidebar = ({
   locale,
   openMedicalScan,
   openRaceTest,
+  openThyroidTest,
+  triggerRefresh,
 }: {
   locale: any;
   openRaceTest: () => void;
   openMedicalScan: () => void;
+  openThyroidTest: () => void;
+  triggerRefresh: (callback: any) => void;
 }) => {
   const [testCredits, setTestCredits] = useState<any>(null);
   const [resultsList, setResultsList] = useState<any>(null);
-  const [session,setSession] = useState<any>(null)
+  const [session, setSession] = useState<any>(null);
   const router = useRouter();
   const [open, setOpen] = useState(1);
 
@@ -104,14 +108,15 @@ const Sidebar = ({
     }
   };
   useEffect(() => {
-    setSession(getSession())
+    setSession(getSession());
     getResults();
     getTestCredits();
+    triggerRefresh(() => getResults());
     console.log(testCredits);
   }, []);
   return (
     <Card
-      className=" w-full md:max-w-[25rem] shadow-xl shadow-blue-gray-900/5"
+      className="w-full md:max-w-[20rem] shadow-lg shadow-gray-200"
       placeholder={undefined}
       onPointerEnterCapture={undefined}
       onPointerLeaveCapture={undefined}
@@ -122,7 +127,7 @@ const Sidebar = ({
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
       >
-        <ListItem
+        {/*  <ListItem
           className="hover:cursor-default hover:bg-white"
           placeholder={undefined}
           onPointerEnterCapture={undefined}
@@ -207,8 +212,8 @@ const Sidebar = ({
               />
             </ListItemSuffix>
           </ListItem>
-        )}
-        <hr className="font-bold text-black border border-blue-gray-100 my-2" />
+        )} */}
+
         <ListItem
           placeholder={undefined}
           onPointerEnterCapture={undefined}
@@ -225,21 +230,38 @@ const Sidebar = ({
           </Typography>
         </ListItem>
         {session && session.subscriptionType !== "basic" && (
-          <ListItem
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-            onClick={openMedicalScan}
-          >
-            <Typography
-              className="font-semibold "
+          <>
+            <ListItem
               placeholder={undefined}
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
+              onClick={openMedicalScan}
             >
-              {locale.medicalScanOpenTitle}
-            </Typography>
-          </ListItem>
+              <Typography
+                className="font-semibold"
+                placeholder={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+              >
+                {locale.medicalScanOpenTitle}
+              </Typography>
+            </ListItem>
+            <ListItem
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+              onClick={openThyroidTest}
+            >
+              <Typography
+                className="font-semibold "
+                placeholder={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+              >
+                {locale.thyroidTestOpenTitle}
+              </Typography>
+            </ListItem>
+          </>
         )}
         <hr className="font-bold text-black border border-blue-gray-100 my-2" />
         <Accordion
@@ -257,7 +279,7 @@ const Sidebar = ({
           onPointerLeaveCapture={undefined}
         >
           <ListItem
-            className="p-0 flex flex-col"
+            className="p-0 flex flex-col w-full"
             selected={open === 1}
             placeholder={undefined}
             onPointerEnterCapture={undefined}
@@ -300,10 +322,12 @@ const Sidebar = ({
                 />
               </ListItemSuffix>
             </AccordionHeader>
-            <AccordionBody className="py-1">
+            <AccordionBody
+              className="py-1 max-h-[300px] overflow-y-scroll w-full"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
               <List
-                className="max-h-[300px] overflow-y-scroll p-0"
-                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+                className="p-0 w-full"
                 placeholder={undefined}
                 onPointerEnterCapture={undefined}
                 onPointerLeaveCapture={undefined}
@@ -320,6 +344,7 @@ const Sidebar = ({
                       placeholder={undefined}
                       onPointerEnterCapture={undefined}
                       onPointerLeaveCapture={undefined}
+                      className="w-full"
                     >
                       <Typography
                         placeholder={undefined}
@@ -340,7 +365,9 @@ const Sidebar = ({
                         >
                           {item.test_type.includes("race")
                             ? locale.testType.race
-                            : locale.testType.medical}
+                            : item.test_type.includes("medical")
+                            ? locale.testType.medical
+                            : locale.testType.thyroid}
                         </Typography>
                       </ListItemSuffix>
                     </ListItem>

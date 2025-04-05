@@ -390,7 +390,8 @@
         "country": "Country is required."
       },
       "buttonTitle": "Make Payment",
-      "error": "IYZICO is not accepting your payment"
+      "error": "IYZICO is not accepting your payment",
+      "lang": "en"
     }
   },
   "callbackPage": {
@@ -417,9 +418,11 @@
       "routeLang": "en",
       "raceTestOpenTitle": "Ancestry and Genetic Origin Test",
       "medicalScanOpenTitle": "Medical Scan",
+      "thyroidTestOpenTitle": "Thyroid Test",
       "testType": {
         "race": "Race",
-        "medical": "Medical"
+        "medical": "Medical",
+        "thyroid": "Thyroid"
       },
       "consult": "24/7 Consultation",
       "purchaseTestCreditsTitle": {
@@ -469,6 +472,7 @@
         "confirm": "Yes",
         "tryAgain": "Try Again"
       },
+      "purchaseRaceTestCreditsTitle": "Purchase Race Test Credits",
       "medicalScanCardConfirmModal": {
         "currentRecording": [
           "Can you hear the 'A' sound?",
@@ -478,6 +482,7 @@
         "confirm": "Yes",
         "tryAgain": "Try Again"
       },
+      "purchaseMedicalTestCreditsTitle": "Purchase Medical Scan Credits",
       "errorModal": {
         "dialogHeader": "ERROR",
         "dialogBody": {
@@ -485,10 +490,52 @@
           "noFaceFound": "No face was detected in the photo. Please try again with a different photo.",
           "moreThanOneFaceFound": "Multiple faces were detected in the photo. Please try again with a different photo."
         },
-        "dialogFooter":{
+        "dialogFooter": {
           "button": "Try Again"
         }
-      }
+      },
+      "lang": "en",
+      "remainingCredits": "Remaining Credits",
+      "addTestCredits": "Add Credits"
+    },
+    "thyroidCard": {
+      "emptyFieldError": "Please make sure all fields are filled.",
+      "microphone": {
+        "beforeYouBegin": "Before You Begin the Test",
+        "beforeYouBeginList": [
+          "Move to a quiet environment.",
+          "Take a deep breath."
+        ],
+        "soundTest": {
+          "title": "'U' Test",
+          "text": "Please make a continuous and clear 'U' sound. Stay close to the microphone during the process and ensure there is no background noise."
+        },
+        "externalMicText": "For more consistent test results, please use an external microphone."
+      },
+      "processing": {
+        "text": "Your test is in progress, this may take a few minutes. Once completed, your result will appear in the list.",
+        "insufficientTestCredits": "Insufficient test credits",
+        "loading": "Loading...",
+        "init": "Submit"
+      },
+      "thyroidTestMicrophoneConfirmModal": {
+        "currentRecording": ["Can you hear the 'U' sound?"],
+        "confirm": "Yes",
+        "tryAgain": "Try Again"
+      },
+      "errorModal": {
+        "dialogHeader": "ERROR",
+        "dialogBody": {
+          "oneTestOnly": "Only one test can be performed at a time. Please try again in 3 minutes."
+        },
+        "dialogFooter": {
+          "button": "Retry"
+        }
+      },
+      "remainingCredits": "Remaining Credits",
+      "addTestCredits": "Add Credits",
+      "purchaseTestCreditsTitle": "Purchase Thyroid Test Credits",
+      "lang": "en"
     },
     "warningModal": {
       "dialogHeader": "Warning and Legal Notice",
@@ -520,7 +567,6 @@
         "disagree": "I Disagree"
       }
     }
-   
   },
   "reportPage": {
     "card": {

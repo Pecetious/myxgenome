@@ -2,10 +2,14 @@ import { NextResponse } from "next/server";
 
 // Korunan ve açık rotalar
 const protectedRoutes = [
-  "/en/test", "/tr/test",
-  "/en/payment", "/tr/payment",
-  "/en/callback", "/tr/callback",
-  "/en/reports", "/tr/reports"
+  "/en/test",
+  "/tr/test",
+  "/en/payment",
+  "/tr/payment",
+  "/en/callback",
+  "/tr/callback",
+  "/en/reports",
+  "/tr/reports",
 ];
 
 const publicRoutes = ["/login", "/signup", "/"]; // Açık sayfalar
@@ -30,13 +34,13 @@ export default function middleware(req: any) {
   const path = req.nextUrl.pathname;
   const url = req.nextUrl.clone();
 
-  console.log("Başlangıç - URL: ", path); // İlk URL'yi logluyoruz
+  // console.log("Başlangıç - URL: ", path); // İlk URL'yi logluyoruz
 
   // URL'de dil parametresi olup olmadığını kontrol ediyoruz
-  const urlHasLocale = locales.some((locale) =>
-    path.startsWith(`/${locale}/`)
-  );
-  console.log(`URL'de dil parametresi var mı? ${urlHasLocale ? "Evet" : "Hayır"}`);
+  const urlHasLocale = locales.some((locale) => path.startsWith(`/${locale}/`));
+  /*   console.log(
+    `URL'de dil parametresi var mı? ${urlHasLocale ? "Evet" : "Hayır"}`
+  ); */
 
   // Eğer URL'de dil parametresi yoksa, dil parametresini ekliyoruz
   if (!urlHasLocale) {
@@ -49,16 +53,18 @@ export default function middleware(req: any) {
       return NextResponse.next(); // Dil zaten doğru, devam et
     }
 
-    console.log(`Dil parametresi eklenmiş yeni URL: ${url.pathname}`);
+    // console.log(`Dil parametresi eklenmiş yeni URL: ${url.pathname}`);
 
     // Token ve Protected rota kontrolü
     const isProtectedRoute = protectedRoutes.some((route) =>
       url.pathname.startsWith(route)
     );
-    console.log(`Korunan rota kontrolü: ${isProtectedRoute ? "Evet" : "Hayır"}`);
+    /*   console.log(
+      `Korunan rota kontrolü: ${isProtectedRoute ? "Evet" : "Hayır"}`
+    ); */
 
     if (isProtectedRoute && !cookies["token"]) {
-      console.log("Token yok, login sayfasına yönlendiriliyor...");
+      /* console.log("Token yok, login sayfasına yönlendiriliyor..."); */
       return NextResponse.redirect(
         new URL(`/${userLocale}/login`, req.nextUrl.origin)
       );
@@ -69,20 +75,24 @@ export default function middleware(req: any) {
       url.pathname.startsWith(route)
     );
     if (isPublicRoute && cookies["token"]) {
-      console.log("Kullanıcı giriş yapmış, ana sayfaya yönlendiriliyor...");
-      return NextResponse.redirect(new URL(`/${userLocale}`, req.nextUrl.origin));
+      /* console.log("Kullanıcı giriş yapmış, ana sayfaya yönlendiriliyor..."); */
+      return NextResponse.redirect(
+        new URL(`/${userLocale}`, req.nextUrl.origin)
+      );
     }
 
     return NextResponse.redirect(url); // Yönlendirme yapılacak URL'yi döndür
   }
 
-  console.log("Dil parametresi zaten mevcut, dinamik rota kontrolüne geçiliyor...");
+  console.log(
+    "Dil parametresi zaten mevcut, dinamik rota kontrolüne geçiliyor..."
+  );
 
   // Dinamik rotalar için dil parametresi eklenmesi
   const dynamicRoutes = ["/callback", "/reports"];
   if (dynamicRoutes.some((route) => path.startsWith(route))) {
     if (!path.startsWith(`/${userLocale}`)) {
-      console.log(`Dinamik rota dil eksik, yönlendiriliyor: ${url.pathname}`);
+      /* console.log(`Dinamik rota dil eksik, yönlendiriliyor: ${url.pathname}`); */
       url.pathname = `/${userLocale}${url.pathname}`;
       return NextResponse.redirect(url);
     }
@@ -92,17 +102,21 @@ export default function middleware(req: any) {
   const isProtectedRoute = protectedRoutes.some((route) =>
     path.startsWith(route)
   );
-  console.log(`Korunan rota kontrolü (token kontrolü): ${isProtectedRoute ? "Evet" : "Hayır"}`);
+  /* console.log(
+    `Korunan rota kontrolü (token kontrolü): ${
+      isProtectedRoute ? "Evet" : "Hayır"
+    }`
+  ); */
 
   if (isProtectedRoute && !cookies["token"]) {
-    console.log("Token yok, login sayfasına yönlendiriliyor...");
+    /* console.log("Token yok, login sayfasına yönlendiriliyor..."); */
     return NextResponse.redirect(
       new URL(`/${userLocale}/login`, req.nextUrl.origin)
     );
   }
 
   // Eğer yönlendirme yapılmazsa, bir sonraki işlemi gerçekleştirin
-  console.log("Yönlendirme yapılmıyor, isteğe devam ediliyor.");
+  /*  console.log("Yönlendirme yapılmıyor, isteğe devam ediliyor."); */
   return NextResponse.next();
 }
 

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import {
   Navbar as MTNavbar,
@@ -13,11 +13,14 @@ interface NavItemProps {
   children: React.ReactNode;
   href?: string;
 }
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
-const LanguageSwitcher = dynamic(() => import('@/components/switch-locale-button'), {
-  ssr: false,
-});
+const LanguageSwitcher = dynamic(
+  () => import("@/components/switch-locale-button"),
+  {
+    ssr: false,
+  }
+);
 
 function NavItem({ children, href }: NavItemProps) {
   return (
@@ -72,14 +75,14 @@ export function Navbar({ locale }: { locale: any }) {
     const interval = setInterval(checkSession, 5 * 60 * 1000);
     return () => clearInterval(interval);
   }, []);
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener(
       "resize",
       () => window.innerWidth >= 960 && setOpen(false)
     );
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     function handleScroll() {
       if (window.scrollY > 0) {
         setIsScrolling(true);
@@ -273,13 +276,13 @@ export function Navbar({ locale }: { locale: any }) {
                 <i className="fa-brands fa-instagram text-base" />
               </IconButton>
             </div> */}
-          <div className="space-x-3">
+          <div className="gap-5 my-4 flex">
             {session ? (
               <>
                 <Button
                   color={isScrolling ? "gray" : "white"}
                   size="sm"
-                  onClick={() => router.replace("/test")}
+                  onClick={() => router.replace(`/${locale.lang}/test`)}
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}

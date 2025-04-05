@@ -390,7 +390,8 @@
         "country": "Ülke gereklidir."
       },
       "buttonTitle": "Ödeme Yap",
-      "error":  "IYZICO ödemenizi kabul etmemektedir."
+      "error": "IYZICO ödemenizi kabul etmemektedir.",
+      "lang": "tr"
     }
   },
   "callbackPage": {
@@ -417,9 +418,11 @@
       "routeLang": "tr",
       "raceTestOpenTitle": "Soy ve Genetik Köken Testi",
       "medicalScanOpenTitle": "Güncel Tıbbi Tarama",
+      "thyroidTestOpenTitle": "Tiroit Testi",
       "testType": {
         "race": "Irk",
-        "medical": "Tıbbi"
+        "medical": "Tıbbi",
+        "thyroid": "Tiroit"
       },
       "consult": "7/24 Danışmanlık Desteği",
       "purchaseTestCreditsTitle": {
@@ -469,6 +472,7 @@
         "confirm": "Evet",
         "tryAgain": "Tekrar Dene"
       },
+      "purchaseRaceTestCreditsTitle": "Irk Testi Kredisi Satın Alma",
       "medicalScanCardConfirmModal": {
         "currentRecording": [
           "'A' sesini duyabiliyor musunuz ?",
@@ -478,6 +482,7 @@
         "confirm": "Evet",
         "tryAgain": "Tekrar Dene"
       },
+      "purchaseMedicalTestCreditsTitle": "Tıbbi Tarama Kredisi Satın Alma",
       "errorModal": {
         "dialogHeader": "HATA",
         "dialogBody": {
@@ -488,7 +493,49 @@
         "dialogFooter": {
           "button": "Tekrar Dene"
         }
-      }
+      },
+      "lang": "tr",
+      "remainingCredits": "Kalan Kredi",
+      "addTestCredits": "Kredi Ekle"
+    },
+    "thyroidCard": {
+      "emptyFieldError": "Lütfen tüm alanları doldurduğunuzdan emin olun.",
+      "microphone": {
+        "beforeYouBegin": "Teste Başlamadan önce",
+        "beforeYouBeginList": [
+          "Sessiz bir ortama geçin.",
+          "Derin bir nefes alın."
+        ],
+        "soundTest": {
+          "title": "'U' Testi",
+          "text": "Lütfen kesintisiz bir ve net bir şekilde 'U' sesi çıkarınız. İşlem sırasında mikrofona yakın olun ve arka planda gürültü olmamasına dikkat edin."
+        },
+        "externalMicText": "Daha tutarlı test sonuçları için harici mikrofon bağlayınız."
+      },
+      "processing": {
+        "text": "İşleminiz devam ediyor, bu birkaç dakika sürebilir. İşlem bittiğinde sonucunuzu listede göreceksiniz.",
+        "insufficientTestCredits": "Yetersiz test kredisi",
+        "loading": "Yükleniyor...",
+        "init": "Gönder"
+      },
+      "thyroidTestMicrophoneConfirmModal": {
+        "currentRecording": ["'U' sesini duyabiliyor musunuz ?"],
+        "confirm": "Evet",
+        "tryAgain": "Tekrar Dene"
+      },
+      "errorModal": {
+        "dialogHeader": "HATA",
+        "dialogBody": {
+          "oneTestOnly": "Aynı anda yalnızca bir test yapabilirsiniz. Lütfen 3 dakika sonra tekrar deneyiniz"
+        },
+        "dialogFooter": {
+          "button": "Tekrar Dene"
+        }
+      },
+      "remainingCredits": "Kalan Test Kredisi",
+      "addTestCredits": "Kredi Ekle",
+      "purchaseTestCreditsTitle": "Tiroit Test Kredisi Satın Alma",
+      "lang": "tr"
     },
     "warningModal": {
       "dialogHeader": "Uyarı ve Yasal Bilgilendirme",

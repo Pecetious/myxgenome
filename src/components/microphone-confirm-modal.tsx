@@ -13,8 +13,8 @@ interface Props {
   clickedYes: () => void;
   closeModal: () => void;
   recordingUrl: string;
-  currentRecording: number;
-  locale: any
+  currentRecording?: number;
+  locale: any;
 }
 const MicrophoneConfirmModal: FC<Props> = ({
   open,
@@ -22,8 +22,8 @@ const MicrophoneConfirmModal: FC<Props> = ({
   clickedYes,
   closeModal,
   recordingUrl,
-  currentRecording,
-  locale
+  currentRecording = 0,
+  locale,
 }) => {
   return (
     <Dialog

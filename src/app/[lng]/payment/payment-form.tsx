@@ -41,9 +41,7 @@ const PaymentForm = ({ locale }: { locale: any }) => {
     }
   };
   const [error, setError] = useState<any>(null);
-  const [testCreditsCounter, setTestCreditsCounter] = useState(
-    session&& session.selectedPackage.testCredits || 0
-  );
+  const [testCreditsCounter, setTestCreditsCounter] = useState(-1);
   const handlePaymentInit = async (values: any) => {
     const session = getSession();
     if (testCreditsCounter === 0) return;
@@ -63,6 +61,7 @@ const PaymentForm = ({ locale }: { locale: any }) => {
           type: session.subscriptionType,
           testCredits: testCreditsCounter,
           testType: session.selectedPackage.testType,
+          lang: locale.lang,
         };
         console.log(body);
       } else {
@@ -74,6 +73,7 @@ const PaymentForm = ({ locale }: { locale: any }) => {
           city: values.city,
           country: values.country,
           type: session.selectedPackage.type,
+          lang: locale.lang,
         };
         console.log(body);
       }
@@ -87,6 +87,25 @@ const PaymentForm = ({ locale }: { locale: any }) => {
     } catch (err: any) {
       console.error(err);
       setError(err.response.data.error);
+    } finally {
+      localStorage.setItem(
+        "session",
+        JSON.stringify({
+          ...session, // Eski session verilerini koru
+          selectedPackage: {
+            // Yeni selectedPackage verisini ekle
+            ...session.selectedPackage,
+            testCredits: testCreditsCounter,
+            price: `${
+              session.selectedPackage.testType === "thyroid"
+                ? testCreditsCounter * 80
+                : session.selectedPackage.testType === "race"
+                ? testCreditsCounter * 100
+                : testCreditsCounter * 50
+            } ₺`,
+          },
+        })
+      );
     }
   };
   const handleIncrement = () => {
@@ -97,8 +116,12 @@ const PaymentForm = ({ locale }: { locale: any }) => {
     setTestCreditsCounter(testCreditsCounter - 1);
   };
   useEffect(() => {
-    setSession(getSession());
-  });
+    const sessionData = getSession();
+    setSession(sessionData);
+    if (sessionData?.selectedPackage?.testCredits) {
+      setTestCreditsCounter(sessionData.selectedPackage.testCredits);
+    }
+  }, []);
   return (
     <Formik
       initialValues={{
@@ -141,8 +164,16 @@ const PaymentForm = ({ locale }: { locale: any }) => {
                   onPointerLeaveCapture={undefined}
                 >
                   {session && session.selectedPackage.testCredits
-                    ? `${testCreditsCounter * 50} ₺`
-                    : session && session.selectedPackage && session.selectedPackage.price}
+                    ? `${
+                        session.selectedPackage.testType === "thyroid"
+                          ? testCreditsCounter * 80
+                          : session.selectedPackage.testType === "race"
+                          ? testCreditsCounter * 100
+                          : testCreditsCounter * 50
+                      } ₺`
+                    : session &&
+                      session.selectedPackage &&
+                      session.selectedPackage.price}
                 </Typography>
               </div>
             </CardHeader>

@@ -1,6 +1,8 @@
 "use client";
+
 import Microphone from "@/components/microphone";
-import MicrophoneConfirmModal from "@/components/medical-scan-microphone-confirm-modal";
+import MicrophoneConfirmModal from "@/components/microphone-confirm-modal";
+import getSession from "@/utils/getSession";
 import {
   Button,
   Card,
@@ -8,36 +10,16 @@ import {
   CardFooter,
   Chip,
   ListItem,
+  ListItemPrefix,
   ListItemSuffix,
   Typography,
 } from "@material-tailwind/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
+import ErrorModal from "./error-modal";
 import { useRouter } from "next/navigation";
-const ErrorModal = dynamic(() => import("./error-modal"), {
-  ssr: false,
-});
-const getSession = (): any | null => {
-  try {
-    // localStorage'dan 'session' verisini alın
-    const sessionData = localStorage.getItem("session");
 
-    // Eğer sessionData varsa ve geçerli bir JSON formatı ise
-    if (sessionData) {
-      const parsedSession = JSON.parse(sessionData);
-
-      // session objesinin içinde token'a ulaşmaya çalışıyoruz
-      return parsedSession || null; // Eğer token yoksa null döner
-    }
-    return null; // 'session' verisi yoksa null döner
-  } catch (error) {
-    // Eğer JSON.parse sırasında bir hata oluşursa, null döner
-    console.error("JSON parse error:", error);
-    return null;
-  }
-};
-const MedicalScanCard = ({
+const ThyroidCard = ({
   locale,
   visible = false,
   refreshList,
@@ -51,74 +33,9 @@ const MedicalScanCard = ({
   const [blobUrl, setBlobUrl] = useState<string>("");
   const [microphoneConfirmModal, setMicrophoneConfirmModal] = useState(false);
   const [isErrorOpen, setErrorOpen] = useState(false);
-  const [recordings, setRecordings] = useState<any>([]);
-  const [currentRecording, setCurrentRecording] = useState(0);
+  const [recording, setRecording] = useState<any>(null);
   const [testCredits, setTestCredits] = useState(0);
   const router = useRouter();
-  const handleClickedYes = () => {
-    console.log("Mikrofon kaydı onaylandı");
-    if (currentRecording > 5) {
-      return;
-    }
-    setCurrentRecording(currentRecording + 1);
-    console.log(currentRecording);
-    console.log(recordings);
-  };
-
-  const handleSubmit = async () => {
-    const session = getSession();
-    if (recordings.length < 3) {
-      setError(locale.emptyFeildError);
-      return;
-    }
-    const formData = new FormData();
-    formData.append("a_audio", recordings[0], "recording_a.webm");
-    formData.append("u_audio", recordings[1], "recording_u.webm");
-    formData.append("i_audio", recordings[2], "recording_i.webm");
-    formData.append("email", session.email);
-    setLoading(true);
-
-    try {
-      const { data } = await axios.post("/api/medical-scan", formData, {
-        headers: {
-          Authorization: `Bearer ${session.token}`,
-        },
-      });
-    } catch (err: any) {
-      setError(err.response.data.error);
-      setErrorOpen(true);
-      setTimeout(() => {
-        /* trigger  getResults(); */
-      }, 120000);
-    } finally {
-      setLoading(false);
-      setRecordings([]);
-      setCurrentRecording(0);
-      refreshList();
-      getTestCredits();
-    }
-  };
-  const handleClickedNo = () => {
-    console.log("Yeniden kayıt isteniyor.");
-    setRecordings((prevRecordings: any[]) => {
-      const updatedRecordings = [...prevRecordings];
-      updatedRecordings.pop();
-      return updatedRecordings;
-    });
-    console.log(recordings);
-    setMicrophoneConfirmModal(false);
-  };
-
-  const handleRecordingComplete = (newRecording: any) => {
-    setRecordings((prevRecordings: any[]) => {
-      const updatedRecordings = [...prevRecordings];
-      updatedRecordings[currentRecording] = newRecording;
-      return updatedRecordings;
-    });
-    const url = URL.createObjectURL(newRecording);
-    setBlobUrl(url);
-    setMicrophoneConfirmModal(true);
-  };
   const getTestCredits = async () => {
     const session = getSession();
     try {
@@ -127,7 +44,8 @@ const MedicalScanCard = ({
           Authorization: `Bearer ${session.token}`,
         },
       });
-      setTestCredits(data.testCredits.medical); // API'den dönen değeri set et
+      setTestCredits(data.testCredits.thyroid);
+      console.log(data.testCredits.thyroid); // API'den dönen değeri set et
     } catch (error) {
       console.error("Test kredileri alınırken hata oluştu:", error);
     }
@@ -140,15 +58,57 @@ const MedicalScanCard = ({
         ...session, // Eski session verilerini koru
         selectedPackage: {
           // Yeni selectedPackage verisini ekle
-          title: locale.purchaseMedicalTestCreditsTitle,
+          title: locale.purchaseTestCreditsTitle,
           type: session.subscriptionType,
           testCredits: 1,
-          price: "50 ₺",
-          testType: "medical",
+          price: "80 ₺",
+          testType: "thyroid",
         },
       })
     );
     router.push(`/${locale.lang}/payment`);
+  };
+  const handleClickedYes = () => {
+    console.log("Mikrofon kaydı onaylandı.");
+    setMicrophoneConfirmModal(false);
+  };
+  const handleClickedNo = () => {
+    console.log("Yeniden kayıt isteniyor.");
+    setRecording(null);
+    setMicrophoneConfirmModal(false);
+  };
+  const handleRecordingComplete = (newRecording: any) => {
+    setRecording(newRecording);
+    const url = URL.createObjectURL(newRecording);
+    setBlobUrl(url);
+    setMicrophoneConfirmModal(true);
+  };
+  const handleSubmit = async () => {
+    const session = getSession();
+    if (recording === null) {
+      setError(locale.emptyFieldError);
+      return;
+    }
+    const formData = new FormData();
+    formData.append("u_audio", recording, "recording_u.webm");
+    formData.append("email", session.email);
+    setLoading(true);
+    try {
+      const { data } = await axios.post("/api/thyroid-test", formData, {
+        headers: {
+          Authorization: `Bearer ${session.token}`,
+        },
+      });
+      console.log(data);
+    } catch (err: any) {
+      setError(err.response.data.error);
+      setErrorOpen(true);
+    } finally {
+      setLoading(false);
+      setRecording(null);
+      refreshList();
+      getTestCredits();
+    }
   };
   useEffect(() => {
     getTestCredits();
@@ -170,7 +130,6 @@ const MedicalScanCard = ({
           className="lg:flex lg:gap-10"
         >
           <div className="mb-4 w-full">
-            {/* Microphone Component */}
             <div className="max-w-fit mb-4">
               <ListItem
                 className="shadow-md hover:bg-white hover:cursor-default"
@@ -211,7 +170,7 @@ const MedicalScanCard = ({
                 </ListItemSuffix>
               </ListItem>
             </div>
-            <div className="p-2 space-y-2 ">
+            <div className="p-2 space-y-2">
               <div className="font-bold border-blue-gray-500 border w-fit p-2 mx-auto rounded-lg shadow-md animate-breathing">
                 <h3 className="font-bold text-center">
                   {locale.microphone.beforeYouBegin}
@@ -221,29 +180,17 @@ const MedicalScanCard = ({
                   <li>{locale.microphone.beforeYouBeginList[1]}</li>
                 </ul>
               </div>
-
               <>
                 <h3 className="font-bold text-center">
-                  {currentRecording === 0
-                    ? "A"
-                    : currentRecording === 1
-                    ? "U"
-                    : "İ"}{" "}
-                  {locale.microphone.soundTest.sound}
+                  {locale.microphone.soundTest.title}
                 </h3>
                 <p className="text-center">
-                  {locale.microphone.soundTest.p1}
-                  {currentRecording === 0
-                    ? "AAA"
-                    : currentRecording === 1
-                    ? "UUU"
-                    : "İİİ"}
-                  {locale.microphone.soundTest.p2}
+                  {locale.microphone.soundTest.text}
                 </p>
               </>
             </div>
             <div className="w-full h-[20vh] flex flex-col items-center justify-center">
-              {recordings.length < 6 && (
+              {!recording && (
                 <>
                   <Microphone
                     onRecordComplete={handleRecordingComplete}
@@ -271,7 +218,7 @@ const MedicalScanCard = ({
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          {recordings.length === 3 && (
+          {recording && (
             <Button
               onClick={handleSubmit}
               color="blue"
@@ -297,9 +244,8 @@ const MedicalScanCard = ({
           clickedNo={handleClickedNo}
           closeModal={() => setMicrophoneConfirmModal(false)}
           recordingUrl={blobUrl}
-          currentRecording={currentRecording}
           clickedYes={handleClickedYes}
-          locale={locale.medicalScanCardConfirmModal}
+          locale={locale.thyroidTestMicrophoneConfirmModal}
         />
       )}
       <ErrorModal
@@ -311,4 +257,4 @@ const MedicalScanCard = ({
   );
 };
 
-export default MedicalScanCard;
+export default ThyroidCard;
