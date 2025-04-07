@@ -1,7 +1,7 @@
 import "../globals.css";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import { Layout, Navbar, Footer } from "@/components";
+import { Layout } from "@/components";
 import { getDictionary } from "./dictionaries";
 export async function generateStaticParams() {
   return [
@@ -32,18 +32,10 @@ export default async function RootLayout({
   const dict = await getDictionary(lng);
   return (
     <html lang={lng}>
-      <head>
-        <script
-          defer
-          data-site="myxgenome.com"
-          src="https://api.nepcha.com/js/nepcha-analytics.js"
-        ></script>
-      </head>
+      <head></head>
       <body className={roboto.className}>
-        <Layout>
-          <Navbar locale={dict.navbar} />
+        <Layout locale={dict}>
           {children}
-          <Footer locale={dict.footer} />
         </Layout>
         <link
           rel="stylesheet"

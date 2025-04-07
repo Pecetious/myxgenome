@@ -109,6 +109,11 @@
               "description": "Provides detailed information about the user’s immune system and shows which diseases they are prone to based on their immune system."
             }
           ],
+          "tests": {
+            "race": "1 Race Test",
+            "medical": "Not Included",
+            "thyroid": "Not Included"
+          },
           "routeParams": {
             "packageType": "basic package",
             "lang": "en"
@@ -140,6 +145,11 @@
               "description": "Provides consulting services at any time, allowing users to contact an expert at any moment."
             }
           ],
+          "tests": {
+            "race": "1 Race Test",
+            "medical": "2 Medical Scans",
+            "thyroid": "1 Thyroid Test"
+          },
           "routeParams": {
             "packageType": "advanced package",
             "lang": "en"
@@ -171,6 +181,11 @@
               "description": "Provides personalized genetic counseling services, offering health recommendations based on the user's genetic structure."
             }
           ],
+          "tests": {
+            "race": "4 Race Tests",
+            "medical": "4 Medical Scans",
+            "thyroid": "4 Thyroid Tests"
+          },
           "routeParams": {
             "packageType": "premium package",
             "lang": "en"
@@ -202,6 +217,11 @@
               "description": "Evaluates the genetic disease transitions and potential risks among family members."
             }
           ],
+          "tests": {
+            "race": "3 Race Tests",
+            "medical": "3 Medical Scans",
+            "thyroid": "3 Thyroid Tests"
+          },
           "routeParams": {
             "packageType": "family package",
             "lang": "en"
@@ -229,6 +249,11 @@
               "description": "Provides customized health counseling services. Creates a personalized health plan based on genetic structure and health history."
             }
           ],
+          "tests": {
+            "race": "4 Race Tests",
+            "medical": "6 Medical Scans",
+            "thyroid": "6 Thyroid Tests"
+          },
           "routeParams": {
             "packageType": "vip package",
             "lang": "en"
@@ -238,6 +263,42 @@
       "packageQuestion": "What is included in the test?",
       "buttonTitle": "Purchase",
       "buttonTitlePurchased": "Included"
+    },
+    "whatCanYouDo": {
+      "title": "What Can You Do on the Site?",
+      "cardContents": [
+        {
+          "number": "01",
+          "title": "Only 'U' Sound for T3 and TSH Analysis",
+          "slogan": "Start Understanding Your Health Through Your Voice!",
+          "bodyText": "myXgenome is an innovative platform that can analyze T3 and TSH levels through the 'U' sound online in seconds. Now, without the need for blood tests, you can quickly assess your health through your voice. By analyzing the frequencies of your voice, you can obtain information about your thyroid functions and potentially detect health risks early.",
+          "footerNote": "NOTE: This system is for informational purposes and preventive health monitoring only. myXgenome is not a medical treatment method, and no medical responsibility is accepted."
+        },
+        {
+          "number": "02",
+          "title": "Multimodal Artificial Intelligence for Genetic Mapping and Ancestry Analysis",
+          "slogan": "Discover Your Past and Shape Your Genetic Future!",
+          "bodyText": "myXgenome uses multimodal artificial intelligence to perform genetic mapping through the analysis of cough and phonation sounds. It also provides ancestry and lineage analysis. In just a few seconds, you can gain in-depth information about your ancestors and origins through your voice. By discovering your genetic heritage, you can receive suggestions for a healthy life.",
+          "footerNote": "NOTE: Health information is provided for informational purposes only. myXgenome does not provide medical diagnoses, and no medical responsibility is accepted."
+        },
+        {
+          "number": "03",
+          "title": "Online Screening for Seasonal Epidemics",
+          "slogan": "Protect Your Health with Your Voice!",
+          "bodyText": "myXgenome allows online screening for seasonal epidemics such as Influenza A/B, Covid-19, and Rhinovirus by analyzing cough and phonation sounds. Through our online platform, you can detect potential infections before symptoms appear. This service enables you to make a quick health assessment and take early preventive measures.",
+          "footerNote": "NOTE: This service is provided only for preventive health screening and monitoring your health status. myXgenome does not provide medical diagnoses or treatment services and accepts no responsibility."
+        },
+        {
+          "number": "04",
+          "title": "Online Test for Analyzing mRNA Vaccine Side Effects",
+          "slogan": "Learn About Vaccine Side Effects Quickly!",
+          "bodyText": "myXgenome offers an innovative solution for analyzing potential side effects that may occur after mRNA vaccinations. By analyzing cough and phonation sounds, you can perform an online analysis related to potential side effects, such as myocarditis. This system helps you quickly and reliably assess the health status of vaccinated individuals. By understanding the possible effects of the vaccine, you can better manage your health plan.",
+          "footerNote": "NOTE: This system is intended solely for providing information on potential mRNA vaccine side effects and for preventive health monitoring. myXgenome does not provide medical treatment or diagnoses and accepts no responsibility."
+        }
+      ],
+      "generalNoteTitle": "General Note",
+
+      "generalNote": "myXgenome is a platform developed for analyzing personal health data and providing informational insights. Your health data is used solely for informational purposes, and it is essential to consult authorized professionals for medical treatment and diagnosis. myXgenome does not accept any medical responsibility."
     }
   },
   "loginPage": {
@@ -428,6 +489,15 @@
       "purchaseTestCreditsTitle": {
         "race": "Purchase Race Test Credits",
         "medical": "Purchase Medical Scan Credits"
+      },
+      "promotionCode": {
+        "title": "Promotion Code",
+        "placeholder": "Enter your code",
+        "button": "Check",
+        "errors": {
+          "NOT FOUND": "The promo code you entered is invalid",
+          "CONFLICT": "The promo code you entered has already been used"
+        }
       }
     },
     "testCard": {

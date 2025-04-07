@@ -1,6 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Card, CardBody, Button, Typography } from "@material-tailwind/react";
+import {
+  Card,
+  CardBody,
+  Button,
+  Typography,
+  List,
+  ListItem,
+} from "@material-tailwind/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 
@@ -131,6 +138,41 @@ export function Pricing({ locale }: { locale: any }) {
               </div>
 
               <div className="grid place-items-center mt-5">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5 text-center">
+                  <div className="flex flex-col items-center">
+                    <Typography
+                      variant="h6"
+                      className="text-blue-gray-900"
+                      placeholder={undefined}
+                      onPointerEnterCapture={undefined}
+                      onPointerLeaveCapture={undefined}
+                    >
+                      {pkg.tests.race}
+                    </Typography>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <Typography
+                      variant="h6"
+                      className="text-blue-gray-900"
+                      placeholder={undefined}
+                      onPointerEnterCapture={undefined}
+                      onPointerLeaveCapture={undefined}
+                    >
+                      {pkg.tests.medical}
+                    </Typography>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <Typography
+                      variant="h6"
+                      className="text-blue-gray-900"
+                      placeholder={undefined}
+                      onPointerEnterCapture={undefined}
+                      onPointerLeaveCapture={undefined}
+                    >
+                      {pkg.tests.thyroid}
+                    </Typography>
+                  </div>
+                </div>
                 <Typography
                   variant="h1"
                   color="blue-gray"

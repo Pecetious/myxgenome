@@ -1,12 +1,7 @@
 "use client";
 
 import { paymentInitValidations } from "@/constants/validations";
-import {
-  MinusCircleIcon,
-  MinusIcon,
-  PlusCircleIcon,
-  PlusIcon,
-} from "@heroicons/react/24/solid";
+import { MinusIcon, PlusIcon } from "@heroicons/react/24/solid";
 import {
   Button,
   Card,
@@ -316,6 +311,7 @@ const PaymentForm = ({ locale }: { locale: any }) => {
                     />
                   </div>
                 )}
+                
               </div>
             </CardBody>
             {error && (

@@ -9,9 +9,12 @@ import {
   Accordion,
   AccordionBody,
   AccordionHeader,
+  Alert,
   Button,
   Card,
+  CardBody,
   Chip,
+  Input,
   List,
   ListItem,
   ListItemPrefix,
@@ -20,10 +23,8 @@ import {
 } from "@material-tailwind/react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { FC, useEffect, useState } from "react";
-interface Props {
-  list?: any;
-}
+import { useEffect, useState } from "react";
+
 const getSession = (): any | null => {
   try {
     // localStorage'dan 'session' verisini alın
@@ -59,29 +60,30 @@ const Sidebar = ({
   const [testCredits, setTestCredits] = useState<any>(null);
   const [resultsList, setResultsList] = useState<any>(null);
   const [session, setSession] = useState<any>(null);
-  const router = useRouter();
   const [open, setOpen] = useState(1);
+  const [promotionCode, setPromotionCode] = useState<string>("");
+  const [promotionErrorStatus, setPromotionErrorStatus] = useState<
+    null | string
+  >(null);
+  const router = useRouter();
 
   const handleOpen = (value: number) => {
     setOpen(open === value ? 0 : value);
   };
-  const handlePurchaseTestCredits = (type: string) => {
-    localStorage.setItem(
-      "session",
-      JSON.stringify({
-        ...session, // Eski session verilerini koru
-        selectedPackage: {
-          // Yeni selectedPackage verisini ekle
-          title:
-            locale.purchaseTestCreditsTitle[session.selectedPackage.testType],
-          type: session.subscriptionType,
-          testCredits: 1,
-          price: "50 ₺",
-          testType: type,
-        },
-      })
-    );
-    router.push(`/en/payment`);
+  const handleCheckPromotionCode = async () => {
+    if (promotionCode.length === 0) return;
+    try {
+      const { data } = await axios.post(
+        "/api/use-gift-code",
+        { code: promotionCode },
+        { headers: { Authorization: `Bearer ${session.token}` } }
+      );
+      console.log(data);
+      window.location.reload();
+    } catch (err: any) {
+      console.error(err.response.statusText);
+      setPromotionErrorStatus(err.response.statusText);
+    }
   };
   const getResults = async () => {
     const session = getSession();
@@ -127,93 +129,6 @@ const Sidebar = ({
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
       >
-        {/*  <ListItem
-          className="hover:cursor-default hover:bg-white"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
-          <ListItemPrefix
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          >
-            <Button
-              onClick={() => handlePurchaseTestCredits("race")}
-              color="blue-gray"
-              size="sm"
-              variant="outlined"
-              className=" capitalize tracking-widest"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
-              {locale.testCreditButton}
-            </Button>
-          </ListItemPrefix>
-          <Typography
-            className="font-semibold "
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          >
-            {locale.creditText.race}
-          </Typography>
-          <ListItemSuffix
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          >
-            <Chip value={testCredits?.race} variant="ghost" color="blue-gray" />
-          </ListItemSuffix>
-        </ListItem>
-        {session && session.subscriptionType !== "basic" && (
-          <ListItem
-            className="hover:cursor-default hover:bg-white"
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          >
-            <ListItemPrefix
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
-              <Button
-                onClick={() => handlePurchaseTestCredits("medical")}
-                color="blue-gray"
-                size="sm"
-                variant="outlined"
-                className=" capitalize tracking-widest"
-                placeholder={undefined}
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}
-              >
-                {locale.testCreditButton}
-              </Button>
-            </ListItemPrefix>
-            <Typography
-              className="font-semibold"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
-              {locale.creditText.medical}
-            </Typography>
-            <ListItemSuffix
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
-              <Chip
-                value={testCredits?.medical}
-                variant="ghost"
-                color="blue-gray"
-              />
-            </ListItemSuffix>
-          </ListItem>
-        )} */}
-
         <ListItem
           placeholder={undefined}
           onPointerEnterCapture={undefined}
@@ -400,6 +315,62 @@ const Sidebar = ({
           </Typography>
         </ListItem>
       </List>
+      <Card
+        className="w-[calc(100%-1rem)] mx-auto my-2 mt-auto min-h-[150px] h-fit bg-blue-gray-50"
+        placeholder={undefined}
+        onPointerEnterCapture={undefined}
+        onPointerLeaveCapture={undefined}
+      >
+        <CardBody
+          className="flex flex-col items-center justify-center gap-3"
+          placeholder={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        >
+          <div className="text-sm font-medium text-gray-700">
+            {locale.promotionCode.title}
+          </div>
+          <Input
+            type="text"
+            name="gsmNumber"
+            value={promotionCode}
+            onChange={(e) => setPromotionCode(e.target.value)}
+            placeholder={locale.promotionCode.placeholder}
+            className="w-full"
+            maxLength={10}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+            crossOrigin={undefined}
+            onFocus={() => setPromotionCode("")}
+          />
+          {/*   {touched.gsmNumber && errors.gsmNumber && (
+                    <div className="text-red-500 text-sm">
+                      {errors.gsmNumber}
+                    </div>
+                  )} */}
+          <Button
+            onClick={handleCheckPromotionCode}
+            size="sm"
+            className="w-3/4"
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+          >
+            {locale.promotionCode.button}
+          </Button>
+          {promotionErrorStatus && (
+            <Typography
+              variant="paragraph"
+              className="text-red-600 text-center font-bold text-base"
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
+              {locale.promotionCode.errors[promotionErrorStatus]}
+            </Typography>
+          )}
+        </CardBody>
+      </Card>
     </Card>
   );
 };

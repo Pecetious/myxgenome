@@ -69,7 +69,6 @@ export function Navbar({ locale }: { locale: any }) {
     }
   };
 
-  // 5 dakikada bir session'ı kontrol et
   useEffect(() => {
     checkSession();
     const interval = setInterval(checkSession, 5 * 60 * 1000);

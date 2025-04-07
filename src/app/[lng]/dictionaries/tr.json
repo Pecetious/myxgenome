@@ -109,6 +109,11 @@
               "description": "Kullanıcının bağışıklık sistemi hakkında detaylı bilgi sağlar ve bu sisteme bağlı olarak hangi hastalıklara yatkın olduğunu gösterir."
             }
           ],
+          "tests": {
+            "race": "1 Adet Irk Testi",
+            "medical": "Dahil Değil",
+            "thyroid": "Dahil Değil"
+          },
           "routeParams": {
             "packageType": "basic package",
             "lang": "tr"
@@ -140,6 +145,11 @@
               "description": "Kullanıcıya istediği zaman danışmanlık hizmeti sağlar, bir uzmanla her an iletişime geçme imkanı sağlar."
             }
           ],
+          "tests": {
+            "race": "1 Adet Irk Testi",
+            "medical": "2 Adet Tıbbi Tarama",
+            "thyroid": "1 Adet Tiroit Testi"
+          },
           "routeParams": {
             "packageType": "advanced package",
             "lang": "tr"
@@ -171,6 +181,11 @@
               "description": "Kullanıcıya özel genetik danışmanlık hizmeti verilir, genetik yapısına göre kişisel sağlık önerileri sunulur."
             }
           ],
+          "tests": {
+            "race": "4 Adet Irk Testi",
+            "medical": "4 Adet Tıbbi Tarama",
+            "thyroid": "4 Adet Tiroit Testi"
+          },
           "routeParams": {
             "packageType": "premium package",
             "lang": "tr"
@@ -202,6 +217,11 @@
               "description": "Aile üyeleri arasında genetik hastalık geçişi ve olası riskler değerlendirilir."
             }
           ],
+          "tests": {
+            "race": "3 Adet Irk Testi",
+            "medical": "3 Adet Tıbbi Tarama",
+            "thyroid": "3 Adet Tiroit Testi"
+          },
           "routeParams": {
             "packageType": "family package",
             "lang": "tr"
@@ -229,6 +249,11 @@
               "description": "Kullanıcıya özel sağlık danışmanlık hizmetleri sunulur. Genetik yapısına ve sağlık geçmişine göre özelleştirilmiş sağlık planı oluşturulur."
             }
           ],
+          "tests": {
+            "race": "4 Adet Irk Testi",
+            "medical": "6 Adet Tıbbi Tarama",
+            "thyroid": "6 Adet Tiroit Testi"
+          },
           "routeParams": {
             "packageType": "vip package",
             "lang": "tr"
@@ -238,6 +263,41 @@
       "packageQuestion": "Teste neler dahil?",
       "buttonTitle": "Satın Al",
       "buttonTitlePurchased": "Pakete Dahil"
+    },
+    "whatCanYouDo": {
+      "title": "Sitede Neler Yapabilirsiniz ?",
+      "cardContents": [
+        {
+          "number": "01",
+          "title": "Yalnızca U Sesi ile T3 ve TSH Analizi",
+          "slogan": "Sağlığınızı Sesinizle Anlamaya Başlayın!",
+          "bodyText": "myXgenome, yalnızca U sesi ile T3 ve TSH analizlerini online olarak saniyeler içinde yapabilen yenilikçi bir platformdur. Artık, kan tahlili yapmadan, sesiniz üzerinden sağlığınızı hızlı bir şekilde değerlendirebilirsiniz. Sesinizin frekanslarıyla, tiroit fonksiyonlarınız hakkında bilgi alabilir ve potansiyel sağlık risklerinizi erken tespit edebilirsiniz.",
+          "footerNote": "NOT: Bu sistem, yalnızca bilgi sağlamak ve önleyici sağlık izleme amacı taşır. myXgenome, tıbbi bir tedavi yöntemi değildir ve tıbbi sorumluluk kabul edilmez."
+        },
+        {
+          "number": "02",
+          "title": "Multimodel Yapay Zeka ile Genetik Haritalandırma ve Köken Analizi",
+          "slogan": "Geçmişinizi Keşfedin ve Genetik Geleceğinizi Şekillendirin!",
+          "bodyText": "myXgenome, öksürük ve fonasyon seslerini analiz ederek, multimodel yapay zeka kullanımıyla genetik haritalandırma yapar. Bunun yanı sıra, soy ve köken analizi sunar. Sesiniz üzerinden, yalnızca birkaç saniye içinde atalarınıza ve kökenlerinize dair derinlemesine bilgi edinebilirsiniz. Genetik mirasınızı keşfederek, sağlıklı bir yaşam için öneriler alabilirsiniz.",
+          "footerNote": "NOT: Sağlık bilgileri yalnızca bilgilendirme amacı taşır. myXgenome, tıbbi bir tanı koymaz ve tıbbi sorumluluk kabul edilmez."
+        },
+        {
+          "number": "03",
+          "title": "Dönemsel Salgınlara Karşı Online Tarama",
+          "slogan": "Sağlığınızı Sesinizle Koruyun!",
+          "bodyText": "myXgenome, öksürük ve fonasyon sesi alarak Influenza A/B, Covid-19 ve Rhinovirüs gibi dönemseldir. salgın hastalıklar için online tarama yapmanızı sağlar. Online platformumuz sayesinde, semptomları daha ortaya çıkmadan önce, potansiyel enfeksiyonları tespit edebilirsiniz. Bu hizmet sayesinde, sağlığınızla ilgili hızlı bir değerlendirme yaparak erken önlem alabilirsiniz.",
+          "footerNote": "NOT: Bu hizmet, yalnızca önleyici sağlık taramaları sağlamak ve sağlık durumunuzu izlemek amacıyla sunulmuştur. myXgenome, tıbbi bir teşhis veya tedavi hizmeti sunmaz ve sorumluluk kabul etmez."
+        },
+        {
+          "number": "04",
+          "title": "mRNA Aşılarının Yan Etkilerini Online Test ile Analiz Ediyoruz",
+          "slogan": "Aşı Yan Etkilerini Hızlıca Öğrenin!",
+          "bodyText": "myXgenome, mRNA aşıları sonrası gelişebilecek yan etkileri analiz etmek için yenilikçi bir çözüm sunar. Öksürük ve fonasyon sesi alarak, kalp kası iltihabı gibi potansiyel yan etkilerle ilgili online analiz yapabilirsiniz. Bu sistem, aşı olan kişilerin sağlık durumunu hızlı ve güvenilir bir şekilde değerlendirmenize yardımcı olur. Aşı sonrası gelişebilecek etkiler hakkında bilgi edinerek, sağlık yönetiminizi daha iyi bir şekilde planlayabilirsiniz.",
+          "footerNote": "NOT: Bu sistem, yalnızca mRNA aşılarının yan etkileri hakkında bilgi sağlamak ve önleyici sağlık izleme amacı taşır. myXgenome, tıbbi tedavi veya tanı sağlamaz ve sorumluluk kabul etmez."
+        }
+      ],
+      "generalNoteTitle": "Genel Not",
+      "generalNote": "myXgenome, kişisel sağlık verilerinizi analiz etmek ve bilgilendirme sağlamak amacıyla geliştirilmiş bir platformdur. Sağlık verileriniz yalnızca bilgilendirme amacıyla kullanılmakta olup, tıbbi tedavi ve tanı konularında yetkilendirilmiş profesyonellerle görüşmeniz gerekmektedir. myXgenome herhangi bir tıbbi sorumluluk kabul etmemektedir."
     }
   },
   "loginPage": {
@@ -428,6 +488,15 @@
       "purchaseTestCreditsTitle": {
         "race": "Irk Testi Kredisi Satın Alma",
         "medical": "Tıbbi Tarama Kredisi Satın Alma"
+      },
+      "promotionCode": {
+        "title": "Promosyon Kodu",
+        "placeholder": "Promosoyon kodunuzu girin",
+        "button": "Gönder",
+        "errors": {
+          "NOT FOUND": "Girdiğiniz promosyon kodu geçersiz",
+          "CONFLICT": "Girdiğiniz promosyon kodu önceden kullanılmış"
+        }
       }
     },
     "testCard": {

@@ -57,7 +57,7 @@ const MedicalScanCard = ({
   const router = useRouter();
   const handleClickedYes = () => {
     console.log("Mikrofon kaydı onaylandı");
-    if (currentRecording > 5) {
+    if (currentRecording > 3) {
       return;
     }
     setCurrentRecording(currentRecording + 1);
@@ -234,16 +234,16 @@ const MedicalScanCard = ({
                 <p className="text-center">
                   {locale.microphone.soundTest.p1}
                   {currentRecording === 0
-                    ? "AAA"
+                    ? "AAA "
                     : currentRecording === 1
-                    ? "UUU"
-                    : "İİİ"}
+                    ? "UUU "
+                    : "İİİ "}
                   {locale.microphone.soundTest.p2}
                 </p>
               </>
             </div>
             <div className="w-full h-[20vh] flex flex-col items-center justify-center">
-              {recordings.length < 6 && (
+              {recordings.length < 3 && (
                 <>
                   <Microphone
                     onRecordComplete={handleRecordingComplete}
